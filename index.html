@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Language" content="pt-br">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="copyright" content="Accenture Brasil">
+		<meta name="author" content="miguel.b.gomes@accenture.com">
+		<meta name="robots" content="noindex, nofollow">
+
+		<title>Dashboard Natura</title>		
+		
+		<!--CSS-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href="css/imagens.css" type="text/css" rel="stylesheet" />
+        <link href="css/reset.css" type="text/css" rel="stylesheet" />
+        <link href="css/body.css" type="text/css" rel="stylesheet" />
+        <link href="css/telas.css" type="text/css" rel="stylesheet" />
+        <link href="css/rodape.css" type="text/css" rel="stylesheet" />
+        <link href="css/dump.css" type="text/css" rel="stylesheet" />
+        <link href="css/smartf.css" type="text/css" rel="stylesheet" />
+        <link href="css/tablet.css" type="text/css" rel="stylesheet" />
+        <link href="css/desktop.css" type="text/css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="lns1" style="margin-top: 10px;">
+			<img class="logo" src="imgs/natura-logo-png-transparent.png" />
+		
+			<div class="div-indcs1" style="margin-left: 10px; margin-right: 10px;">
+				<h1>FTR ABAP</h1>
+				<h2 id="ftrABAP"></h2>
+			</div>
+			
+			<div class="div-indcs1" style="margin-left: 10px; margin-right: 10px;">
+				<h1>OTD ABAP</h1>
+				<h2 id="otdABAP"></h2>
+			</div>
+			
+			<div class="div-indcs1" style="margin-left: 10px; margin-right: 10px;">
+				<h1>FTR FUNC</h1>
+				<h2 id="ftrFUNC"></h2>
+			</div>
+			
+			<div class="div-indcs1" style="margin-left: 10px; margin-right: 10px;">
+				<h1>OTD FUNC</h1>
+				<h2 id="otdFUNC"></h2>
+			</div>
+		</div>
+		
+		<div class="lns1">
+			<div style="float: left; margin-left: 8.5%; margin-right: 20px; width: 24%; margin-bottom: 20px; background-color: #fff; border-radius: 5px; padding: 5px;">
+				<canvas id="grafPercentualCartoesPorFase"></canvas>
+			</div>
+			
+			<div class="div-indcs1" style="margin-right: 10px;">
+				<table class="table" style="margin: 0px; margin-top: -5px;">
+					<thead>
+						<tr>
+							<th scope="col" style="border-top: 0px;">Quantidade de SIRs</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<th scope="row">ERRO:</th>
+							<td id="sirErro"></td>
+						</tr>
+						
+						<tr>
+							<th scope="row">FM:</th>
+							<td id="sirFM"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="div-indcs2" style="margin-left: 10px; margin-right: 10px;">
+				<table class="table" style="margin: 0px; margin-top: -5px;">
+					<thead>
+						<tr>
+							<th scope="col" style="border-top: 0px;">Disponibilidade do Time ABAP</th>
+						</tr>
+					</thead>
+					
+					<tbody id="disponibilidadeTimeABAP"></tbody>
+				</table>
+			</div>
+		</div>
+	
+		<div class="lns3" style="margin-top: 10px;">
+			
+			
+			<button id="buttonAtualizarDados" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">Atualizar Dados</button>
+		</div>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+		<script type="text/javascript" src="js/constantes.js"></script>
+		<script type="text/javascript" src="js/elementosTela.js"></script>
+		<script type="text/javascript" src="js/variaveisGlobais.js"></script>
+		<script type="text/javascript" src="js/funcoesGlobais.js"></script>
+		<script type="text/javascript" src="js/eventosAjax.js"></script>
+		<script type="text/javascript" src="js/configsReqAjax.js"></script>
+		<script type="text/javascript" src="js/logica.js"></script>
+		<script type="text/javascript" src="js/eventosGUI.js"></script>
+	</body>
+</html>
