@@ -442,16 +442,32 @@ function validarTicketSemFTRFUNC( card )
 {
 	var idCard = card['id'];
 	
-	carregarSincCardActionsQuadroTestesDashboardNatura( idCard );
+	var actionsCard = card['actions'];
 	
-	for( indiceCardAction = 0; indiceCardAction < cardActionsQuadroTestesDashboardNatura.length; ++indiceCardAction )
+	for( indiceCardAction = 0; indiceCardAction < actionsCard.length; ++indiceCardAction )
 	{
-		var cardAction = cardActionsQuadroTestesDashboardNatura[indiceCardAction];
+		var cardAction = actionsCard[indiceCardAction];
+		
+		var dadosCardAction = cardAction['data'];
+		
+		var nomeListaDestino = undefined;
+		
+		var listaDestino = dadosCardAction['list'];
+		if( listaDestino == undefined )
+		{
+			listaDestino = dadosCardAction['listAfter'];
+		}
+		
+		
+		if( listaDestino != undefined )
+		{
+			nomeListaDestino = listaDestino['name'];	
+		}
 		
 		if
 		(
 			cardAction['type'] == tipoActionUpdateCard
-			&& cardAction['data']['listAfter']['name'] == nomeListaPendenciasReprovados
+			&& nomeListaDestino == nomeListaPendenciasReprovados
 		)
 		{
 			return true;
@@ -547,27 +563,43 @@ function obterValorCampoPersonalizadoCard( idCampoPersonalizado, itemsCamposPers
 	return valorCampoPersonalizado;
 }
 
-function validarTicketSemOTDABAP( card, camposPersonalizadosBoard )
+function validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard )
 {
 	var idCard = card['id'];
 	
 	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( nomeCampoPersonalizadoFimConstrucao, camposPersonalizadosBoard );
 	
-	carregarSincCardActionsQuadroTestesDashboardNatura( idCard );
+	var actionsCard = card['actions'];
 	
-	for( indiceCardAction = 0; indiceCardAction < cardActionsQuadroTestesDashboardNatura.length; ++indiceCardAction )
+	for( indiceCardAction = 0; indiceCardAction < actionsCard.length; ++indiceCardAction )
 	{
-		var cardAction = cardActionsQuadroTestesDashboardNatura[indiceCardAction];
+		var cardAction = actionsCard[indiceCardAction];
+		
+		var dadosCardAction = cardAction['data'];
+		
+		var nomeListaDestino = undefined;
+		
+		var listaDestino = dadosCardAction['list'];
+		if( listaDestino == undefined )
+		{
+			listaDestino = dadosCardAction['listAfter'];
+		}
+		
+		
+		if( listaDestino != undefined )
+		{
+			nomeListaDestino = listaDestino['name'];	
+		}
 		
 		if
 		(
 			cardAction['type'] == tipoActionUpdateCard
-			&& cardAction['data']['listAfter']['name'] == nomeListaEntregue
+			&& nomeListaDestino == nomeListaEntregue
 		)
 		{
-			carregarSincCamposPersonalizadosCard( idCard );
+			var itensCamposPersonalizadosCard = card['customFieldItems'];
 			
-			var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, camposPersonalizadosCard['customFieldItems'], camposPersonalizadosBoard );
+			var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 			
 			if( valorCampoPersonalizadoFimConstrucao['date'] < cardAction['date'] )
 			{
@@ -588,7 +620,7 @@ function obterQuantidadeTicketsSemOTDABAPLista( idLista, cards, camposPersonaliz
 	{
 		var card = cardsTicketFDFM[indiceCardTicket];
 		
-		if( validarTicketSemOTDABAP( card, camposPersonalizadosBoard ) )
+		if( validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard ) )
 		{
 			++quantidadeTicketsSemOTDABAP;
 		}
@@ -608,13 +640,13 @@ function obterQuantidadeTicketsOTDABAPLista( idLista, cards, camposPersonalizado
 	return quantidadeTicketsOTDABAPLista;	
 }
 
-function validarTicketSemOTDFUNC( card, camposPersonalizadosBoard )
+function validarTicketSemOTDFUNC( card, cards, camposPersonalizadosBoard )
 {
 	var resultadoValidacao = false;
 	
 	var idCard = card['id'];
 	
-	carregarSincAnexosCard( idCard );
+	var anexosCard = card['attachments'];
 	
 	if
 	(
@@ -629,9 +661,9 @@ function validarTicketSemOTDFUNC( card, camposPersonalizadosBoard )
 	
 	var idCampoPersonalizadoDataEF = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataEF, camposPersonalizadosBoard );
 	
-	carregarSincCamposPersonalizadosCard( idCard );
+	var itensCamposPersonalizadosCard = card['customFieldItems'];
 	
-	var valorCampoPersonalizadoDataEF = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataEF, camposPersonalizadosCard['customFieldItems'], camposPersonalizadosBoard );
+	var valorCampoPersonalizadoDataEF = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataEF, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 	
 	for( indiceAnexo = 0; indiceAnexo < anexosCard.length; ++indiceAnexo )
 	{
@@ -661,7 +693,7 @@ function obterQuantidadeTicketsSemOTDFUNCLista( idLista, cards, camposPersonaliz
 	{
 		var card = cardsTicketFDFM[indiceCardTicket];
 		
-		if( validarTicketSemOTDFUNC( card, camposPersonalizadosBoard ) )
+		if( validarTicketSemOTDFUNC( card, cards, camposPersonalizadosBoard ) )
 		{
 			++quantidadeTicketsSemOTDFUNC;
 		}
@@ -700,24 +732,24 @@ function obterCampoPersonalizadoPeloID( idCampoPersonalizado, camposPersonalizad
 	return campoPersonalizado;
 }
 
-function obterValoresOpcoesCampoPersonalizadoABAP( camposPersonalizadosBoard )
+function obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard )
 {
-	var valoresOpcoesCampoPersonalizadoABAP = [];
+	var valoresOpcoesCampoPersonalizado = [];
 	
-	var idCampoPersonalizadoABAP = obterIDCampoPersonalizado( nomeCampoPersonalizadoABAP, camposPersonalizadosBoard );
+	var idCampoPersonalizado = obterIDCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard );
 	
-	var campoPersonalizadoABAP = obterCampoPersonalizadoPeloID( idCampoPersonalizadoABAP, camposPersonalizadosBoard );
+	var campoPersonalizado = obterCampoPersonalizadoPeloID( idCampoPersonalizado, camposPersonalizadosBoard );
 	
-	var opcoesCampoPersonalizadoABAP = campoPersonalizadoABAP['options'];
+	var opcoesCampoPersonalizado = campoPersonalizado['options'];
 	
-	for( indiceOpcaoCampoPersonalizado = 0; indiceOpcaoCampoPersonalizado < opcoesCampoPersonalizadoABAP.length; ++indiceOpcaoCampoPersonalizado )
+	for( indiceOpcaoCampoPersonalizado = 0; indiceOpcaoCampoPersonalizado < opcoesCampoPersonalizado.length; ++indiceOpcaoCampoPersonalizado )
 	{
-		var opcaoCampoPersonalizadoABAP = opcoesCampoPersonalizadoABAP[indiceOpcaoCampoPersonalizado];
+		var opcaoCampoPersonalizado = opcoesCampoPersonalizado[indiceOpcaoCampoPersonalizado];
 		
-		valoresOpcoesCampoPersonalizadoABAP.push( opcaoCampoPersonalizadoABAP['value']['text'] );
+		valoresOpcoesCampoPersonalizado.push( opcaoCampoPersonalizado['value']['text'] );
 	}
 	
-	return valoresOpcoesCampoPersonalizadoABAP;
+	return valoresOpcoesCampoPersonalizado;
 }
 
 function addDays( date, days )
@@ -729,50 +761,57 @@ function addDays( date, days )
 	return result;
 }
 
-function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonalizadosBoard )
+function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonalizadosBoard, listas )
 {
 	var proximaDataDisponibilidadeABAP = { ABAP: nomeABAP, proximaDataDisponibilidade: '' };
 	
 	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( nomeCampoPersonalizadoFimConstrucao, camposPersonalizadosBoard );
 	var idCampoPersonalizadoABAP = obterIDCampoPersonalizado( nomeCampoPersonalizadoABAP, camposPersonalizadosBoard );
 	
+	var idListaEntregue = obterIDLista( nomeListaEntregue, listas );
+	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
 		var card = cards[indiceCard];
 		
-		var nomeCard = card['name'];
+		var idListCard = card['idList'];
 		
-		if
-		(
-			nomeCard != nomeCardTicketExemplo
-			&& nomeCard != nomeCardSIRExemplo
-		)
+		if( idListCard != idListaEntregue )
 		{
-			var idCard = card['id'];
+			var nomeCard = card['name'];
 		
-			carregarSincCamposPersonalizadosCard( idCard );
-			
-			var valorCampoPersonalizadoABAP = obterValorCampoPersonalizadoCard( idCampoPersonalizadoABAP, camposPersonalizadosCard['customFieldItems'], camposPersonalizadosBoard );
-			
 			if
 			(
-				valorCampoPersonalizadoABAP != undefined
-				&& valorCampoPersonalizadoABAP['text'] == nomeABAP
+				nomeCard != nomeCardTicketExemplo
+				&& nomeCard != nomeCardSIRExemplo
 			)
 			{
-				var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, camposPersonalizadosCard['customFieldItems'], camposPersonalizadosBoard );
+				var idCard = card['id'];
 				
-				var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
+				var itensCamposPersonalizadosCard = card['customFieldItems'];
 				
-				var umDiaAposDataFimConstrucao = addDays( dataFimConstrucao, 1 );
+				var valorCampoPersonalizadoABAP = obterValorCampoPersonalizadoCard( idCampoPersonalizadoABAP, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 				
 				if
 				(
-					proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
-					|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade < umDiaAposDataFimConstrucao
+					valorCampoPersonalizadoABAP != undefined
+					&& valorCampoPersonalizadoABAP['text'] == nomeABAP
 				)
 				{
-					proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = umDiaAposDataFimConstrucao;
+					var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+					
+					var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
+					
+					var umDiaAposDataFimConstrucao = addDays( dataFimConstrucao, 1 );
+					
+					if
+					(
+						proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
+						|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade < umDiaAposDataFimConstrucao
+					)
+					{
+						proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = umDiaAposDataFimConstrucao;
+					}
 				}
 			}
 		}
@@ -786,7 +825,7 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 	return proximaDataDisponibilidadeABAP;
 }
 
-function obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonalizadosBoard )
+function obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonalizadosBoard, listas )
 {
 	var proximaDataDisponibilidadeABAPs = [];
 	
@@ -794,31 +833,267 @@ function obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonali
 	{
 		var nomeABAP = nomesABAP[indiceNomeABAP];
 		
-		proximaDataDisponibilidadeABAPs.push( obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonalizadosBoard ) );
+		proximaDataDisponibilidadeABAPs.push( obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonalizadosBoard, listas ) );
 	}
 	
 	return proximaDataDisponibilidadeABAPs;
 }
 
-function obterTextoDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard )
+function funcaoComparacaoDisponibilidadeABAP( disponibilidadeA, disponibilidadeB )
+{
+	return ( disponibilidadeA.proximaDataDisponibilidade > disponibilidadeB.proximaDataDisponibilidade ) -
+		   ( disponibilidadeA.proximaDataDisponibilidade < disponibilidadeB.proximaDataDisponibilidade );
+}
+
+function obterDataSemTempo( dataComTempo )
+{
+	var dataSemTempo = undefined;
+	
+	dataSemTempo = new Date
+	(
+		dataComTempo.getFullYear(),
+		dataComTempo.getMonth(),
+		dataComTempo.getDate()
+	);
+	
+	return dataSemTempo;
+}
+
+function obterDisponibilidadeTimeABAPPorData( proximaDataDisponibilidadeABAPs )
+{
+	var disponibilidadeTimeABAPPorData = [];
+	
+	var datasDisponibilidade = [];
+	
+	for( indiceProximaDataDisponibilidadeABAP = 0; indiceProximaDataDisponibilidadeABAP < proximaDataDisponibilidadeABAPs.length; ++indiceProximaDataDisponibilidadeABAP )
+	{
+		var proximaDataDisponibilidadeABAP = proximaDataDisponibilidadeABAPs[indiceProximaDataDisponibilidadeABAP];
+		
+		var proximaDataDisponibilidadeABAPSomenteData = obterDataSemTempo( proximaDataDisponibilidadeABAP.proximaDataDisponibilidade );
+		
+		var dataDisponibilidadeJaAdicionada = false;
+		
+		for( indiceDataDisponibilidade = 0; indiceDataDisponibilidade < datasDisponibilidade.length; ++indiceDataDisponibilidade )
+		{
+			var dataDisponibilidade = datasDisponibilidade[indiceDataDisponibilidade];
+			
+			if( dataDisponibilidade.getTime() == proximaDataDisponibilidadeABAPSomenteData.getTime() )
+			{
+				dataDisponibilidadeJaAdicionada = true;
+				
+				break;
+			}
+		}
+		
+		if( !dataDisponibilidadeJaAdicionada )
+		{
+			datasDisponibilidade.push( proximaDataDisponibilidadeABAPSomenteData );
+		}
+	}
+	
+	for( indiceDataDisponibilidade = 0; indiceDataDisponibilidade < datasDisponibilidade.length; ++indiceDataDisponibilidade )
+	{
+		var dataDisponibilidade = datasDisponibilidade[indiceDataDisponibilidade];
+		
+		var ABAPsDisponiveis = [];
+			
+		for( indiceProximaDataDisponibilidadeABAP = 0; indiceProximaDataDisponibilidadeABAP < proximaDataDisponibilidadeABAPs.length; ++indiceProximaDataDisponibilidadeABAP )
+		{
+			var proximaDataDisponibilidadeABAP = proximaDataDisponibilidadeABAPs[indiceProximaDataDisponibilidadeABAP];
+			
+			var proximaDataDisponibilidadeABAPSomenteData = obterDataSemTempo( proximaDataDisponibilidadeABAP.proximaDataDisponibilidade );
+			
+			if( proximaDataDisponibilidadeABAPSomenteData.getTime() == dataDisponibilidade.getTime() )
+			{
+				ABAPsDisponiveis.push( proximaDataDisponibilidadeABAP.ABAP );
+			}
+		}
+		
+		ABAPsDisponiveis.sort();
+		
+		var disponibilidadeData = { dataDisponibilidadeABAP: dataDisponibilidade, ABAPsDisponiveisData: ABAPsDisponiveis };
+		
+		disponibilidadeTimeABAPPorData.push( disponibilidadeData );
+	}
+	
+	return disponibilidadeTimeABAPPorData;
+}
+
+function obterStringNumeroZerosEsquerda( numero, quantidadeMaximaZeros )
+{
+	var stringNumero = numero.toString();
+	
+	var quantidadeMaximaDigitos = quantidadeMaximaZeros + 1;
+	
+	if( stringNumero.length == quantidadeMaximaDigitos )
+	{
+		return stringNumero;
+	}
+	
+	var quantidadeZerosInseridos = 0;
+	
+	while( quantidadeZerosInseridos < quantidadeMaximaZeros )
+	{
+		stringNumero = '0' + stringNumero;
+		
+		++quantidadeZerosInseridos;
+	}
+	
+	return stringNumero;
+}
+
+function obterTimelineDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard, listas )
 {
 	var textoDisponibilidadeABAP = '';
 	
-	var nomesABAP = obterValoresOpcoesCampoPersonalizadoABAP( camposPersonalizadosBoard );
+	var nomesABAP = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizadoABAP, camposPersonalizadosBoard );
 	
-	var proximaDataDisponibilidadeABAPs = obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonalizadosBoard );
+	var proximaDataDisponibilidadeABAPs = obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonalizadosBoard, listas );
 	
-	for( indiceProximaDataDisponibilidade = 0; indiceProximaDataDisponibilidade < proximaDataDisponibilidadeABAPs.length; ++indiceProximaDataDisponibilidade )
+	proximaDataDisponibilidadeABAPs.sort( funcaoComparacaoDisponibilidadeABAP );
+	
+	var disponibilidadeTimeABAPPorData = obterDisponibilidadeTimeABAPPorData( proximaDataDisponibilidadeABAPs );
+	
+	for( indiceDisponibilidadeTimeABAPPorData = 0; indiceDisponibilidadeTimeABAPPorData < disponibilidadeTimeABAPPorData.length; ++indiceDisponibilidadeTimeABAPPorData )
 	{
-		var proximaDataDisponibilidadeABAP = proximaDataDisponibilidadeABAPs[indiceProximaDataDisponibilidade];
+		var dataDisponibilidadeTimeABAP = disponibilidadeTimeABAPPorData[indiceDisponibilidadeTimeABAPPorData];
 		
-		var diaDataDisponibilidadeABAP = proximaDataDisponibilidadeABAP.proximaDataDisponibilidade.getDate();
-		var mesDataDisponibilidadeABAP = proximaDataDisponibilidadeABAP.proximaDataDisponibilidade.getMonth() + 1;
-		var anoDataDisponibilidadeABAP = proximaDataDisponibilidadeABAP.proximaDataDisponibilidade.getFullYear();
+		var diaDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getDate();
+		var mesDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getMonth() + 1;
+		var anoDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getFullYear();
 		
-		textoDisponibilidadeABAP += '<tr><th scope="row">' + proximaDataDisponibilidadeABAP.ABAP + ':</th><td>a partir de '
-									+ diaDataDisponibilidadeABAP + '/' + mesDataDisponibilidadeABAP + '/' + anoDataDisponibilidadeABAP + '</td></tr>';
+		var indiceDisponibilidadeTimeABAPPorDataPar = ( indiceDisponibilidadeTimeABAPPorData % 2 ) == 0;
+		
+		if( indiceDisponibilidadeTimeABAPPorDataPar )
+		{
+			textoDisponibilidadeABAP += '<div class="timeline-container timeline-container-left">';
+		}
+		else
+		{
+			textoDisponibilidadeABAP += '<div class="timeline-container timeline-container-right">';
+		}
+		
+		textoDisponibilidadeABAP += '<div class="timeline-content"><h3>'
+									+ obterStringNumeroZerosEsquerda( diaDataDisponibilidadeABAP, 1 ) + '/'
+									+ obterStringNumeroZerosEsquerda( mesDataDisponibilidadeABAP, 1 ) + '/'
+									+ anoDataDisponibilidadeABAP + '</h3>';
+		
+		for( indiceABAPDisponivelData = 0; indiceABAPDisponivelData < dataDisponibilidadeTimeABAP.ABAPsDisponiveisData.length; ++indiceABAPDisponivelData )
+		{
+			var ABAPDisponivelData = dataDisponibilidadeTimeABAP.ABAPsDisponiveisData[indiceABAPDisponivelData];
+			
+			textoDisponibilidadeABAP += '<p>' + ABAPDisponivelData + '</p>';
+		}
+		
+		textoDisponibilidadeABAP += '</div></div>';
 	}
 	
 	return textoDisponibilidadeABAP;
+}
+
+function obterQuantidadeHorasABAPCards( cards, camposPersonalizadosBoard )
+{
+	var quantidadeHorasABAP = 0;
+	
+	var idCampoPersonalizadoHorasABAP = obterIDCampoPersonalizado( nomeCampoPersonalizadoHorasABAP, camposPersonalizadosBoard );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var nomeCard = card['name'];
+		
+		if( nomeCard != nomeCardTicketExemplo )
+		{
+			var itemsCamposPersonalizadosCard = card['customFieldItems'];
+			
+			var valorCampoPersonalizadoHorasABAP = obterValorCampoPersonalizadoCard( idCampoPersonalizadoHorasABAP, itemsCamposPersonalizadosCard, camposPersonalizadosBoard );
+			
+			quantidadeHorasABAP += Number( valorCampoPersonalizadoHorasABAP['number'] );	
+		}
+	}
+	
+	return quantidadeHorasABAP;
+}
+
+function obterQuantidadeHorasEntregueTicketsFDFM( cards, camposPersonalizadosBoard, listas )
+{
+	var idListaEntregue = obterIDLista( nomeListaEntregue, listas );
+	
+	var cardsTicketFDFMListaEntregue = obterCardsTicketFDFMLista( idListaEntregue, cards );
+	
+	var quantidadeHorasABAPEntregue = obterQuantidadeHorasABAPCards( cardsTicketFDFMListaEntregue, camposPersonalizadosBoard );
+	
+	return quantidadeHorasABAPEntregue;	
+}
+
+function obterQuantidadeHorasBacklogTicketsFDFM( cards, camposPersonalizadosBoard, listas )
+{
+	var idListaBacklogDemandas = obterIDLista( nomeListaBacklogDemandas, listas );
+	
+	var cardsTicketFDFMListaBacklog = obterCardsTicketFDFMLista( idListaBacklogDemandas, cards );
+	
+	var quantidadeHorasABAPBacklog = obterQuantidadeHorasABAPCards( cardsTicketFDFMListaBacklog, camposPersonalizadosBoard );
+	
+	return quantidadeHorasABAPBacklog;	
+}
+
+function obterQuantidadeCardsPorEtiqueta( nomeEtiqueta, cards )
+{
+	var quantidadeCards = 0;
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var labelsCard = card['labels'];
+		
+		if
+		(
+			labelsCard != undefined
+			&& labelsCard.length > 0
+		)
+		{
+			var nomeCard = card['name'];
+			
+			var nomeEtiquetaCard = card['labels'][0]['name'];
+		
+			if
+			(
+				nomeEtiquetaCard == nomeEtiqueta
+				&& nomeCard != nomeCardTicketExemplo
+				&& nomeCard != nomeCardSIRExemplo
+			)
+			{
+				++quantidadeCards;
+			}
+		}
+	}
+	
+	return quantidadeCards;
+}
+
+function obterPercentualCardsPorEtiqueta( nomeEtiqueta, cards )
+{
+	var quantidadeCardsEtiqueta = obterQuantidadeCardsPorEtiqueta( nomeEtiqueta, cards );
+	
+	var percentualCardsEtiqueta = obterPercentualCards( quantidadeCardsEtiqueta, cards );
+	
+	return percentualCardsEtiqueta;
+}
+
+function obterProjetosParaFiltro( camposPersonalizadosBoard )
+{
+	var projetos = '<option value="Todos">Todos</option>';
+	
+	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizadoProjeto, camposPersonalizadosBoard );
+	
+	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoesProjeto.length; ++indiceValorOpcaoProjeto )
+	{
+		var valorOpcaoProjeto = valoresOpcoesProjeto[indiceValorOpcaoProjeto];
+		
+		projetos += '<option value="' + valorOpcaoProjeto + '">' + valorOpcaoProjeto + '</option>';
+	}
+	
+	return projetos;
 }

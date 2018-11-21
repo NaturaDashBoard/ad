@@ -180,7 +180,15 @@ function atualizarQuantidadeSIRs()
 
 function atualizarDisponibilidadeTimeABAP()
 {
-	disponibilidadeTimeABAP.html( obterTextoDisponibilidadeTimeABAP( cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura ) );
+	disponibilidadeTimeABAP.html
+	(
+		obterTimelineDisponibilidadeTimeABAP
+		(
+			cardsQuadroTestesDashboardNatura,
+			camposPersonalizadosQuadroTestesDashboardNatura,
+			listasQuadroTestesDashboardNatura
+		)
+	);
 }
 
 function atualizarPercentualCartoesPorFase()
@@ -207,47 +215,185 @@ function atualizarPercentualCartoesPorFase()
 		roundNumber( percentualCardsListaEntregue, 2 )
 	];
 	
-	var labelsGrafico = 
+	if( graficoPercentualCartoesPorFase == undefined )
+	{
+		var labelsGrafico = 
+		[
+			nomeListaBacklogDemandas,
+			nomeListaBacklogSIR,
+			nomeListaEmAtendimento,
+			nomeListaPendenciasReprovados,
+			nomeListaEmRevisao,
+			nomeListaEntregue
+		];
+		
+		var dadosGrafico =
+		{
+			datasets: 
+			[
+				{
+					data: dadosDataSetGrafico,
+					backgroundColor: coresGraficoPercentualCartoesPorFase,
+					label: tituloGraficoPercentualCartoesPorFase
+				}
+			],
+			labels: labelsGrafico
+		};
+		
+		var opcoesGrafico = 
+		{
+			title:
+			{
+				display: true,
+				text: tituloGraficoPercentualCartoesPorFase
+			},
+			legend:
+			{
+				position: posicaoLegendaGraficoEsquerda,
+			},
+			responsive: true
+		};
+		
+		var configsGrafico =
+		{
+			type: tipoGraficoDoughnut,
+			data: dadosGrafico,
+			options: opcoesGrafico
+		};
+
+		var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( tipoContext2D );
+		
+		graficoPercentualCartoesPorFase = new Chart( contextGrafico, configsGrafico );
+	}
+	else
+	{
+		graficoPercentualCartoesPorFase.config.data.datasets[0].data = dadosDataSetGrafico;
+		
+		graficoPercentualCartoesPorFase.update();
+	}
+}
+
+function atualizarTotalHorasABAPEntregue()
+{
+	totalHorasABAPEntregue.html
+	(
+		obterQuantidadeHorasEntregueTicketsFDFM
+		(
+			cardsQuadroTestesDashboardNatura,
+			camposPersonalizadosQuadroTestesDashboardNatura,
+			listasQuadroTestesDashboardNatura
+		)
+	);
+}
+
+function atualizarTotalHorasABAPBacklog()
+{
+	totalHorasABAPBacklog.html
+	(
+		obterQuantidadeHorasBacklogTicketsFDFM
+		(
+			cardsQuadroTestesDashboardNatura,
+			camposPersonalizadosQuadroTestesDashboardNatura,
+			listasQuadroTestesDashboardNatura
+		)
+	);
+}
+
+function atualizarPercentualCartoesPorEtiqueta()
+{
+	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( nomeLabelCCM, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaDebug = obterPercentualCardsPorEtiqueta( nomeLabelDebug, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaFD = obterPercentualCardsPorEtiqueta( nomeLabelFD, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaSmallEnhancement = obterPercentualCardsPorEtiqueta( nomeLabelSmallEnhancement, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaEstimativa = obterPercentualCardsPorEtiqueta( nomeLabelEstimativa, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaSIRFM = obterPercentualCardsPorEtiqueta( nomeLabelSIRFM, cardsQuadroTestesDashboardNatura );
+
+	var percentualCardsEtiquetaFM = obterPercentualCardsPorEtiqueta( nomeLabelFM, cardsQuadroTestesDashboardNatura );
+	
+	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( nomeLabelSIRErro, cardsQuadroTestesDashboardNatura );
+	
+	var dadosDataSetGrafico =
 	[
-		nomeListaBacklogDemandas,
-		nomeListaBacklogSIR,
-		nomeListaEmAtendimento,
-		nomeListaPendenciasReprovados,
-		nomeListaEmRevisao,
-		nomeListaEntregue
+		roundNumber( percentualCardsEtiquetaCCM, 2 ),
+		roundNumber( percentualCardsEtiquetaDebug, 2 ),
+		roundNumber( percentualCardsEtiquetaFD, 2 ),
+		roundNumber( percentualCardsEtiquetaSmallEnhancement, 2 ),
+		roundNumber( percentualCardsEtiquetaEstimativa, 2 ),
+		roundNumber( percentualCardsEtiquetaSIRFM, 2 ),
+		roundNumber( percentualCardsEtiquetaFM, 2 ),
+		roundNumber( percentualCardsEtiquetaSIRERRO, 2 )
 	];
 	
-	var dadosGrafico =
+	if( graficoPercentualCartoesPorEtiqueta == undefined )
 	{
-		datasets: 
+		var labelsGrafico = 
 		[
-			{
-				data: dadosDataSetGrafico,
-				backgroundColor: coresGraficoPercentualCartoesPorFase,
-				label: tituloGraficoPercentualCartoesPorFase
-			}
-		],
-		labels: labelsGrafico
-	};
-	
-	var opcoesGrafico = 
-	{
-		title:
+			nomeLabelCCM,
+			nomeLabelDebug,
+			nomeLabelFD,
+			nomeLabelSmallEnhancement,
+			nomeLabelEstimativa,
+			nomeLabelSIRFM,
+			nomeLabelFM,
+			nomeLabelSIRErro
+		];
+		
+		var dadosGrafico =
 		{
-            display: true,
-            text: tituloGraficoPercentualCartoesPorFase
-        },
-		responsive: true
-	};
-	
-	var configsGrafico =
-	{
-		type: tipoGraficoPie,
-		data: dadosGrafico,
-		options: opcoesGrafico
-	};
+			datasets: 
+			[
+				{
+					data: dadosDataSetGrafico,
+					backgroundColor: coresGraficoPercentualCartoesPorEtiqueta,
+					label: tituloGraficoPercentualCartoesPorEtiqueta
+				}
+			],
+			labels: labelsGrafico
+		};
+		
+		var opcoesGrafico = 
+		{
+			title:
+			{
+				display: true,
+				text: tituloGraficoPercentualCartoesPorEtiqueta
+			},
+			legend:
+			{
+				position: posicaoLegendaGraficoTop,
+			},
+			responsive: true
+		};
+		
+		var configsGrafico =
+		{
+			type: tipoGraficoBar,
+			data: dadosGrafico,
+			options: opcoesGrafico
+		};
 
-	var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( tipoContext2D );
+		var contextGrafico = grafPercentualCartoesPorEtiqueta.get(0).getContext( tipoContext2D );
+		
+		graficoPercentualCartoesPorEtiqueta = new Chart( contextGrafico, configsGrafico );
+	}
+	else
+	{
+		graficoPercentualCartoesPorEtiqueta.config.data.datasets[0].data = dadosDataSetGrafico;
+		
+		graficoPercentualCartoesPorEtiqueta.update();
+	}
+}
+
+function atualizarFiltroProjeto()
+{
+	var valorSelecionado = selectProjeto.val();
 	
-	graficoPercentualCartoesPorFase = new Chart( contextGrafico, configsGrafico );
+	selectProjeto.html( obterProjetosParaFiltro( camposPersonalizadosQuadroTestesDashboardNatura ) );
+	
+	selectProjeto.val( valorSelecionado );
 }

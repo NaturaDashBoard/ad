@@ -143,7 +143,13 @@ function doneGetCamposPersonalizadosGestaoDemandasNatura( data )
 	
 	console.group( "camposPersonalizadosGestaoDemandasNatura" );
 	console.log( camposPersonalizadosGestaoDemandasNatura );
-	console.groupEnd( "camposPersonalizadosGestaoDemandasNatura" );		
+	console.groupEnd( "camposPersonalizadosGestaoDemandasNatura" );
+
+	/*
+	atualizarOTDABAP();
+	atualizarOTDFUNC();
+	atualizarDisponibilidadeTimeABAP();
+	*/
 }
 
 function failGetCamposPersonalizadosGestaoDemandasNatura( jqXHR, textStatus, data )
@@ -176,7 +182,13 @@ function doneGetCamposPersonalizadosQuadroTestesDashboardNatura( data )
 	
 	console.group( "camposPersonalizadosQuadroTestesDashboardNatura" );
 	console.log( camposPersonalizadosQuadroTestesDashboardNatura );
-	console.groupEnd( "camposPersonalizadosQuadroTestesDashboardNatura" );		
+	console.groupEnd( "camposPersonalizadosQuadroTestesDashboardNatura" );
+	
+	/*
+	atualizarOTDABAP();
+	atualizarOTDFUNC();
+	atualizarDisponibilidadeTimeABAP();
+	*/
 }
 
 function failGetCamposPersonalizadosQuadroTestesDashboardNatura( jqXHR, textStatus, data )
@@ -210,6 +222,16 @@ function doneGetCardsGestaoDemandasNatura( data )
 	console.group( "cardsGestaoDemandasNatura" );
 	console.log( cardsGestaoDemandasNatura );
 	console.groupEnd( "cardsGestaoDemandasNatura" );
+	
+	/*
+	atualizarFTRABAP();
+	atualizarOTDABAP();
+	atualizarFTRFUNC();
+	atualizarOTDFUNC();
+	atualizarQuantidadeSIRs();
+	atualizarDisponibilidadeTimeABAP();
+	atualizarPercentualCartoesPorFase();
+	*/
 }
 
 function failGetCardsGestaoDemandasNatura( jqXHR, textStatus, data )
@@ -243,6 +265,16 @@ function doneGetCardsQuadroTestesDashboardNatura( data )
 	console.group( "cardsQuadroTestesDashboardNatura" );
 	console.log( cardsQuadroTestesDashboardNatura );
 	console.groupEnd( "cardsQuadroTestesDashboardNatura" );
+	
+	/*
+	atualizarFTRABAP();
+	atualizarOTDABAP();
+	atualizarFTRFUNC();
+	atualizarOTDFUNC();
+	atualizarQuantidadeSIRs();
+	atualizarDisponibilidadeTimeABAP();
+	atualizarPercentualCartoesPorFase();
+	*/
 }
 
 function failGetCardsQuadroTestesDashboardNatura( jqXHR, textStatus, data )
@@ -275,7 +307,15 @@ function doneGetListasGestaoDemandasNatura( data )
 	
 	console.group( "listasGestaoDemandasNatura" );
 	console.log( listasGestaoDemandasNatura );
-	console.groupEnd( "listasGestaoDemandasNatura" );		
+	console.groupEnd( "listasGestaoDemandasNatura" );
+
+	/*
+	atualizarFTRABAP();
+	atualizarOTDABAP();
+	atualizarFTRFUNC();
+	atualizarOTDFUNC();
+	atualizarPercentualCartoesPorFase();
+	*/
 }
 
 function failGetListasGestaoDemandasNatura( jqXHR, textStatus, data )
@@ -308,7 +348,15 @@ function doneGetListasQuadroTestesDashboardNatura( data )
 	
 	console.group( "listasQuadroTestesDashboardNatura" );
 	console.log( listasQuadroTestesDashboardNatura );
-	console.groupEnd( "listasQuadroTestesDashboardNatura" );		
+	console.groupEnd( "listasQuadroTestesDashboardNatura" );
+
+	/*
+	atualizarFTRABAP();
+	atualizarOTDABAP();
+	atualizarFTRFUNC();
+	atualizarOTDFUNC();
+	atualizarPercentualCartoesPorFase();
+	*/
 }
 
 function failGetListasQuadroTestesDashboardNatura( jqXHR, textStatus, data )

@@ -1,0 +1,56 @@
+.logo
+{
+	margin-top:  10px;
+    margin-left: 10px;
+	width: 100%;
+}
+
+.container
+{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.row
+{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.inner-row
+{
+	margin-bottom: 0px;
+}
+
+.col
+{
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+.inner-col
+{
+	margin-right: 0px;
+}
+
+.col h1
+{
+	text-align: center;
+	font-size: 1.0em;
+}
+
+.col h2
+{
+	text-align: center;
+	font-size: 3.0em;
+}
+
+.row .table
+{
+	font-size: 0.80em;
+}
+
+.row .table th
+{
+	border-top: 0px;
+}

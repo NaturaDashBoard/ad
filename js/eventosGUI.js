@@ -1,31 +1,4 @@
-function documentReady()
-{
-	inicializarInputs();
-	
-	//carregarAssincBoardActionsGestaoDemandasNatura();
-	//carregarAssincBoardActionsQuadroTestesDashboardNatura();
-	
-	//carregarAssincCamposPersonalizadosGestaoDemandasNatura();
-	carregarAssincCamposPersonalizadosQuadroTestesDashboardNatura();
-	
-	//carregarAssincCardsGestaoDemandasNatura();
-	carregarAssincCardsQuadroTestesDashboardNatura();
-	
-	//carregarAssincListasGestaoDemandasNatura();
-	carregarAssincListasQuadroTestesDashboardNatura();
-}
-
-function inicializarInputs()
-{
-	inicializarBotoes();
-}
-
-function inicializarBotoes()
-{
-	buttonAtualizarDados.click( atualizarDados );
-}
-
-function atualizarDados()
+function atualizarElementosTela()
 {
 	atualizarFTRABAP();
 	atualizarOTDABAP();
@@ -34,6 +7,47 @@ function atualizarDados()
 	atualizarQuantidadeSIRs();
 	atualizarDisponibilidadeTimeABAP();
 	atualizarPercentualCartoesPorFase();
+	atualizarTotalHorasABAPEntregue();
+	atualizarTotalHorasABAPBacklog();
+	atualizarPercentualCartoesPorEtiqueta();
+	atualizarFiltroProjeto();
+	
+	carregarAssincDadosTrello();
+}
+
+/*
+function inicializarBotoes()
+{
+	buttonAtualizarDados.click( atualizarElementosTela );
+}
+*/
+
+/*
+function inicializarInputs()
+{
+	inicializarBotoes();
+}
+*/
+
+function carregarAssincDadosTrello()
+{
+	//carregarAssincCamposPersonalizadosGestaoDemandasNatura();
+	carregarAssincCamposPersonalizadosQuadroTestesDashboardNatura();
+	
+	//carregarAssincCardsGestaoDemandasNatura();
+	carregarAssincCardsQuadroTestesDashboardNatura();
+	
+	//carregarAssincListasGestaoDemandasNatura();
+	carregarAssincListasQuadroTestesDashboardNatura();
+	
+	setTimeout( atualizarElementosTela, intervaloTempoEntreRequisicoesAssincronas );
+}
+
+function documentReady()
+{
+	//inicializarInputs();
+	
+	carregarAssincDadosTrello()
 }
 
 $( document ).ready( documentReady );
