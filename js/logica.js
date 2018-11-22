@@ -112,7 +112,7 @@ function atualizarFTRABAP( nomeProjeto, dataRelease )
 	
 	var percentualTicketsFTRABAPListaEntregue = obterPercentual( quantidadeTicketsFTRABAPListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
-	var percentualTicketsFTRABAPListaEntregueArredondado = roundNumber( percentualTicketsFTRABAPListaEntregue, 2 );
+	var percentualTicketsFTRABAPListaEntregueArredondado = Math.round( percentualTicketsFTRABAPListaEntregue );
 	
 	ftrABAP.html( percentualTicketsFTRABAPListaEntregueArredondado.toString() + '%' );
 }
@@ -131,7 +131,7 @@ function atualizarOTDABAP( nomeProjeto, dataRelease )
 	
 	var percentualTicketsOTDABAPListaEntregue = obterPercentual( quantidadeTicketsOTDABAPListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
-	var percentualTicketsOTDABAPListaEntregueArredondado = roundNumber( percentualTicketsOTDABAPListaEntregue, 2 );
+	var percentualTicketsOTDABAPListaEntregueArredondado = Math.round( percentualTicketsOTDABAPListaEntregue );
 	
 	otdABAP.html( percentualTicketsOTDABAPListaEntregueArredondado.toString() + '%' );
 }
@@ -150,7 +150,7 @@ function atualizarFTRFUNC( nomeProjeto, dataRelease )
 	
 	var percentualTicketsFTRFUNCListaEntregue = obterPercentual( quantidadeTicketsFTRFUNCListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
-	var percentualTicketsFTRFUNCListaEntregueArredondado = roundNumber( percentualTicketsFTRFUNCListaEntregue, 2 );
+	var percentualTicketsFTRFUNCListaEntregueArredondado = Math.round( percentualTicketsFTRFUNCListaEntregue );
 	
 	ftrFUNC.html( percentualTicketsFTRFUNCListaEntregueArredondado.toString() + '%' );		
 }
@@ -169,7 +169,7 @@ function atualizarOTDFUNC( nomeProjeto, dataRelease )
 	
 	var percentualTicketsOTDFUNCListaEntregue = obterPercentual( quantidadeTicketsOTDFUNCListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
-	var percentualTicketsOTDFUNCListaEntregueArredondado = roundNumber( percentualTicketsOTDFUNCListaEntregue, 2 );
+	var percentualTicketsOTDFUNCListaEntregueArredondado = Math.round( percentualTicketsOTDFUNCListaEntregue );
 	
 	otdFUNC.html( percentualTicketsOTDFUNCListaEntregueArredondado.toString() + '%' );		
 }
@@ -372,7 +372,7 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 			nomeLabelCCM,
 			nomeLabelDebug,
 			nomeLabelFD,
-			nomeLabelSmallEnhancement,
+			nomeLabelSmallEnhancement.substr( 0, 12 ) + '.',
 			nomeLabelEstimativa,
 			nomeLabelSIRFM,
 			nomeLabelFM,
