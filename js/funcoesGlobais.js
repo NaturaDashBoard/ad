@@ -1,36 +1,36 @@
 function obterURLBoardActions( idBoard )
 {
-	return templateURLBoardActions.replace( '[BOARD_ID]', idBoard );
+	return TEMPLATE_URL_BOARD_ACTIONS.replace( '[BOARD_ID]', idBoard );
 }
 
 function obterURLCardsComBoardID( idBoard )
 {
-	return templateURLCards.replace( '[BOARD_ID]', idBoard );
+	return TEMPLATE_URL_CARDS.replace( '[BOARD_ID]', idBoard );
 }
 
 function obterURLCamposPersonalizadosComBoardID( idBoard )
 {
-	return templateURLBoardCamposPersonalizados.replace( '[BOARD_ID]', idBoard );
+	return TEMPLATE_URL_BOARD_CAMPOS_PERSONALIZADOS.replace( '[BOARD_ID]', idBoard );
 }
 
 function obterURLCardActions( idCard )
 {
-	return templateURLCardActions.replace( '[CARD_ID]', idCard );
+	return TEMPLATE_URL_CARD_ACTIONS.replace( '[CARD_ID]', idCard );
 }
 
 function obterURLListasComBoardID( idBoard )
 {
-	return templateURLListas.replace( '[BOARD_ID]', idBoard );
+	return TEMPLATE_URL_LISTAS.replace( '[BOARD_ID]', idBoard );
 }
 
 function obterURLCamposPersonalizadosCard( idCard )
 {
-	return templateURLCamposPersonalizadosCard.replace( '[CARD_ID]', idCard );
+	return TEMPLATE_URL_CAMPOS_PERSONALIZADOS_CARD.replace( '[CARD_ID]', idCard );
 }
 
 function obterURLAnexosCard( idCard )
 {
-	return templateURLAnexosCard.replace( '[CARD_ID]', idCard );
+	return TEMPLATE_URL_ANEXOS_CARD.replace( '[CARD_ID]', idCard );
 }
 
 function obterQuantidadeSIRsErro( cards )
@@ -39,13 +39,13 @@ function obterQuantidadeSIRsErro( cards )
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
-		if( cards[indiceCard]['name'] != nomeCardSIRExemplo )
+		if( cards[indiceCard]['name'] != NOME_CARD_SIR_EXEMPLO )
 		{
 			var labels = cards[indiceCard]['labels'];
 			
 			for( indiceLabel = 0; indiceLabel < labels.length; ++indiceLabel )
 			{
-				if( labels[indiceLabel]['name'] == nomeLabelSIRErro )
+				if( labels[indiceLabel]['name'] == NOME_LABEL_SIR_ERRO )
 				{
 					++quantidadeSIRsErro;
 				}
@@ -62,13 +62,13 @@ function obterQuantidadeSIRsFM( cards )
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
-		if( cards[indiceCard]['name'] != nomeCardSIRExemplo )
+		if( cards[indiceCard]['name'] != NOME_CARD_SIR_EXEMPLO )
 		{
 			var labels = cards[indiceCard]['labels'];
 			
 			for( indiceLabel = 0; indiceLabel < labels.length; ++indiceLabel )
 			{
-				if( labels[indiceLabel]['name'] == nomeLabelSIRFM )
+				if( labels[indiceLabel]['name'] == NOME_LABEL_SIR_FM )
 				{
 					++quantidadeSIRsFM;
 				}
@@ -107,8 +107,8 @@ function obterQuantidadeCardsLista( idLista, cards )
 		if
 		(
 			card['idList'] == idLista
-			&& card['name'] != nomeCardTicketExemplo
-			&& card['name'] != nomeCardSIRExemplo
+			&& card['name'] != NOME_CARD_TICKET_EXEMPLO
+			&& card['name'] != NOME_CARD_SIR_EXEMPLO
 		)
 		{
 			++quantidadeCards;
@@ -137,8 +137,8 @@ function obterPercentualCards( quantidadeCards, cards )
 		
 		if
 		(
-			card['name'] != nomeCardTicketExemplo
-			&& card['name'] != nomeCardSIRExemplo
+			card['name'] != NOME_CARD_TICKET_EXEMPLO
+			&& card['name'] != NOME_CARD_SIR_EXEMPLO
 		)
 		{
 			++totalCard;
@@ -190,8 +190,8 @@ function validarCardTicket( card )
 			
 			if
 			(
-				nomeLabel == nomeLabelSIRErro
-				|| nomeLabel == nomeLabelSIRFM
+				nomeLabel == NOME_LABEL_SIR_ERRO
+				|| nomeLabel == NOME_LABEL_SIR_FM
 			)
 			{
 				ticketValido = false;
@@ -224,7 +224,7 @@ function obterQuantidadeTicketsLista( idLista, cards )
 		if
 		(
 			card['idList'] == idLista
-			&& card['name'] != nomeCardTicketExemplo
+			&& card['name'] != NOME_CARD_TICKET_EXEMPLO
 			&& validarCardTicket( card )
 		)
 		{
@@ -249,8 +249,8 @@ function validarCardTicketFDFM( card )
 			
 			if
 			(
-				nomeLabel != nomeLabelFD
-				&& nomeLabel != nomeLabelFM
+				nomeLabel != NOME_LABEL_FD
+				&& nomeLabel != NOME_LABEL_FM
 			)
 			{
 				ticketFDFMValido = false;
@@ -283,7 +283,7 @@ function obterQuantidadeTicketsFDFMLista( idLista, cards )
 		if
 		(
 			card['idList'] == idLista
-			&& card['name'] != nomeCardTicketExemplo
+			&& card['name'] != NOME_CARD_TICKET_EXEMPLO
 			&& validarCardTicketFDFM( card )
 		)
 		{
@@ -348,8 +348,8 @@ function validarCardSIR( card )
 			
 			if
 			(
-				nomeLabel != nomeLabelSIRErro
-				&& nomeLabel != nomeLabelSIRFM
+				nomeLabel != NOME_LABEL_SIR_ERRO
+				&& nomeLabel != NOME_LABEL_SIR_FM
 			)
 			{
 				SIRValida = false;
@@ -470,8 +470,8 @@ function validarTicketSemFTRFUNC( card )
 		
 		if
 		(
-			cardAction['type'] == tipoActionUpdateCard
-			&& nomeListaDestino == nomeListaPendenciasReprovados
+			cardAction['type'] == TIPO_ACTION_UPDATE_CARD
+			&& nomeListaDestino == NOME_LISTA_PENDENCIAS_REPROVADOS
 		)
 		{
 			return true;
@@ -571,7 +571,7 @@ function validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard )
 {
 	var idCard = card['id'];
 	
-	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( nomeCampoPersonalizadoFimConstrucao, camposPersonalizadosBoard );
+	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_FIM_CONSTRUCAO, camposPersonalizadosBoard );
 	
 	var actionsCard = card['actions'];
 	
@@ -597,8 +597,8 @@ function validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard )
 		
 		if
 		(
-			cardAction['type'] == tipoActionUpdateCard
-			&& nomeListaDestino == nomeListaEntregue
+			cardAction['type'] == TIPO_ACTION_UPDATE_CARD
+			&& nomeListaDestino == NOME_LISTA_ENTREGUE
 		)
 		{
 			var itensCamposPersonalizadosCard = card['customFieldItems'];
@@ -663,7 +663,7 @@ function validarTicketSemOTDFUNC( card, cards, camposPersonalizadosBoard )
 		return resultadoValidacao;
 	}
 	
-	var idCampoPersonalizadoDataEF = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataEF, camposPersonalizadosBoard );
+	var idCampoPersonalizadoDataEF = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_DATA_EF, camposPersonalizadosBoard );
 	
 	var itensCamposPersonalizadosCard = card['customFieldItems'];
 	
@@ -673,7 +673,7 @@ function validarTicketSemOTDFUNC( card, cards, camposPersonalizadosBoard )
 	{
 		var anexo = anexosCard[indiceAnexo];
 		
-		if( anexo['name'].startsWith( inicioNomeAnexoEF ) )
+		if( anexo['name'].startsWith( INICIO_NOME_ANEXO_EF ) )
 		{
 			if( valorCampoPersonalizadoDataEF['date'] < anexo['date'] )
 			{
@@ -769,10 +769,10 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 {
 	var proximaDataDisponibilidadeABAP = { ABAP: nomeABAP, proximaDataDisponibilidade: '' };
 	
-	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( nomeCampoPersonalizadoFimConstrucao, camposPersonalizadosBoard );
-	var idCampoPersonalizadoABAP = obterIDCampoPersonalizado( nomeCampoPersonalizadoABAP, camposPersonalizadosBoard );
+	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_FIM_CONSTRUCAO, camposPersonalizadosBoard );
+	var idCampoPersonalizadoABAP = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_ABAP, camposPersonalizadosBoard );
 	
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listas );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listas );
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
@@ -786,8 +786,8 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 		
 			if
 			(
-				nomeCard != nomeCardTicketExemplo
-				&& nomeCard != nomeCardSIRExemplo
+				nomeCard != NOME_CARD_TICKET_EXEMPLO
+				&& nomeCard != NOME_CARD_SIR_EXEMPLO
 			)
 			{
 				var itensCamposPersonalizadosCard = card['customFieldItems'];
@@ -976,7 +976,7 @@ function obterTimelineDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard,
 {
 	var textoDisponibilidadeABAP = '';
 	
-	var nomesABAP = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizadoABAP, camposPersonalizadosBoard );
+	var nomesABAP = obterValoresOpcoesCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_ABAP, camposPersonalizadosBoard );
 	
 	var proximaDataDisponibilidadeABAPs = obterProximaDataDisponibilidadeABAPs( nomesABAP, cards, camposPersonalizadosBoard, listas );
 	
@@ -1020,7 +1020,7 @@ function obterQuantidadeHorasABAPCards( cards, camposPersonalizadosBoard )
 {
 	var quantidadeHorasABAP = 0;
 	
-	var idCampoPersonalizadoHorasABAP = obterIDCampoPersonalizado( nomeCampoPersonalizadoHorasABAP, camposPersonalizadosBoard );
+	var idCampoPersonalizadoHorasABAP = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_HORAS_ABAP, camposPersonalizadosBoard );
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
@@ -1028,7 +1028,7 @@ function obterQuantidadeHorasABAPCards( cards, camposPersonalizadosBoard )
 		
 		var nomeCard = card['name'];
 		
-		if( nomeCard != nomeCardTicketExemplo )
+		if( nomeCard != NOME_CARD_TICKET_EXEMPLO )
 		{
 			var itemsCamposPersonalizadosCard = card['customFieldItems'];
 			
@@ -1043,7 +1043,7 @@ function obterQuantidadeHorasABAPCards( cards, camposPersonalizadosBoard )
 
 function obterQuantidadeHorasEntregueTicketsFDFM( cards, camposPersonalizadosBoard, listas )
 {
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listas );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listas );
 	
 	var cardsTicketFDFMListaEntregue = obterCardsTicketFDFMLista( idListaEntregue, cards );
 	
@@ -1054,7 +1054,7 @@ function obterQuantidadeHorasEntregueTicketsFDFM( cards, camposPersonalizadosBoa
 
 function obterQuantidadeHorasBacklogTicketsFDFM( cards, camposPersonalizadosBoard, listas )
 {
-	var idListaBacklogDemandas = obterIDLista( nomeListaBacklogDemandas, listas );
+	var idListaBacklogDemandas = obterIDLista( NOME_LISTA_BACKLOG_DEMANDAS, listas );
 	
 	var cardsTicketFDFMListaBacklog = obterCardsTicketFDFMLista( idListaBacklogDemandas, cards );
 	
@@ -1086,8 +1086,8 @@ function obterQuantidadeCardsPorEtiqueta( nomeEtiqueta, cards )
 			if
 			(
 				nomeEtiquetaCard == nomeEtiqueta
-				&& nomeCard != nomeCardTicketExemplo
-				&& nomeCard != nomeCardSIRExemplo
+				&& nomeCard != NOME_CARD_TICKET_EXEMPLO
+				&& nomeCard != NOME_CARD_SIR_EXEMPLO
 			)
 			{
 				++quantidadeCards;
@@ -1111,7 +1111,7 @@ function obterProjetosParaFiltro( camposPersonalizadosBoard )
 {
 	var projetos = '<option value="Todos">Todos</option>';
 	
-	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizadoProjeto, camposPersonalizadosBoard );
+	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
 	
 	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoesProjeto.length; ++indiceValorOpcaoProjeto )
 	{
@@ -1134,7 +1134,7 @@ function obterCardsPorProjeto( nomeProjeto, cards, camposPersonalizadosBoard )
 		return cardsPorProjeto;
 	}		
 	
-	var idCampoPersonalizadoProjeto = obterIDCampoPersonalizado( nomeCampoPersonalizadoProjeto, camposPersonalizadosBoard );
+	var idCampoPersonalizadoProjeto = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
@@ -1198,7 +1198,7 @@ function obterDatasRelease( cards, camposPersonalizadosBoard )
 {
 	var datasRelease = [];
 	
-	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataRelease, camposPersonalizadosBoard );
+	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_DATA_RELEASE, camposPersonalizadosBoard );
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{
@@ -1275,7 +1275,7 @@ function obterCardsPorRelease( dataRelease, cards, camposPersonalizadosBoard )
 	
 	var objetoDateDataRelease = obterObjetoDatePelaData( dataRelease, '/' );
 
-	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataRelease, camposPersonalizadosBoard );
+	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_DATA_RELEASE, camposPersonalizadosBoard );
 	
 	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
 	{

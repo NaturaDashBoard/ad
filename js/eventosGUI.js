@@ -4,7 +4,7 @@ function atualizarElementosTela()
 	
 	var valorSelecionadoProjeto = selectProjeto.val();
 	
-	if( valorSelecionadoProjeto != opcaoFiltroTodos )
+	if( valorSelecionadoProjeto != OPCAO_FILTRO_TODOS )
 	{
 		nomeProjeto = valorSelecionadoProjeto;
 	}
@@ -13,7 +13,7 @@ function atualizarElementosTela()
 	
 	var valorSelecionadoRelease = selectRelease.val();
 	
-	if( valorSelecionadoRelease != opcaoFiltroTodos )
+	if( valorSelecionadoRelease != OPCAO_FILTRO_TODOS )
 	{
 		dataRelease = valorSelecionadoRelease;
 	}
@@ -82,7 +82,7 @@ function carregarAssincDadosTrello()
 	//carregarAssincListasGestaoDemandasNatura();
 	carregarAssincListasQuadroTestesDashboardNatura();
 	
-	setTimeout( atualizarElementosTelaEDispararReqsAssinc, intervaloTempoEntreRequisicoesAssincronas );
+	setTimeout( atualizarElementosTelaEDispararReqsAssinc, INTERVALO_TEMPO_REQUISICOES_ASSINC );
 }
 
 function documentReady()

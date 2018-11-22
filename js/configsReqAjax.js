@@ -3,9 +3,9 @@
 var configsReqSincGetCardsGestaoDemandasNatura =
 {
 	async: false,
-	url: obterURLCardsComBoardID( idBoardGestaoDemandasNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLCardsComBoardID( ID_BOARD_GESTAO_DEMANDAS_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetCardsGestaoDemandasNatura
 };
 
@@ -15,8 +15,8 @@ function obterConfigsReqSincGetCardActions( idCard )
 	{
 		async: false,
 		url: obterURLCardActions( idCard ),
-		type: tipoReqAjaxGet,
-		dataType: tipoDadoAjaxJSON,
+		type: TIPO_REQ_AJAX_GET,
+		dataType: TIPO_DADO_AJAX_JSON,
 		beforeSend: beforeSendGetCardActionsQuadroTestesDashboardNatura
 	};
 	
@@ -29,8 +29,8 @@ function obterConfigsReqSincGetCamposPersonalizadosCard( idCard )
 	{
 		async: false,
 		url: obterURLCamposPersonalizadosCard( idCard ),
-		type: tipoReqAjaxGet,
-		dataType: tipoDadoAjaxJSON,
+		type: TIPO_REQ_AJAX_GET,
+		dataType: TIPO_DADO_AJAX_JSON,
 		beforeSend: beforeSendGetCamposPersonalizadosCard
 	};
 	
@@ -43,8 +43,8 @@ function obterConfigsReqSincGetAnexosCard( idCard )
 	{
 		async: false,
 		url: obterURLAnexosCard( idCard ),
-		type: tipoReqAjaxGet,
-		dataType: tipoDadoAjaxJSON,
+		type: TIPO_REQ_AJAX_GET,
+		dataType: TIPO_DADO_AJAX_JSON,
 		beforeSend: beforeSendGetAnexosCard
 	};
 	
@@ -57,33 +57,33 @@ function obterConfigsReqSincGetAnexosCard( idCard )
 
 var configsReqAssincGetBoardActionsGestaoDemandasNatura =
 {
-	url: obterURLBoardActions( idBoardGestaoDemandasNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLBoardActions( ID_BOARD_GESTAO_DEMANDAS_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetBoardActionsGestaoDemandasNatura
 };
 
 var configsReqAssincGetCamposPersonalizadosGestaoDemandasNatura =
 {
-	url: obterURLCamposPersonalizadosComBoardID( idBoardGestaoDemandasNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLCamposPersonalizadosComBoardID( ID_BOARD_GESTAO_DEMANDAS_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetCamposPersonalizadosGestaoDemandasNatura
 };
 
 var configsReqAssincGetCardsGestaoDemandasNatura =
 {
-	url: obterURLCardsComBoardID( idBoardGestaoDemandasNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLCardsComBoardID( ID_BOARD_GESTAO_DEMANDAS_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetCardsGestaoDemandasNatura
 };
 
 var configsReqAssincGetListasGestaoDemandasNatura =
 {
-	url: obterURLListasComBoardID( idBoardGestaoDemandasNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLListasComBoardID( ID_BOARD_GESTAO_DEMANDAS_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetListasGestaoDemandasNatura
 };
 
@@ -91,32 +91,32 @@ var configsReqAssincGetListasGestaoDemandasNatura =
 
 var configsReqAssincGetBoardActionsQuadroTestesDashboardNatura =
 {
-	url: obterURLBoardActions( idBoardQuadroTestesDashboardNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLBoardActions( ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetBoardActionsQuadroTestesDashboardNatura
 };
 
 var configsReqAssincGetCamposPersonalizadosQuadroTestesDashboardNatura =
 {
-	url: obterURLCamposPersonalizadosComBoardID( idBoardQuadroTestesDashboardNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLCamposPersonalizadosComBoardID( ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetCamposPersonalizadosQuadroTestesDashboardNatura
 };
 
 var configsReqAssincGetCardsQuadroTestesDashboardNatura =
 {
-	url: obterURLCardsComBoardID( idBoardQuadroTestesDashboardNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLCardsComBoardID( ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetCardsQuadroTestesDashboardNatura
 };
 
 var configsReqAssincGetListasQuadroTestesDashboardNatura =
 {
-	url: obterURLListasComBoardID( idBoardQuadroTestesDashboardNatura ),
-	type: tipoReqAjaxGet,
-	dataType: tipoDadoAjaxJSON,
+	url: obterURLListasComBoardID( ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA ),
+	type: TIPO_REQ_AJAX_GET,
+	dataType: TIPO_DADO_AJAX_JSON,
 	beforeSend: beforeSendGetListasQuadroTestesDashboardNatura
 };

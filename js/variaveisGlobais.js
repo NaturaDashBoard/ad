@@ -1,7 +1,7 @@
 /* GESTÃO DEMANDAS NATURA */
 
 var boardActionsGestaoDemandasNatura = undefined;
-//var cardActionsGestaoDemandasNatura = undefined;
+var cardActionsGestaoDemandasNatura = undefined;
 
 var camposPersonalizadosGestaoDemandasNatura = undefined;
 
@@ -12,7 +12,7 @@ var listasGestaoDemandasNatura = undefined;
 /* QUADRO DE TESTES PARA DASHBOARD DA NATURA */
 
 var boardActionsQuadroTestesDashboardNatura = undefined;
-//var cardActionsQuadroTestesDashboardNatura = undefined;
+var cardActionsQuadroTestesDashboardNatura = undefined;
 
 var camposPersonalizadosQuadroTestesDashboardNatura = undefined;
 

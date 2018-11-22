@@ -104,7 +104,7 @@ function atualizarFTRABAP( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -123,7 +123,7 @@ function atualizarOTDABAP( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -142,7 +142,7 @@ function atualizarFTRFUNC( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -161,7 +161,7 @@ function atualizarOTDFUNC( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -217,17 +217,17 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( nomeListaBacklogDemandas, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( NOME_LISTA_BACKLOG_DEMANDAS, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( nomeListaBacklogSIR, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( NOME_LISTA_BACKLOG_SIR, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( nomeListaEmAtendimento, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( NOME_LISTA_EM_ATENDIMENTO, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( nomeListaPendenciasReprovados, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEmRevisao = obterPercentualCardsLista( nomeListaEmRevisao, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEmRevisao = obterPercentualCardsLista( NOME_LISTA_EM_REVISAO, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEntregue = obterPercentualCardsLista( nomeListaEntregue, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEntregue = obterPercentualCardsLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura, cards );
 	
 	var dadosDataSetGrafico =
 	[
@@ -243,12 +243,12 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 	{
 		var labelsGrafico = 
 		[
-			nomeListaBacklogDemandas,
-			nomeListaBacklogSIR,
-			nomeListaEmAtendimento,
-			nomeListaPendenciasReprovados,
-			nomeListaEmRevisao,
-			nomeListaEntregue
+			NOME_LISTA_BACKLOG_DEMANDAS,
+			NOME_LISTA_BACKLOG_SIR,
+			NOME_LISTA_EM_ATENDIMENTO,
+			NOME_LISTA_PENDENCIAS_REPROVADOS,
+			NOME_LISTA_EM_REVISAO,
+			NOME_LISTA_ENTREGUE
 		];
 		
 		var dadosGrafico =
@@ -257,8 +257,8 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 			[
 				{
 					data: dadosDataSetGrafico,
-					backgroundColor: coresGraficoPercentualCartoesPorFase,
-					label: tituloGraficoPercentualCartoesPorFase
+					backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_FASE,
+					label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
 				}
 			],
 			labels: labelsGrafico
@@ -269,23 +269,23 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 			title:
 			{
 				display: true,
-				text: tituloGraficoPercentualCartoesPorFase
+				text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
 			},
 			legend:
 			{
-				position: posicaoLegendaGraficoEsquerda,
+				position: POSICAO_LEGENDA_GRAFICO_ESQUERDA,
 			},
 			responsive: true
 		};
 		
 		var configsGrafico =
 		{
-			type: tipoGraficoDoughnut,
+			type: TIPO_GRAFICO_DOUGHNUT,
 			data: dadosGrafico,
 			options: opcoesGrafico
 		};
 
-		var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( tipoContext2D );
+		var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( TIPO_CONTEXT_2D );
 		
 		graficoPercentualCartoesPorFase = new Chart( contextGrafico, configsGrafico );
 	}
@@ -337,21 +337,21 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( nomeLabelCCM, cards );
+	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( NOME_LABEL_CCM, cards );
 	
-	var percentualCardsEtiquetaDebug = obterPercentualCardsPorEtiqueta( nomeLabelDebug, cards );
+	var percentualCardsEtiquetaDebug = obterPercentualCardsPorEtiqueta( NOME_LABEL_DEBUG, cards );
 	
-	var percentualCardsEtiquetaFD = obterPercentualCardsPorEtiqueta( nomeLabelFD, cards );
+	var percentualCardsEtiquetaFD = obterPercentualCardsPorEtiqueta( NOME_LABEL_FD, cards );
 	
-	var percentualCardsEtiquetaSmallEnhancement = obterPercentualCardsPorEtiqueta( nomeLabelSmallEnhancement, cards );
+	var percentualCardsEtiquetaSmallEnhancement = obterPercentualCardsPorEtiqueta( NOME_LABEL_SMALL_ENHANCEMENT, cards );
 	
-	var percentualCardsEtiquetaEstimativa = obterPercentualCardsPorEtiqueta( nomeLabelEstimativa, cards );
+	var percentualCardsEtiquetaEstimativa = obterPercentualCardsPorEtiqueta( NOME_LABEL_ESTIMATIVA, cards );
 	
-	var percentualCardsEtiquetaSIRFM = obterPercentualCardsPorEtiqueta( nomeLabelSIRFM, cards );
+	var percentualCardsEtiquetaSIRFM = obterPercentualCardsPorEtiqueta( NOME_LABEL_SIR_FM, cards );
 
-	var percentualCardsEtiquetaFM = obterPercentualCardsPorEtiqueta( nomeLabelFM, cards );
+	var percentualCardsEtiquetaFM = obterPercentualCardsPorEtiqueta( NOME_LABEL_FM, cards );
 	
-	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( nomeLabelSIRErro, cards );
+	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( NOME_LABEL_SIR_ERRO, cards );
 	
 	var dadosDataSetGrafico =
 	[
@@ -369,14 +369,14 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 	{
 		var labelsGrafico = 
 		[
-			nomeLabelCCM,
-			nomeLabelDebug,
-			nomeLabelFD,
-			nomeLabelSmallEnhancement.substr( 0, 12 ) + '.',
-			nomeLabelEstimativa,
-			nomeLabelSIRFM,
-			nomeLabelFM,
-			nomeLabelSIRErro
+			NOME_LABEL_CCM,
+			NOME_LABEL_DEBUG,
+			NOME_LABEL_FD,
+			NOME_LABEL_SMALL_ENHANCEMENT.substr( 0, 12 ) + '.',
+			NOME_LABEL_ESTIMATIVA,
+			NOME_LABEL_SIR_FM,
+			NOME_LABEL_FM,
+			NOME_LABEL_SIR_ERRO
 		];
 		
 		var dadosGrafico =
@@ -385,8 +385,8 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 			[
 				{
 					data: dadosDataSetGrafico,
-					backgroundColor: coresGraficoPercentualCartoesPorEtiqueta,
-					label: tituloGraficoPercentualCartoesPorEtiqueta
+					backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA,
+					label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
 				}
 			],
 			labels: labelsGrafico
@@ -397,23 +397,23 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 			title:
 			{
 				display: true,
-				text: tituloGraficoPercentualCartoesPorEtiqueta
+				text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
 			},
 			legend:
 			{
-				position: posicaoLegendaGraficoTop,
+				position: POSICAO_LEGENDA_GRAFICO_TOPO,
 			},
 			responsive: true
 		};
 		
 		var configsGrafico =
 		{
-			type: tipoGraficoBar,
+			type: TIPO_GRAFICO_BAR,
 			data: dadosGrafico,
 			options: opcoesGrafico
 		};
 
-		var contextGrafico = grafPercentualCartoesPorEtiqueta.get(0).getContext( tipoContext2D );
+		var contextGrafico = grafPercentualCartoesPorEtiqueta.get(0).getContext( TIPO_CONTEXT_2D );
 		
 		graficoPercentualCartoesPorEtiqueta = new Chart( contextGrafico, configsGrafico );
 	}

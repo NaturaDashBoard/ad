@@ -1,64 +1,64 @@
-const APIKey = '0de440ba54e6508dc14e6475784d3c6a';
+const API_KEY = '0de440ba54e6508dc14e6475784d3c6a';
 
-const token = '91f423c958d2a819f90a871bfb54bcd87a128b7c5612ef2014097947b2f110b9';
+const TOKEN = '91f423c958d2a819f90a871bfb54bcd87a128b7c5612ef2014097947b2f110b9';
 
-const idBoardGestaoDemandasNatura = '5b688404339eca3b994948c1';
-const idBoardQuadroTestesDashboardNatura = '5beb929f5c13a07903fd5df0';
+const ID_BOARD_GESTAO_DEMANDAS_NATURA = '5b688404339eca3b994948c1';
+const ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA = '5beb929f5c13a07903fd5df0';
 
-const templateURLBoardActions = 'https://api.trello.com/1/boards/[BOARD_ID]/actions/?key=' + APIKey + '&token=' + token;
-const templateURLCardActions = 'https://api.trello.com/1/cards/[CARD_ID]/actions?limit=1000&key=' + APIKey + '&token=' + token;
-const templateURLBoardCamposPersonalizados = 'https://api.trello.com/1/boards/[BOARD_ID]/customFields?key=' + APIKey + '&token=' + token;
-const templateURLCards = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&attachments=true&actions=all&key=' + APIKey + '&token=' + token;
-const templateURLListas = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?cards=all&card_fields=all&filter=open&fields=all&key=' + APIKey + '&token=' + token;
-const templateURLCamposPersonalizadosCard = 'https://api.trello.com/1/card/[CARD_ID]/?fields=name&customFieldItems=true&key=' + APIKey + '&token=' + token;
-const templateURLAnexosCard = 'https://api.trello.com/1/cards/[CARD_ID]/attachments?key=' + APIKey + '&token=' + token;
+const TEMPLATE_URL_BOARD_ACTIONS = 'https://api.trello.com/1/boards/[BOARD_ID]/actions/?key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_CARD_ACTIONS = 'https://api.trello.com/1/cards/[CARD_ID]/actions?limit=1000&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_BOARD_CAMPOS_PERSONALIZADOS = 'https://api.trello.com/1/boards/[BOARD_ID]/customFields?key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_CARDS = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&attachments=true&actions=all&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?cards=all&card_fields=all&filter=open&fields=all&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_CAMPOS_PERSONALIZADOS_CARD = 'https://api.trello.com/1/card/[CARD_ID]/?fields=name&customFieldItems=true&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_ANEXOS_CARD = 'https://api.trello.com/1/cards/[CARD_ID]/attachments?key=' + API_KEY + '&token=' + TOKEN;
 
-const tipoReqAjaxGet = 'get';
+const TIPO_REQ_AJAX_GET = 'get';
 
-const tipoDadoAjaxJSON = 'json';
+const TIPO_DADO_AJAX_JSON = 'json';
 
-const intervaloTempoEntreRequisicoesAssincronas = 5000;  // Milissegundos;
+const INTERVALO_TEMPO_REQUISICOES_ASSINC = 5000;  // Milissegundos;
 
-const nomeLabelCCM = 'CCM';
-const nomeLabelDebug = 'Debug';
-const nomeLabelFD = 'FD';
-const nomeLabelSmallEnhancement = 'Small Enhancement';
-const nomeLabelEstimativa = 'Estimativa';
-const nomeLabelSIRFM = 'SIR FM';
-const nomeLabelFM = 'FM';
-const nomeLabelSIRErro = 'SIR ERRO';
+const NOME_LABEL_CCM = 'CCM';
+const NOME_LABEL_DEBUG = 'Debug';
+const NOME_LABEL_FD = 'FD';
+const NOME_LABEL_SMALL_ENHANCEMENT = 'Small Enhancement';
+const NOME_LABEL_ESTIMATIVA = 'Estimativa';
+const NOME_LABEL_SIR_FM = 'SIR FM';
+const NOME_LABEL_FM = 'FM';
+const NOME_LABEL_SIR_ERRO = 'SIR ERRO';
 
-const nomeCardTicketExemplo = 'Ticket Exemplo';
-const nomeCardSIRExemplo = 'SIR-[NXX] - WPYY';
+const NOME_CARD_TICKET_EXEMPLO = 'Ticket Exemplo';
+const NOME_CARD_SIR_EXEMPLO = 'SIR-[NXX] - WPYY';
 
-const inicioNomeAnexoEF = 'EF_';
+const INICIO_NOME_ANEXO_EF = 'EF_';
 
-const nomeListaBacklogDemandas = 'Backlog Demandas';
-const nomeListaBacklogSIR = 'Backlog SIR';
-const nomeListaEmAtendimento = 'Em Atendimento';
-const nomeListaPendenciasReprovados = 'Pendências / Reprovados';
-const nomeListaEmRevisao = 'Em Revisão';
-const nomeListaEntregue = 'Entregue';
+const NOME_LISTA_BACKLOG_DEMANDAS = 'Backlog Demandas';
+const NOME_LISTA_BACKLOG_SIR = 'Backlog SIR';
+const NOME_LISTA_EM_ATENDIMENTO = 'Em Atendimento';
+const NOME_LISTA_PENDENCIAS_REPROVADOS = 'Pendências / Reprovados';
+const NOME_LISTA_EM_REVISAO = 'Em Revisão';
+const NOME_LISTA_ENTREGUE = 'Entregue';
 
-const nomeCampoPersonalizadoFimConstrucao = 'Fim Construção';
-const nomeCampoPersonalizadoDataEF = 'Data EF';
-const nomeCampoPersonalizadoABAP = 'ABAP';
-const nomeCampoPersonalizadoHorasABAP = 'Horas ABAP';
-const nomeCampoPersonalizadoProjeto = 'Projeto';
-const nomeCampoPersonalizadoDataRelease = 'Data Release';
+const NOME_CAMPO_PERSONALIZADO_FIM_CONSTRUCAO = 'Fim Construção';
+const NOME_CAMPO_PERSONALIZADO_DATA_EF = 'Data EF';
+const NOME_CAMPO_PERSONALIZADO_ABAP = 'ABAP';
+const NOME_CAMPO_PERSONALIZADO_HORAS_ABAP = 'Horas ABAP';
+const NOME_CAMPO_PERSONALIZADO_PROJETO = 'Projeto';
+const NOME_CAMPO_PERSONALIZADO_DATA_RELEASE = 'Data Release';
 
-const tipoActionUpdateCard = 'updateCard';
+const TIPO_ACTION_UPDATE_CARD = 'updateCard';
 
-const tipoContext2D = '2d';
+const TIPO_CONTEXT_2D = '2d';
 
-const tipoGraficoBar = 'bar';
-const tipoGraficoDoughnut = 'doughnut';
-const tipoGraficoPie = 'pie';
+const TIPO_GRAFICO_BAR = 'bar';
+const TIPO_GRAFICO_DOUGHNUT = 'doughnut';
+const TIPO_GRAFICO_PIE = 'pie';
 
-const tituloGraficoPercentualCartoesPorFase = 'Percentual de Cartões em cada fase';
-const tituloGraficoPercentualCartoesPorEtiqueta = 'Percentual de Cartões de cada Etiqueta';
+const TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE = 'Percentual de Cartões em cada fase';
+const TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA = 'Percentual de Cartões de cada Etiqueta';
 
-const coresGraficoPercentualCartoesPorFase =
+const CORES_GRAFICO_PERCENTUAL_CARTOES_POR_FASE =
 [
 	'rgb(255,   0,   0)', // Vermelho
 	'rgb(  0, 255,   0)', // Verde
@@ -67,7 +67,7 @@ const coresGraficoPercentualCartoesPorFase =
 	'rgb(  0, 255, 255)', // 
 	'rgb(255,   0, 255)'  // 
 ];
-const coresGraficoPercentualCartoesPorEtiqueta =
+const CORES_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA =
 [
 	'rgb(97,  189,  79)', // 
 	'rgb(242, 214,   0)', // 
@@ -79,7 +79,7 @@ const coresGraficoPercentualCartoesPorEtiqueta =
 	'rgb( 53,  82,  99)'  // 
 ];
 
-const posicaoLegendaGraficoTop = 'top';
-const posicaoLegendaGraficoEsquerda = 'left';
+const POSICAO_LEGENDA_GRAFICO_TOPO = 'top';
+const POSICAO_LEGENDA_GRAFICO_ESQUERDA = 'left';
 
-const opcaoFiltroTodos = 'Todos';
+const OPCAO_FILTRO_TODOS = 'Todos';
