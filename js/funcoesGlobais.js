@@ -944,6 +944,34 @@ function obterStringNumeroZerosEsquerda( numero, quantidadeMaximaZeros )
 	return stringNumero;
 }
 
+function obterStringData( dia, mes, ano, separador )
+{
+	var stringData = obterStringNumeroZerosEsquerda( dia, 1 ) + separador
+					 + obterStringNumeroZerosEsquerda( mes, 1 ) + separador
+					 + ano.toString();
+	
+	return stringData;
+}
+
+function obterStringDataObjetoDate( objetoDate, separador )
+{
+	var stringData = '';
+	
+	var dia = objetoDate.getDate();
+	var mes = objetoDate.getMonth() + 1;
+	var ano = objetoDate.getFullYear();
+	
+	stringData = obterStringData
+	(
+		dia,
+		mes,
+		ano,
+		separador
+	);
+	
+	return stringData;
+}
+
 function obterTimelineDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard, listas )
 {
 	var textoDisponibilidadeABAP = '';
@@ -960,9 +988,7 @@ function obterTimelineDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard,
 	{
 		var dataDisponibilidadeTimeABAP = disponibilidadeTimeABAPPorData[indiceDisponibilidadeTimeABAPPorData];
 		
-		var diaDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getDate();
-		var mesDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getMonth() + 1;
-		var anoDataDisponibilidadeABAP = dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP.getFullYear();
+		var stringDataDisponibilidadeABAP = obterStringDataObjetoDate( dataDisponibilidadeTimeABAP.dataDisponibilidadeABAP, '/' );
 		
 		var indiceDisponibilidadeTimeABAPPorDataPar = ( indiceDisponibilidadeTimeABAPPorData % 2 ) == 0;
 		
@@ -975,10 +1001,7 @@ function obterTimelineDisponibilidadeTimeABAP( cards, camposPersonalizadosBoard,
 			textoDisponibilidadeABAP += '<div class="timeline-container timeline-container-right">';
 		}
 		
-		textoDisponibilidadeABAP += '<div class="timeline-content"><h3>'
-									+ obterStringNumeroZerosEsquerda( diaDataDisponibilidadeABAP, 1 ) + '/'
-									+ obterStringNumeroZerosEsquerda( mesDataDisponibilidadeABAP, 1 ) + '/'
-									+ anoDataDisponibilidadeABAP + '</h3>';
+		textoDisponibilidadeABAP += '<div class="timeline-content"><h3>' + stringDataDisponibilidadeABAP + '</h3>';
 		
 		for( indiceABAPDisponivelData = 0; indiceABAPDisponivelData < dataDisponibilidadeTimeABAP.ABAPsDisponiveisData.length; ++indiceABAPDisponivelData )
 		{
@@ -1132,4 +1155,150 @@ function obterCardsPorProjeto( nomeProjeto, cards, camposPersonalizadosBoard )
 	}
 	
 	return cardsPorProjeto;
+}
+
+function collectDatas( datas )
+{
+	var datasColetadas = [];
+	
+	for( indiceData = 0; indiceData < datas.length; ++indiceData )
+	{
+		var data = datas[indiceData];
+		
+		var dataJaAdicionada = false;
+		
+		for( indiceDataColetada = 0; indiceDataColetada < datasColetadas.length; ++indiceDataColetada )
+		{
+			var dataColetada = datasColetadas[indiceDataColetada];
+			
+			if( dataColetada.getTime() == data.getTime() )
+			{
+				dataJaAdicionada = true;
+				
+				break;
+			}
+		}
+		
+		if( !dataJaAdicionada )
+		{
+			datasColetadas.push( data );
+		}
+	}
+	
+	return datasColetadas;
+}
+
+function funcaoComparacaoObjetosDate( objetoDateA, objetoDateB )
+{
+	return ( objetoDateA.getTime() > objetoDateB.getTime() ) -
+		   ( objetoDateA.getTime() < objetoDateB.getTime() );
+}
+
+function obterDatasRelease( cards, camposPersonalizadosBoard )
+{
+	var datasRelease = [];
+	
+	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataRelease, camposPersonalizadosBoard );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var itensCamposPersonalizadosCard = card['customFieldItems'];
+				
+		var valorCampoPersonalizadoDataRelease = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataRelease, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+		
+		if( valorCampoPersonalizadoDataRelease != undefined )
+		{
+			var dataRelease = new Date( valorCampoPersonalizadoDataRelease['date'] );
+			
+			datasRelease.push( obterDataSemTempo( dataRelease ) );
+		}
+	}
+	
+	datasRelease = collectDatas( datasRelease );
+	
+	datasRelease.sort( funcaoComparacaoObjetosDate );
+	
+	return datasRelease;
+}
+
+function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
+{
+	var releases = '<option value="Todos">Todos</option>';
+	
+	var datasRelease = obterDatasRelease( cards, camposPersonalizadosBoard );
+	
+	for( indiceDataRelease = 0; indiceDataRelease < datasRelease.length; ++indiceDataRelease )
+	{
+		var dataRelease = datasRelease[indiceDataRelease];
+		
+		var stringDataRelease = obterStringDataObjetoDate( dataRelease, '/' );
+		
+		releases += '<option value="' + stringDataRelease + '">'
+					+ stringDataRelease + '</option>';
+	}
+	
+	return releases;
+}
+
+function obterObjetoDatePelaData( data, separador )
+{
+	var objetoDateData = undefined;
+	
+	var dadosData = data.split( separador );
+	
+	var dia = Number( dadosData[0] );
+	var mes = Number( dadosData[1] );
+	var ano = Number( dadosData[2] );
+	
+	objetoDateData = new Date
+	(
+		ano,
+		mes - 1,
+		dia
+	);
+	
+	return objetoDateData;
+}
+
+function obterCardsPorRelease( dataRelease, cards, camposPersonalizadosBoard )
+{
+	var cardsPorRelease = [];
+	
+	if( dataRelease == undefined )
+	{
+		cardsPorRelease = cards;
+		
+		return cardsPorRelease;
+	}
+	
+	var objetoDateDataRelease = obterObjetoDatePelaData( dataRelease, '/' );
+
+	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( nomeCampoPersonalizadoDataRelease, camposPersonalizadosBoard );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var itensCamposPersonalizadosCard = card['customFieldItems'];
+				
+		var valorCampoPersonalizadoDataRelease = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataRelease, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+		
+		if( valorCampoPersonalizadoDataRelease != undefined )
+		{
+			var dataReleaseCard = valorCampoPersonalizadoDataRelease['date'];
+			
+			var objetoDateDataReleaseCard = new Date( dataReleaseCard );
+			
+			objetoDateDataReleaseCard = obterDataSemTempo( objetoDateDataReleaseCard );
+			
+			if( objetoDateDataReleaseCard.getTime() == objetoDateDataRelease.getTime() )
+			{
+				cardsPorRelease.push( card );
+			}
+		}
+	}
+	
+	return cardsPorRelease;
 }

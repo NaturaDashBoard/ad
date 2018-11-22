@@ -16,3 +16,4 @@ var grafPercentualCartoesPorFase = $( '#grafPercentualCartoesPorFase' );
 var totalHorasABAPEntregue = $( '#totalHorasABAPEntregue' );
 var totalHorasABAPBacklog = $( '#totalHorasABAPBacklog' );
 var selectProjeto = $( '#selectProjeto' );
+var selectRelease = $( '#selectRelease' );

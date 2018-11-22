@@ -2,34 +2,45 @@ function atualizarElementosTela()
 {
 	var nomeProjeto = undefined;
 	
-	var valorSelecionado = selectProjeto.val();
+	var valorSelecionadoProjeto = selectProjeto.val();
 	
-	if( valorSelecionado != opcaoFiltroProjetoTodos )
+	if( valorSelecionadoProjeto != opcaoFiltroTodos )
 	{
-		nomeProjeto = valorSelecionado;
+		nomeProjeto = valorSelecionadoProjeto;
 	}
 	
-	atualizarFTRABAP( nomeProjeto );
+	var dataRelease = undefined;
 	
-	atualizarOTDABAP( nomeProjeto );
+	var valorSelecionadoRelease = selectRelease.val();
 	
-	atualizarFTRFUNC( nomeProjeto );
+	if( valorSelecionadoRelease != opcaoFiltroTodos )
+	{
+		dataRelease = valorSelecionadoRelease;
+	}
 	
-	atualizarOTDFUNC( nomeProjeto );
+	atualizarFTRABAP( nomeProjeto, dataRelease );
 	
-	atualizarQuantidadeSIRs( nomeProjeto );
+	atualizarOTDABAP( nomeProjeto, dataRelease );
+	
+	atualizarFTRFUNC( nomeProjeto, dataRelease );
+	
+	atualizarOTDFUNC( nomeProjeto, dataRelease );
+	
+	atualizarQuantidadeSIRs( nomeProjeto, dataRelease );
 	
 	atualizarDisponibilidadeTimeABAP();
 	
-	atualizarPercentualCartoesPorFase( nomeProjeto );
+	atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease );
 	
-	atualizarTotalHorasABAPEntregue( nomeProjeto );
+	atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease );
 	
-	atualizarTotalHorasABAPBacklog( nomeProjeto );
+	atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease );
 	
-	atualizarPercentualCartoesPorEtiqueta( nomeProjeto );
+	atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease );
 	
 	atualizarFiltroProjeto();
+	
+	atualizarFiltroRelease();
 }
 
 function atualizarElementosTelaEDispararReqsAssinc()
@@ -49,6 +60,8 @@ function inicializarBotoes()
 function inicializarSelectOptions()
 {
 	selectProjeto.change( atualizarElementosTela );
+	
+	selectRelease.change( atualizarElementosTela );
 }
 
 function inicializarInputs()

@@ -98,9 +98,11 @@ function carregarAssincListasQuadroTestesDashboardNatura()
 
 /* ATUALIZAÇÃO DE ELEMENTOS DE TELA */
 
-function atualizarFTRABAP( nomeProjeto )
+function atualizarFTRABAP( nomeProjeto, dataRelease )
 {	
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
@@ -115,9 +117,11 @@ function atualizarFTRABAP( nomeProjeto )
 	ftrABAP.html( percentualTicketsFTRABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarOTDABAP( nomeProjeto )
+function atualizarOTDABAP( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
@@ -132,9 +136,11 @@ function atualizarOTDABAP( nomeProjeto )
 	otdABAP.html( percentualTicketsOTDABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarFTRFUNC( nomeProjeto )
+function atualizarFTRFUNC( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
@@ -149,9 +155,11 @@ function atualizarFTRFUNC( nomeProjeto )
 	ftrFUNC.html( percentualTicketsFTRFUNCListaEntregueArredondado.toString() + '%' );		
 }
 
-function atualizarOTDFUNC( nomeProjeto )
+function atualizarOTDFUNC( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
@@ -180,9 +188,11 @@ function atualizarQuantidadeSIRsFM( cards )
 	sirFM.html( quantidadeSIRsFM );	
 }
 
-function atualizarQuantidadeSIRs( nomeProjeto )
+function atualizarQuantidadeSIRs( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	atualizarQuantidadeSIRsErro( cards );
 	atualizarQuantidadeSIRsFM( cards );
@@ -201,9 +211,11 @@ function atualizarDisponibilidadeTimeABAP()
 	);
 }
 
-function atualizarPercentualCartoesPorFase( nomeProjeto )
+function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( nomeListaBacklogDemandas, listasQuadroTestesDashboardNatura, cards );
 	
@@ -285,9 +297,11 @@ function atualizarPercentualCartoesPorFase( nomeProjeto )
 	}
 }
 
-function atualizarTotalHorasABAPEntregue( nomeProjeto )
+function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	totalHorasABAPEntregue.html
 	(
@@ -300,9 +314,11 @@ function atualizarTotalHorasABAPEntregue( nomeProjeto )
 	);
 }
 
-function atualizarTotalHorasABAPBacklog( nomeProjeto )
+function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	totalHorasABAPBacklog.html
 	(
@@ -315,9 +331,11 @@ function atualizarTotalHorasABAPBacklog( nomeProjeto )
 	);
 }
 
-function atualizarPercentualCartoesPorEtiqueta( nomeProjeto )
+function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( nomeLabelCCM, cards );
 	
@@ -414,4 +432,20 @@ function atualizarFiltroProjeto()
 	selectProjeto.html( obterProjetosParaFiltro( camposPersonalizadosQuadroTestesDashboardNatura ) );
 	
 	selectProjeto.val( valorSelecionado );
+}
+
+function atualizarFiltroRelease()
+{
+	var valorSelecionado = selectRelease.val();
+	
+	selectRelease.html
+	(
+		obterReleasesParaFiltro
+		(
+			cardsQuadroTestesDashboardNatura,
+			camposPersonalizadosQuadroTestesDashboardNatura
+		)
+	);
+	
+	selectRelease.val( valorSelecionado );
 }

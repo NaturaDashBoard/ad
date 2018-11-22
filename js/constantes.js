@@ -45,6 +45,7 @@ const nomeCampoPersonalizadoDataEF = 'Data EF';
 const nomeCampoPersonalizadoABAP = 'ABAP';
 const nomeCampoPersonalizadoHorasABAP = 'Horas ABAP';
 const nomeCampoPersonalizadoProjeto = 'Projeto';
+const nomeCampoPersonalizadoDataRelease = 'Data Release';
 
 const tipoActionUpdateCard = 'updateCard';
 
@@ -81,4 +82,4 @@ const coresGraficoPercentualCartoesPorEtiqueta =
 const posicaoLegendaGraficoTop = 'top';
 const posicaoLegendaGraficoEsquerda = 'left';
 
-const opcaoFiltroProjetoTodos = 'Todos';
+const opcaoFiltroTodos = 'Todos';
