@@ -80,3 +80,5 @@ const coresGraficoPercentualCartoesPorEtiqueta =
 
 const posicaoLegendaGraficoTop = 'top';
 const posicaoLegendaGraficoEsquerda = 'left';
+
+const opcaoFiltroProjetoTodos = 'Todos';

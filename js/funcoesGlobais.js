@@ -120,6 +120,10 @@ function obterQuantidadeCardsLista( idLista, cards )
 
 function obterPercentual( quantidade, total )
 {
+	if( total == 0 )
+	{
+		return 0;
+	}
 	return ( quantidade / total ) * 100;
 }
 
@@ -786,8 +790,6 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 				&& nomeCard != nomeCardSIRExemplo
 			)
 			{
-				var idCard = card['id'];
-				
 				var itensCamposPersonalizadosCard = card['customFieldItems'];
 				
 				var valorCampoPersonalizadoABAP = obterValorCampoPersonalizadoCard( idCampoPersonalizadoABAP, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
@@ -1096,4 +1098,38 @@ function obterProjetosParaFiltro( camposPersonalizadosBoard )
 	}
 	
 	return projetos;
+}
+
+function obterCardsPorProjeto( nomeProjeto, cards, camposPersonalizadosBoard )
+{
+	var cardsPorProjeto = [];
+	
+	if( nomeProjeto == undefined )
+	{
+		cardsPorProjeto = cards;
+		
+		return cardsPorProjeto;
+	}		
+	
+	var idCampoPersonalizadoProjeto = obterIDCampoPersonalizado( nomeCampoPersonalizadoProjeto, camposPersonalizadosBoard );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var itensCamposPersonalizadosCard = card['customFieldItems'];
+				
+		var valorCampoPersonalizadoProjeto = obterValorCampoPersonalizadoCard( idCampoPersonalizadoProjeto, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+		
+		if
+		(
+			valorCampoPersonalizadoProjeto != undefined
+			&& valorCampoPersonalizadoProjeto['text'] == nomeProjeto
+		)
+		{
+			cardsPorProjeto.push( card );
+		}
+	}
+	
+	return cardsPorProjeto;
 }

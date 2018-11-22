@@ -1,16 +1,40 @@
 function atualizarElementosTela()
 {
-	atualizarFTRABAP();
-	atualizarOTDABAP();
-	atualizarFTRFUNC();
-	atualizarOTDFUNC();
-	atualizarQuantidadeSIRs();
+	var nomeProjeto = undefined;
+	
+	var valorSelecionado = selectProjeto.val();
+	
+	if( valorSelecionado != opcaoFiltroProjetoTodos )
+	{
+		nomeProjeto = valorSelecionado;
+	}
+	
+	atualizarFTRABAP( nomeProjeto );
+	
+	atualizarOTDABAP( nomeProjeto );
+	
+	atualizarFTRFUNC( nomeProjeto );
+	
+	atualizarOTDFUNC( nomeProjeto );
+	
+	atualizarQuantidadeSIRs( nomeProjeto );
+	
 	atualizarDisponibilidadeTimeABAP();
-	atualizarPercentualCartoesPorFase();
-	atualizarTotalHorasABAPEntregue();
-	atualizarTotalHorasABAPBacklog();
-	atualizarPercentualCartoesPorEtiqueta();
+	
+	atualizarPercentualCartoesPorFase( nomeProjeto );
+	
+	atualizarTotalHorasABAPEntregue( nomeProjeto );
+	
+	atualizarTotalHorasABAPBacklog( nomeProjeto );
+	
+	atualizarPercentualCartoesPorEtiqueta( nomeProjeto );
+	
 	atualizarFiltroProjeto();
+}
+
+function atualizarElementosTelaEDispararReqsAssinc()
+{
+	atualizarElementosTela();
 	
 	carregarAssincDadosTrello();
 }
@@ -22,12 +46,17 @@ function inicializarBotoes()
 }
 */
 
-/*
+function inicializarSelectOptions()
+{
+	selectProjeto.change( atualizarElementosTela );
+}
+
 function inicializarInputs()
 {
-	inicializarBotoes();
+	//inicializarBotoes();
+	
+	inicializarSelectOptions();
 }
-*/
 
 function carregarAssincDadosTrello()
 {
@@ -40,12 +69,12 @@ function carregarAssincDadosTrello()
 	//carregarAssincListasGestaoDemandasNatura();
 	carregarAssincListasQuadroTestesDashboardNatura();
 	
-	setTimeout( atualizarElementosTela, intervaloTempoEntreRequisicoesAssincronas );
+	setTimeout( atualizarElementosTelaEDispararReqsAssinc, intervaloTempoEntreRequisicoesAssincronas );
 }
 
 function documentReady()
 {
-	//inicializarInputs();
+	inicializarInputs();
 	
 	carregarAssincDadosTrello()
 }

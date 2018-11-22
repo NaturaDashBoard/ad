@@ -98,13 +98,15 @@ function carregarAssincListasQuadroTestesDashboardNatura()
 
 /* ATUALIZAÇÃO DE ELEMENTOS DE TELA */
 
-function atualizarFTRABAP()
-{
+function atualizarFTRABAP( nomeProjeto )
+{	
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
-	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsFTRABAPListaEntregue = obterQuantidadeTicketsFTRABAPLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFTRABAPListaEntregue = obterQuantidadeTicketsFTRABAPLista( idListaEntregue, cards );
 	
 	var percentualTicketsFTRABAPListaEntregue = obterPercentual( quantidadeTicketsFTRABAPListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -113,13 +115,15 @@ function atualizarFTRABAP()
 	ftrABAP.html( percentualTicketsFTRABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarOTDABAP()
+function atualizarOTDABAP( nomeProjeto )
 {
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
-	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsOTDABAPListaEntregue = obterQuantidadeTicketsOTDABAPLista( idListaEntregue, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var quantidadeTicketsOTDABAPListaEntregue = obterQuantidadeTicketsOTDABAPLista( idListaEntregue, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var percentualTicketsOTDABAPListaEntregue = obterPercentual( quantidadeTicketsOTDABAPListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -128,13 +132,15 @@ function atualizarOTDABAP()
 	otdABAP.html( percentualTicketsOTDABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarFTRFUNC()
+function atualizarFTRFUNC( nomeProjeto )
 {
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
-	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsFTRFUNCListaEntregue = obterQuantidadeTicketsFTRFUNCLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFTRFUNCListaEntregue = obterQuantidadeTicketsFTRFUNCLista( idListaEntregue, cards );
 	
 	var percentualTicketsFTRFUNCListaEntregue = obterPercentual( quantidadeTicketsFTRFUNCListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -143,13 +149,15 @@ function atualizarFTRFUNC()
 	ftrFUNC.html( percentualTicketsFTRFUNCListaEntregueArredondado.toString() + '%' );		
 }
 
-function atualizarOTDFUNC()
+function atualizarOTDFUNC( nomeProjeto )
 {
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
 	var idListaEntregue = obterIDLista( nomeListaEntregue, listasQuadroTestesDashboardNatura );
 	
-	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cardsQuadroTestesDashboardNatura );
+	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsOTDFUNCListaEntregue = obterQuantidadeTicketsOTDFUNCLista( idListaEntregue, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var quantidadeTicketsOTDFUNCListaEntregue = obterQuantidadeTicketsOTDFUNCLista( idListaEntregue, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
 	var percentualTicketsOTDFUNCListaEntregue = obterPercentual( quantidadeTicketsOTDFUNCListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -158,24 +166,26 @@ function atualizarOTDFUNC()
 	otdFUNC.html( percentualTicketsOTDFUNCListaEntregueArredondado.toString() + '%' );		
 }
 
-function atualizarQuantidadeSIRsErro()
+function atualizarQuantidadeSIRsErro( cards )
 {
-	var quantidadeSIRsErro = obterQuantidadeSIRsErro( cardsQuadroTestesDashboardNatura );
+	var quantidadeSIRsErro = obterQuantidadeSIRsErro( cards );
 	
 	sirErro.html( quantidadeSIRsErro );
 }
 
-function atualizarQuantidadeSIRsFM()
+function atualizarQuantidadeSIRsFM( cards )
 {
-	var quantidadeSIRsFM = obterQuantidadeSIRsFM( cardsQuadroTestesDashboardNatura );
+	var quantidadeSIRsFM = obterQuantidadeSIRsFM( cards );
 	
 	sirFM.html( quantidadeSIRsFM );	
 }
 
-function atualizarQuantidadeSIRs()
+function atualizarQuantidadeSIRs( nomeProjeto )
 {
-	atualizarQuantidadeSIRsErro();
-	atualizarQuantidadeSIRsFM();
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	atualizarQuantidadeSIRsErro( cards );
+	atualizarQuantidadeSIRsFM( cards );
 }
 
 function atualizarDisponibilidadeTimeABAP()
@@ -191,19 +201,21 @@ function atualizarDisponibilidadeTimeABAP()
 	);
 }
 
-function atualizarPercentualCartoesPorFase()
+function atualizarPercentualCartoesPorFase( nomeProjeto )
 {
-	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( nomeListaBacklogDemandas, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( nomeListaBacklogSIR, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( nomeListaBacklogDemandas, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( nomeListaEmAtendimento, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( nomeListaBacklogSIR, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( nomeListaPendenciasReprovados, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( nomeListaEmAtendimento, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEmRevisao = obterPercentualCardsLista( nomeListaEmRevisao, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( nomeListaPendenciasReprovados, listasQuadroTestesDashboardNatura, cards );
 	
-	var percentualCardsListaEntregue = obterPercentualCardsLista( nomeListaEntregue, listasQuadroTestesDashboardNatura, cardsQuadroTestesDashboardNatura );
+	var percentualCardsListaEmRevisao = obterPercentualCardsLista( nomeListaEmRevisao, listasQuadroTestesDashboardNatura, cards );
+	
+	var percentualCardsListaEntregue = obterPercentualCardsLista( nomeListaEntregue, listasQuadroTestesDashboardNatura, cards );
 	
 	var dadosDataSetGrafico =
 	[
@@ -273,49 +285,55 @@ function atualizarPercentualCartoesPorFase()
 	}
 }
 
-function atualizarTotalHorasABAPEntregue()
+function atualizarTotalHorasABAPEntregue( nomeProjeto )
 {
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
 	totalHorasABAPEntregue.html
 	(
 		obterQuantidadeHorasEntregueTicketsFDFM
 		(
-			cardsQuadroTestesDashboardNatura,
+			cards,
 			camposPersonalizadosQuadroTestesDashboardNatura,
 			listasQuadroTestesDashboardNatura
 		)
 	);
 }
 
-function atualizarTotalHorasABAPBacklog()
+function atualizarTotalHorasABAPBacklog( nomeProjeto )
 {
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
 	totalHorasABAPBacklog.html
 	(
 		obterQuantidadeHorasBacklogTicketsFDFM
 		(
-			cardsQuadroTestesDashboardNatura,
+			cards,
 			camposPersonalizadosQuadroTestesDashboardNatura,
 			listasQuadroTestesDashboardNatura
 		)
 	);
 }
 
-function atualizarPercentualCartoesPorEtiqueta()
+function atualizarPercentualCartoesPorEtiqueta( nomeProjeto )
 {
-	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( nomeLabelCCM, cardsQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	var percentualCardsEtiquetaDebug = obterPercentualCardsPorEtiqueta( nomeLabelDebug, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( nomeLabelCCM, cards );
 	
-	var percentualCardsEtiquetaFD = obterPercentualCardsPorEtiqueta( nomeLabelFD, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaDebug = obterPercentualCardsPorEtiqueta( nomeLabelDebug, cards );
 	
-	var percentualCardsEtiquetaSmallEnhancement = obterPercentualCardsPorEtiqueta( nomeLabelSmallEnhancement, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaFD = obterPercentualCardsPorEtiqueta( nomeLabelFD, cards );
 	
-	var percentualCardsEtiquetaEstimativa = obterPercentualCardsPorEtiqueta( nomeLabelEstimativa, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaSmallEnhancement = obterPercentualCardsPorEtiqueta( nomeLabelSmallEnhancement, cards );
 	
-	var percentualCardsEtiquetaSIRFM = obterPercentualCardsPorEtiqueta( nomeLabelSIRFM, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaEstimativa = obterPercentualCardsPorEtiqueta( nomeLabelEstimativa, cards );
+	
+	var percentualCardsEtiquetaSIRFM = obterPercentualCardsPorEtiqueta( nomeLabelSIRFM, cards );
 
-	var percentualCardsEtiquetaFM = obterPercentualCardsPorEtiqueta( nomeLabelFM, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaFM = obterPercentualCardsPorEtiqueta( nomeLabelFM, cards );
 	
-	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( nomeLabelSIRErro, cardsQuadroTestesDashboardNatura );
+	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( nomeLabelSIRErro, cards );
 	
 	var dadosDataSetGrafico =
 	[
