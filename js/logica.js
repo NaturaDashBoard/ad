@@ -449,3 +449,12 @@ function atualizarFiltroRelease()
 	
 	selectRelease.val( valorSelecionado );
 }
+
+function atualizarItensCarrosselPendencias( nomeProjeto, dataRelease )
+{
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	
+	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasQuadroTestesDashboardNatura ) );
+}

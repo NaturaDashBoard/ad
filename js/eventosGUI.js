@@ -41,6 +41,8 @@ function atualizarElementosTela()
 	atualizarFiltroProjeto();
 	
 	atualizarFiltroRelease();
+	
+	atualizarItensCarrosselPendencias( nomeProjeto, dataRelease )
 }
 
 function atualizarElementosTelaEDispararReqsAssinc()

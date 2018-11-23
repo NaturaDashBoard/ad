@@ -17,7 +17,7 @@ const TIPO_REQ_AJAX_GET = 'get';
 
 const TIPO_DADO_AJAX_JSON = 'json';
 
-const INTERVALO_TEMPO_REQUISICOES_ASSINC = 5000;  // Milissegundos;
+const INTERVALO_TEMPO_REQUISICOES_ASSINC = 60000;  // Milissegundos;
 
 const NOME_LABEL_CCM = 'CCM';
 const NOME_LABEL_DEBUG = 'Debug';
@@ -47,6 +47,7 @@ const NOME_CAMPO_PERSONALIZADO_HORAS_ABAP = 'Horas ABAP';
 const NOME_CAMPO_PERSONALIZADO_PROJETO = 'Projeto';
 const NOME_CAMPO_PERSONALIZADO_DATA_RELEASE = 'Data Release';
 
+const TIPO_ACTION_COMMENT_CARD = 'commentCard';
 const TIPO_ACTION_UPDATE_CARD = 'updateCard';
 
 const TIPO_CONTEXT_2D = '2d';

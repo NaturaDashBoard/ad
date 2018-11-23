@@ -1302,3 +1302,84 @@ function obterCardsPorRelease( dataRelease, cards, camposPersonalizadosBoard )
 	
 	return cardsPorRelease;
 }
+
+function obterCardsLista( nomeLista, cards, listas )
+{
+	var cardsLista = [];
+	
+	var idLista = obterIDLista( nomeLista, listas );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		if
+		(
+			card['idList'] == idLista
+			&& card['name'] != NOME_CARD_TICKET_EXEMPLO
+			&& card['name'] != NOME_CARD_SIR_EXEMPLO
+		)
+		{
+			cardsLista.push( card );
+		}
+	}
+	
+	return cardsLista;
+}
+
+function obterPendencias( cards, listas )
+{
+	var pendencias = [];
+	
+	var cardsPendencias = obterCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, cards, listas );
+	
+	for( indiceCardPendencia = 0; indiceCardPendencia < cardsPendencias.length; ++indiceCardPendencia )
+	{
+		var cardPendencia = cardsPendencias[indiceCardPendencia];
+		
+		var actionsCardPendencia = cardPendencia['actions'];
+		
+		for( indiceActionCardPendencia = 0; indiceActionCardPendencia < actionsCardPendencia.length; ++indiceActionCardPendencia )
+		{
+			var actionCardPendencia = actionsCardPendencia[indiceActionCardPendencia];
+			
+			if( actionCardPendencia['type'] == TIPO_ACTION_COMMENT_CARD )
+			{
+				var pendencia = 
+				{
+					nomeCard: cardPendencia['name'],
+					textoComentario: actionCardPendencia['data']['text']
+				};
+				
+				pendencias.push( pendencia );
+				
+				break;
+			}
+		}
+	}
+	
+	return pendencias;
+}
+
+function obterItensCarrosselPendencias( cards, listas )
+{
+	var itensCarrosselPendencias = '';
+	
+	var pendencias = obterPendencias( cards, listas );
+	
+	if( pendencias.length > 0 )
+	{
+		itensCarrosselPendencias += '<div class="carousel-item active"><h3>' + pendencias[0].nomeCard + '</h3><p>' 
+									+ pendencias[0].textoComentario + '</p></div>';					
+		
+		for( indicePendencia = 1; indicePendencia < pendencias.length; ++indicePendencia )
+		{
+			var pendencia = pendencias[indicePendencia];
+			
+			itensCarrosselPendencias += '<div class="carousel-item"><h3>' + pendencia.nomeCard + '</h3><p>' 
+										+ pendencia.textoComentario + '</p></div>';
+		}
+	}
+	
+	return itensCarrosselPendencias;
+}
