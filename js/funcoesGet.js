@@ -1369,16 +1369,42 @@ function obterItensCarrosselPendencias( cards, listas )
 	
 	if( pendencias.length > 0 )
 	{
-		itensCarrosselPendencias += '<div class="carousel-item active"><h3>' + pendencias[0].nomeCard + '</h3><p>' 
-									+ pendencias[0].textoComentario + '</p></div>';					
+		var indicePendencia = 0;
 		
-		for( indicePendencia = 1; indicePendencia < pendencias.length; ++indicePendencia )
+		itensCarrosselPendencias += '<div class="carousel-item active">';	
+		
+		for
+		(
+			indiceItemCarrossel = 0;
+			indiceItemCarrossel < QUANTIDADE_PENDENCIAS_POR_SLIDE && indicePendencia < pendencias.length;
+			++indiceItemCarrossel, ++indicePendencia)
 		{
 			var pendencia = pendencias[indicePendencia];
 			
-			itensCarrosselPendencias += '<div class="carousel-item"><h3>' + pendencia.nomeCard + '</h3><p>' 
-										+ pendencia.textoComentario + '</p></div>';
+			itensCarrosselPendencias += '<p>- ' + pendencia.textoComentario + '</p>';	
 		}
+		
+		itensCarrosselPendencias += '</div>';
+		
+		for( ; indicePendencia < pendencias.length; )
+		{
+			itensCarrosselPendencias += '<div class="carousel-item">';
+			
+			for
+			(
+				indiceItemCarrossel = 0;
+				indiceItemCarrossel < QUANTIDADE_PENDENCIAS_POR_SLIDE && indicePendencia < pendencias.length;
+				++indiceItemCarrossel, ++indicePendencia)
+			{
+				var pendencia = pendencias[indicePendencia];
+				
+				itensCarrosselPendencias += '<p>- ' + pendencia.textoComentario + '</p>';	
+			}
+			
+			itensCarrosselPendencias += '</div>';
+		}
+		
+		
 	}
 	
 	return itensCarrosselPendencias;

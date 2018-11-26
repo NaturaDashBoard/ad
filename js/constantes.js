@@ -50,6 +50,8 @@ const NOME_CAMPO_PERSONALIZADO_DATA_RELEASE = 'Data Release';
 const TIPO_ACTION_COMMENT_CARD = 'commentCard';
 const TIPO_ACTION_UPDATE_CARD = 'updateCard';
 
+const QUANTIDADE_PENDENCIAS_POR_SLIDE = 4;
+
 const TIPO_CONTEXT_2D = '2d';
 
 const TIPO_GRAFICO_BAR = 'bar';
