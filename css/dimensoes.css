@@ -1,15 +1,22 @@
+html
+{
+	height: 100%;
+}
+
+.custom-container
+{
+	/*margin: 0;*/
+	padding-top: 1%;
+	padding-left: 2%;
+	padding-right: 3%;
+	height: 100%;
+}
+
 .logo
 {
 	margin-top:  10px;
     margin-left: 10px;
 	width: 100%;
-}
-
-.custom-container
-{
-	padding-top: 1%;
-	padding-left: 2%;
-	padding-right: 3%;
 }
 
 .row

@@ -1,6 +1,10 @@
-body
+.custom-container
 {
-	background-color: rgb( 224, 165, 65 );
+	background-image: linear-gradient(rgb(231, 185, 53), rgb(205, 102, 81));
+	/*
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	*/
 }
 
 .col
