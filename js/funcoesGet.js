@@ -1327,9 +1327,13 @@ function obterCardsLista( nomeLista, cards, listas )
 	return cardsLista;
 }
 
-function obterPendencias( cards, listas )
+function obterPendencias( cards, listas, camposPersonalizadosBoard )
 {
 	var pendencias = [];
+	
+	var idCampoPersonalizadoDataProjeto = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
+	
+	var idCampoPersonalizadoTicketNumber = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_TICKET_NUMBER, camposPersonalizadosBoard );
 	
 	var cardsPendencias = obterCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, cards, listas );
 	
@@ -1345,9 +1349,31 @@ function obterPendencias( cards, listas )
 			
 			if( actionCardPendencia['type'] == TIPO_ACTION_COMMENT_CARD )
 			{
+				var itensCamposPersonalizadosCard = cardPendencia['customFieldItems'];
+				
+				var valorCampoPersonalizadoProjeto = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataProjeto, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+				
+				var nomeProjeto = '';
+				
+				if( valorCampoPersonalizadoProjeto != undefined )
+				{
+					nomeProjeto = valorCampoPersonalizadoProjeto['text'];
+				}
+				
+				var valorCampoPersonalizadoTicketNumber = obterValorCampoPersonalizadoCard( idCampoPersonalizadoTicketNumber, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+				
+				var ticketNumber = '';
+				
+				if( valorCampoPersonalizadoTicketNumber != undefined )
+				{
+					ticketNumber = valorCampoPersonalizadoTicketNumber['text'];
+				}
+				
 				var pendencia = 
 				{
-					nomeCard: cardPendencia['name'],
+					idCartao: cardPendencia['idShort'],
+					projeto: nomeProjeto,
+					wp: ticketNumber,
 					textoComentario: actionCardPendencia['data']['text']
 				};
 				
@@ -1361,11 +1387,11 @@ function obterPendencias( cards, listas )
 	return pendencias;
 }
 
-function obterItensCarrosselPendencias( cards, listas )
+function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard )
 {
 	var itensCarrosselPendencias = '';
 	
-	var pendencias = obterPendencias( cards, listas );
+	var pendencias = obterPendencias( cards, listas, camposPersonalizadosBoard );
 	
 	if( pendencias.length > 0 )
 	{
@@ -1381,7 +1407,10 @@ function obterItensCarrosselPendencias( cards, listas )
 		{
 			var pendencia = pendencias[indicePendencia];
 			
-			itensCarrosselPendencias += '<p>- ' + pendencia.textoComentario + '</p>';	
+			itensCarrosselPendencias += '<p>' + pendencia.idCartao + ' - ' 
+										+ pendencia.projeto + ' - ' 
+										+ pendencia.wp + ' - ' 
+										+ pendencia.textoComentario + '</p>';	
 		}
 		
 		itensCarrosselPendencias += '</div>';
@@ -1398,7 +1427,10 @@ function obterItensCarrosselPendencias( cards, listas )
 			{
 				var pendencia = pendencias[indicePendencia];
 				
-				itensCarrosselPendencias += '<p>- ' + pendencia.textoComentario + '</p>';	
+				itensCarrosselPendencias += '<p>' + pendencia.idCartao + ' - ' 
+											+ pendencia.projeto + ' - ' 
+											+ pendencia.wp + ' - ' 
+											+ pendencia.textoComentario + '</p>';	
 			}
 			
 			itensCarrosselPendencias += '</div>';

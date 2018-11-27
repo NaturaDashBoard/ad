@@ -358,5 +358,5 @@ function atualizarItensCarrosselPendencias( nomeProjeto, dataRelease )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
 	
-	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasQuadroTestesDashboardNatura ) );
+	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura ) );
 }
