@@ -1,3 +1,14 @@
+/* DADOS CARREGADOS DO TRELLO */
+
+var boardActionsCarregados = undefined;
+var cardActionsCarregados = undefined;
+
+var camposPersonalizadosCarregados = undefined;
+
+var cardsCarregados = undefined;
+
+var listasCarregadas = undefined;
+
 /* GESTÃO DEMANDAS NATURA */
 
 var boardActionsGestaoDemandasNatura = undefined;

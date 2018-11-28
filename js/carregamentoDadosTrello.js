@@ -1,5 +1,14 @@
 /* CARREGAMENTOS DE DADOS DE FORMA SÍNCRONA */
 
+// Dados Carregados do Trello
+
+function carregarSincCards( idBoard )
+{
+	$.ajax( obterConfigsReqSincGetCards( idBoard ) )
+		.done( doneGetCards )
+		.fail( failGetCards );
+}
+
 // Gestão Demandas Natura
 
 function carregarSincCardsGestaoDemandasNatura()
@@ -35,6 +44,36 @@ function carregarSincAnexosCard( idCard )
 }
 
 /* CARREGAMENTOS DE DADOS DE FORMA ASSÍNCRONA */
+
+// Dados Carregados do Trello
+
+function carregarAssincBoardActions( idBoard )
+{
+	$.ajax( obterConfigsReqAssincGetBoardActions( idBoard ) )
+		.done( doneGetBoardActions )
+		.fail( failGetBoardActions );
+}
+
+function carregarAssincCamposPersonalizados( idBoard )
+{
+	$.ajax( obterConfigsReqAssincGetCamposPersonalizados( idBoard ) )
+		.done( doneGetCamposPersonalizados )
+		.fail( failGetCamposPersonalizados );	
+}
+
+function carregarAssincCards( idBoard )
+{
+	$.ajax( obterConfigsReqAssincGetCards( idBoard ) )
+		.done( doneGetCards )
+		.fail( failGetCards );
+}
+
+function carregarAssincListas( idBoard )
+{
+	$.ajax( obterConfigsReqAssincGetListas( idBoard ) )
+		.done( doneGetListas )
+		.fail( failGetListas );
+}
 
 // Gestão Demandas Natura
 

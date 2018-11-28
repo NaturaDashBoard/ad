@@ -2,11 +2,11 @@
 
 function atualizarFTRABAP( nomeProjeto, dataRelease )
 {	
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 
-	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -21,15 +21,15 @@ function atualizarFTRABAP( nomeProjeto, dataRelease )
 
 function atualizarOTDABAP( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsOTDABAPListaEntregue = obterQuantidadeTicketsOTDABAPLista( idListaEntregue, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	var quantidadeTicketsOTDABAPListaEntregue = obterQuantidadeTicketsOTDABAPLista( idListaEntregue, cards, camposPersonalizadosCarregados );
 	
 	var percentualTicketsOTDABAPListaEntregue = obterPercentual( quantidadeTicketsOTDABAPListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -40,11 +40,11 @@ function atualizarOTDABAP( nomeProjeto, dataRelease )
 
 function atualizarFTRFUNC( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
@@ -59,15 +59,15 @@ function atualizarFTRFUNC( nomeProjeto, dataRelease )
 
 function atualizarOTDFUNC( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura );
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
 	var quantidadeTicketsFDFMListaEntregue = obterQuantidadeTicketsFDFMLista( idListaEntregue, cards );
 	
-	var quantidadeTicketsOTDFUNCListaEntregue = obterQuantidadeTicketsOTDFUNCLista( idListaEntregue, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	var quantidadeTicketsOTDFUNCListaEntregue = obterQuantidadeTicketsOTDFUNCLista( idListaEntregue, cards, camposPersonalizadosCarregados );
 	
 	var percentualTicketsOTDFUNCListaEntregue = obterPercentual( quantidadeTicketsOTDFUNCListaEntregue, quantidadeTicketsFDFMListaEntregue );
 	
@@ -92,9 +92,9 @@ function atualizarQuantidadeSIRsFM( cards )
 
 function atualizarQuantidadeSIRs( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
 	atualizarQuantidadeSIRsErro( cards );
 	atualizarQuantidadeSIRsFM( cards );
@@ -106,30 +106,30 @@ function atualizarDisponibilidadeTimeABAP()
 	(
 		obterTimelineDisponibilidadeTimeABAP
 		(
-			cardsQuadroTestesDashboardNatura,
-			camposPersonalizadosQuadroTestesDashboardNatura,
-			listasQuadroTestesDashboardNatura
+			cardsCarregados,
+			camposPersonalizadosCarregados,
+			listasCarregadas
 		)
 	);
 }
 
 function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( NOME_LISTA_BACKLOG_DEMANDAS, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( NOME_LISTA_BACKLOG_DEMANDAS, listasCarregadas, cards );
 	
-	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( NOME_LISTA_BACKLOG_SIR, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaBacklogSIR = obterPercentualCardsLista( NOME_LISTA_BACKLOG_SIR, listasCarregadas, cards );
 	
-	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( NOME_LISTA_EM_ATENDIMENTO, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEmAtendimento = obterPercentualCardsLista( NOME_LISTA_EM_ATENDIMENTO, listasCarregadas, cards );
 	
-	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaPendenciasReprovados = obterPercentualCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, listasCarregadas, cards );
 	
-	var percentualCardsListaEmRevisao = obterPercentualCardsLista( NOME_LISTA_EM_REVISAO, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEmRevisao = obterPercentualCardsLista( NOME_LISTA_EM_REVISAO, listasCarregadas, cards );
 	
-	var percentualCardsListaEntregue = obterPercentualCardsLista( NOME_LISTA_ENTREGUE, listasQuadroTestesDashboardNatura, cards );
+	var percentualCardsListaEntregue = obterPercentualCardsLista( NOME_LISTA_ENTREGUE, listasCarregadas, cards );
 	
 	var dadosDataSetGrafico =
 	[
@@ -201,43 +201,43 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 
 function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
 	totalHorasABAPEntregue.html
 	(
 		obterQuantidadeHorasEntregueTicketsFDFM
 		(
 			cards,
-			camposPersonalizadosQuadroTestesDashboardNatura,
-			listasQuadroTestesDashboardNatura
+			camposPersonalizadosCarregados,
+			listasCarregadas
 		)
 	);
 }
 
 function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
 	totalHorasABAPBacklog.html
 	(
 		obterQuantidadeHorasBacklogTicketsFDFM
 		(
 			cards,
-			camposPersonalizadosQuadroTestesDashboardNatura,
-			listasQuadroTestesDashboardNatura
+			camposPersonalizadosCarregados,
+			listasCarregadas
 		)
 	);
 }
 
 function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
 	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( NOME_LABEL_CCM, cards );
 	
@@ -331,7 +331,7 @@ function atualizarFiltroProjeto()
 {
 	var valorSelecionado = selectProjeto.val();
 	
-	selectProjeto.html( obterProjetosParaFiltro( camposPersonalizadosQuadroTestesDashboardNatura ) );
+	selectProjeto.html( obterProjetosParaFiltro( camposPersonalizadosCarregados ) );
 	
 	selectProjeto.val( valorSelecionado );
 }
@@ -344,8 +344,8 @@ function atualizarFiltroRelease()
 	(
 		obterReleasesParaFiltro
 		(
-			cardsQuadroTestesDashboardNatura,
-			camposPersonalizadosQuadroTestesDashboardNatura
+			cardsCarregados,
+			camposPersonalizadosCarregados
 		)
 	);
 	
@@ -354,9 +354,9 @@ function atualizarFiltroRelease()
 
 function atualizarItensCarrosselPendencias( nomeProjeto, dataRelease )
 {
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura );
+	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosQuadroTestesDashboardNatura );
+	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasQuadroTestesDashboardNatura, camposPersonalizadosQuadroTestesDashboardNatura ) );
+	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasCarregadas, camposPersonalizadosCarregados ) );
 }

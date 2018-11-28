@@ -605,9 +605,20 @@ function validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard )
 			
 			var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 			
-			if( valorCampoPersonalizadoFimConstrucao['date'] < cardAction['date'] )
+			if( valorCampoPersonalizadoFimConstrucao != undefined )
 			{
-				return true;
+				var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
+				
+				var dataFimConstrucaoSemTempo = obterDataSemTempo( dataFimConstrucao );
+				
+				var dataCriacaoCardAction = new Date( cardAction['date'] )
+				
+				var dataCriacaoCardActionSemTempo = obterDataSemTempo( dataCriacaoCardAction );
+				
+				if( dataFimConstrucaoSemTempo.getTime() < dataCriacaoCardActionSemTempo.getTime() )
+				{
+					return true;
+				}
 			}
 		}
 	}
@@ -802,17 +813,20 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 				{
 					var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 					
-					var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
-					
-					var umDiaAposDataFimConstrucao = addDays( dataFimConstrucao, 1 );
-					
-					if
-					(
-						proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
-						|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade < umDiaAposDataFimConstrucao
-					)
+					if( valorCampoPersonalizadoFimConstrucao != undefined )
 					{
-						proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = umDiaAposDataFimConstrucao;
+						var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
+					
+						var umDiaAposDataFimConstrucao = addDays( dataFimConstrucao, 1 );
+						
+						if
+						(
+							proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
+							|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade < umDiaAposDataFimConstrucao
+						)
+						{
+							proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = umDiaAposDataFimConstrucao;
+						}
 					}
 				}
 			}

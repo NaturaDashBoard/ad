@@ -75,14 +75,20 @@ function inicializarInputs()
 
 function carregarAssincDadosTrello()
 {
+	// Definir aqui qual dos Boards será carregado, através do ID do Board
+	var idBoardDadosCarregados = ID_BOARD_GESTAO_DEMANDAS_NATURA;
+	
 	//carregarAssincCamposPersonalizadosGestaoDemandasNatura();
-	carregarAssincCamposPersonalizadosQuadroTestesDashboardNatura();
+	//carregarAssincCamposPersonalizadosQuadroTestesDashboardNatura();
+	carregarAssincCamposPersonalizados( idBoardDadosCarregados );
 	
 	//carregarAssincCardsGestaoDemandasNatura();
-	carregarAssincCardsQuadroTestesDashboardNatura();
+	//carregarAssincCardsQuadroTestesDashboardNatura();
+	carregarAssincCards( idBoardDadosCarregados );
 	
 	//carregarAssincListasGestaoDemandasNatura();
-	carregarAssincListasQuadroTestesDashboardNatura();
+	//carregarAssincListasQuadroTestesDashboardNatura();
+	carregarAssincListas( idBoardDadosCarregados );
 	
 	setTimeout( atualizarElementosTelaEDispararReqsAssinc, INTERVALO_TEMPO_REQUISICOES_ASSINC );
 }
