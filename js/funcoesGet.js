@@ -1411,7 +1411,7 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 	{
 		var indicePendencia = 0;
 		
-		itensCarrosselPendencias += '<div class="carousel-item active">';	
+		itensCarrosselPendencias += '<div class="carousel-item active"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Comentário</th></tr></thead><tbody>';	
 		
 		for
 		(
@@ -1421,17 +1421,17 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 		{
 			var pendencia = pendencias[indicePendencia];
 			
-			itensCarrosselPendencias += '<p>' + pendencia.idCartao + ' - ' 
-										+ pendencia.projeto + ' - ' 
-										+ pendencia.wp + ' - ' 
-										+ pendencia.textoComentario + '</p>';	
+			itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>' 
+										+ pendencia.projeto + '</td><td>' 
+										+ pendencia.wp + '</td><td>' 
+										+ pendencia.textoComentario.substr( 0, TAMANHO_MAXIMO_COMENTARIO_PENDENCIA ) + '</td></tr>';	
 		}
 		
-		itensCarrosselPendencias += '</div>';
+		itensCarrosselPendencias += '</tbody></table></div>';
 		
 		for( ; indicePendencia < pendencias.length; )
 		{
-			itensCarrosselPendencias += '<div class="carousel-item">';
+			itensCarrosselPendencias += '<div class="carousel-item"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Comentário</th></tr></thead><tbody>';
 			
 			for
 			(
@@ -1441,13 +1441,13 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 			{
 				var pendencia = pendencias[indicePendencia];
 				
-				itensCarrosselPendencias += '<p>' + pendencia.idCartao + ' - ' 
-											+ pendencia.projeto + ' - ' 
-											+ pendencia.wp + ' - ' 
-											+ pendencia.textoComentario + '</p>';	
+				itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>' 
+											+ pendencia.projeto + '</td><td>' 
+											+ pendencia.wp + '</td><td>' 
+											+ pendencia.textoComentario.substr( 0, TAMANHO_MAXIMO_COMENTARIO_PENDENCIA ) + '</td></tr>';	
 			}
 			
-			itensCarrosselPendencias += '</div>';
+			itensCarrosselPendencias += '</tbody></table></div>';
 		}
 		
 		

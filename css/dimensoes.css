@@ -63,7 +63,12 @@ html
 	border-top: 0px;
 }
 
-.carousel-item p
+.carousel-item table thead th
+{
+	font-size: 0.60em;
+}
+
+.carousel-item table tbody td
 {
 	font-size: 0.60em;
 }
