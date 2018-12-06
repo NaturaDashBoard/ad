@@ -833,9 +833,17 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 		}
 	}
 	
-	if( proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == '' )
+	var dataHoje = new Date();
+	
+	var dataHojeSemTemp = obterDataSemTempo( dataHoje );
+	
+	if
+	(
+		proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
+		|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade.getTime() < dataHojeSemTemp.getTime()
+	)
 	{
-		proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = new Date();
+		proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = dataHojeSemTemp;
 	}
 	
 	return proximaDataDisponibilidadeABAP;
