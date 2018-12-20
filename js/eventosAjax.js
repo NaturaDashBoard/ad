@@ -211,11 +211,7 @@ function doneGetCamposPersonalizados( data )
 	console.log( camposPersonalizadosCarregados );
 	console.groupEnd( "camposPersonalizadosCarregados" );
 
-	/*
-	atualizarOTDABAP();
-	atualizarOTDFUNC();
-	atualizarDisponibilidadeTimeABAP();
-	*/
+	carregarAssincCards( idBoardDadosCarregados );
 }
 
 function failGetCamposPersonalizados( jqXHR, textStatus, data )
@@ -328,15 +324,7 @@ function doneGetCards( data )
 	console.log( cardsCarregados );
 	console.groupEnd( "cardsCarregados" );
 	
-	/*
-	atualizarFTRABAP();
-	atualizarOTDABAP();
-	atualizarFTRFUNC();
-	atualizarOTDFUNC();
-	atualizarQuantidadeSIRs();
-	atualizarDisponibilidadeTimeABAP();
-	atualizarPercentualCartoesPorFase();
-	*/
+	carregarAssincListas( idBoardDadosCarregados );
 }
 
 function failGetCards( jqXHR, textStatus, data )
@@ -457,13 +445,9 @@ function doneGetListas( data )
 	console.log( listasCarregadas );
 	console.groupEnd( "listasCarregadas" );
 
-	/*
-	atualizarFTRABAP();
-	atualizarOTDABAP();
-	atualizarFTRFUNC();
-	atualizarOTDFUNC();
-	atualizarPercentualCartoesPorFase();
-	*/
+	atualizarElementosTela();
+	
+	carregarAssincCamposPersonalizados( idBoardDadosCarregados );
 }
 
 function failGetListas( jqXHR, textStatus, data )

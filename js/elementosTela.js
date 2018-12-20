@@ -17,4 +17,5 @@ var totalHorasABAPEntregue = $( '#totalHorasABAPEntregue' );
 var totalHorasABAPBacklog = $( '#totalHorasABAPBacklog' );
 var selectProjeto = $( '#selectProjeto' );
 var selectRelease = $( '#selectRelease' );
+var carrosselPendencias = $( '#carrosselPendencias' );
 var itensCarrosselPendencias = $( '#itensCarrosselPendencias' );

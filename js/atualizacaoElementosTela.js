@@ -352,11 +352,48 @@ function atualizarFiltroRelease()
 	selectRelease.val( valorSelecionado );
 }
 
-function atualizarItensCarrosselPendencias( nomeProjeto, dataRelease )
+function atualizarItensCarrosselPendencias()
 {
+	//console.log( 'atualizarItensCarrosselPendencias' );
+	
+	var nomeProjeto = obterNomeProjetoSelecionado();
+	
+	var dataRelease = obterDataReleaseSelecionada();
+	
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
 	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasCarregadas, camposPersonalizadosCarregados ) );
+}
+
+function atualizarElementosTela()
+{
+	var nomeProjeto = obterNomeProjetoSelecionado();
+	
+	var dataRelease = obterDataReleaseSelecionada();
+	
+	atualizarFTRABAP( nomeProjeto, dataRelease );
+	
+	atualizarOTDABAP( nomeProjeto, dataRelease );
+	
+	atualizarFTRFUNC( nomeProjeto, dataRelease );
+	
+	atualizarOTDFUNC( nomeProjeto, dataRelease );
+	
+	atualizarQuantidadeSIRs( nomeProjeto, dataRelease );
+	
+	atualizarDisponibilidadeTimeABAP();
+	
+	atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease );
+	
+	atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease );
+	
+	atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease );
+	
+	atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease );
+	
+	atualizarFiltroProjeto();
+	
+	atualizarFiltroRelease();
 }

@@ -1463,3 +1463,31 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 	
 	return itensCarrosselPendencias;
 }
+
+function obterNomeProjetoSelecionado()
+{
+	var nomeProjeto = undefined;
+	
+	var valorSelecionadoProjeto = selectProjeto.val();
+	
+	if( valorSelecionadoProjeto != OPCAO_FILTRO_TODOS )
+	{
+		nomeProjeto = valorSelecionadoProjeto;
+	}
+	
+	return nomeProjeto;
+}
+
+function obterDataReleaseSelecionada()
+{
+	var dataRelease = undefined;
+	
+	var valorSelecionadoRelease = selectRelease.val();
+	
+	if( valorSelecionadoRelease != OPCAO_FILTRO_TODOS )
+	{
+		dataRelease = valorSelecionadoRelease;
+	}
+	
+	return dataRelease;
+}
