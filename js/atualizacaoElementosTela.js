@@ -356,15 +356,30 @@ function atualizarItensCarrosselPendencias()
 {
 	//console.log( 'atualizarItensCarrosselPendencias' );
 	
+	/*
 	var nomeProjeto = obterNomeProjetoSelecionado();
 	
 	var dataRelease = obterDataReleaseSelecionada();
+	*/
 	
-	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
+	var cards = cardsCarregados;
+	
+	/*
+	cards = obterCardsPorProjeto( nomeProjeto, cards, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	*/
 	
-	itensCarrosselPendencias.html( obterItensCarrosselPendencias( cards, listasCarregadas, camposPersonalizadosCarregados ) );
+	var textoItensCarrosselPendencias = obterItensCarrosselPendencias( cards, listasCarregadas, camposPersonalizadosCarregados );
+	
+	if( textoItensCarrosselPendencias == '' )
+	{
+		itensCarrosselPendencias.html( TEXTO_CARROSSEL_PENDENCIAS_VAZIO );
+	}
+	else
+	{
+		itensCarrosselPendencias.html( textoItensCarrosselPendencias );
+	}
 }
 
 function atualizarElementosTela()

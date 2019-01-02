@@ -20,6 +20,8 @@ const TIPO_DADO_AJAX_JSON = 'json';
 //const INTERVALO_TEMPO_REQUISICOES_ASSINC = 60000;  // Milissegundos;
 const TEMPO_PRIMEIRA_ATUALIZACAO_CARROSSEL_PENDENCIAS = 15000;  // Milissegundos;
 
+const TEXTO_CARROSSEL_PENDENCIAS_VAZIO = '<div class="carousel-item active">Não há Pendências.</div>';
+
 const NOME_LABEL_CCM = 'CCM';
 const NOME_LABEL_DEBUG = 'Debug';
 const NOME_LABEL_FD = 'FD';
