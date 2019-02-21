@@ -19,6 +19,11 @@ html
 	width: 100%;
 }
 
+.total-horas-abap
+{
+	padding-top: 3%;	
+}
+
 .row
 {
 	margin-top: 0px;
