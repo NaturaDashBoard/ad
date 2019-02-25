@@ -1499,7 +1499,7 @@ function validarSistemaOperacionalMobile()
 	if
 	(
 		navigator.appVersion.toString().includes( SO_ANDROID )
-		&& navigator.appVersion.toString().includes( SO_IOS_IPHONE )
+		|| navigator.appVersion.toString().includes( SO_IOS_IPHONE )
 	)
 	{
 		osMobile = true;
