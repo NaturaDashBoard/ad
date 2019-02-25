@@ -1498,8 +1498,8 @@ function validarSistemaOperacionalMobile()
 	
 	if
 	(
-		navigator.userAgent.toString().includes( SO_ANDROID )
-		&& navigator.userAgent.toString().includes( SO_IOS )
+		navigator.appVersion.toString().includes( SO_ANDROID )
+		&& navigator.appVersion.toString().includes( SO_IOS_IPHONE )
 	)
 	{
 		osMobile = true;

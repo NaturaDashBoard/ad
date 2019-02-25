@@ -93,8 +93,8 @@ const POSICAO_LEGENDA_GRAFICO_ESQUERDA = 'left';
 
 const OPCAO_FILTRO_TODOS = 'Todos';
 
-const SO_ANDROID = 'Android';
-const SO_IOS 	 = 'iOS';
+const SO_ANDROID 	= 'Android';
+const SO_IOS_IPHONE = 'iPhone';
 
 const TAG_CANVAS_PERC_FASE     = '<canvas id="grafPercentualCartoesPorFase"></canvas>';
 const TAG_CANVAS_PERC_ETIQUETA = '<canvas id="grafPercentualCartoesPorEtiqueta"></canvas>';
