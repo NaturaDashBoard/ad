@@ -131,71 +131,85 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 	
 	var percentualCardsListaEntregue = obterPercentualCardsLista( NOME_LISTA_ENTREGUE, listasCarregadas, cards );
 	
-	var dadosDataSetGrafico =
-	[
-		roundNumber( percentualCardsListaBacklogDemandas, 2 ),
-		roundNumber( percentualCardsListaBacklogSIR, 2 ),
-		roundNumber( percentualCardsListaEmAtendimento, 2 ),
-		roundNumber( percentualCardsListaPendenciasReprovados, 2 ),
-		roundNumber( percentualCardsListaEmRevisao, 2 ),
-		roundNumber( percentualCardsListaEntregue, 2 )
-	];
-	
-	if( graficoPercentualCartoesPorFase == undefined )
+	if( soMobile )
 	{
-		var labelsGrafico = 
-		[
-			NOME_LISTA_BACKLOG_DEMANDAS,
-			NOME_LISTA_BACKLOG_SIR,
-			NOME_LISTA_EM_ATENDIMENTO,
-			NOME_LISTA_PENDENCIAS_REPROVADOS,
-			NOME_LISTA_EM_REVISAO,
-			NOME_LISTA_ENTREGUE
-		];
+		var textoCorpoTabPercentualPorFase = '<tr><td>' + NOME_LISTA_BACKLOG_DEMANDAS 	   + '</td><td>' + roundNumber( percentualCardsListaBacklogDemandas, 2 ).toString().replace( '.', ',' ) 	  + '</td></tr>' +
+											 '<tr><td>' + NOME_LISTA_BACKLOG_SIR 	  	   + '</td><td>' + roundNumber( percentualCardsListaBacklogSIR, 2 ).toString().replace( '.', ',' ) 		  	  + '</td></tr>' +
+											 '<tr><td>' + NOME_LISTA_EM_ATENDIMENTO 	   + '</td><td>' + roundNumber( percentualCardsListaEmAtendimento, 2 ).toString().replace( '.', ',' ) 		  + '</td></tr>' +
+											 '<tr><td>' + NOME_LISTA_PENDENCIAS_REPROVADOS + '</td><td>' + roundNumber( percentualCardsListaPendenciasReprovados, 2 ).toString().replace( '.', ',' )  + '</td></tr>' +
+											 '<tr><td>' + NOME_LISTA_EM_REVISAO 		   + '</td><td>' + roundNumber( percentualCardsListaEmRevisao, 2 ).toString().replace( '.', ',' ) 			  + '</td></tr>' +
+											 '<tr><td>' + NOME_LISTA_ENTREGUE 			   + '</td><td>' + roundNumber( percentualCardsListaEntregue, 2 ).toString().replace( '.', ',' ) 			  + '</td></tr>';
 		
-		var dadosGrafico =
-		{
-			datasets: 
-			[
-				{
-					data: dadosDataSetGrafico,
-					backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_FASE,
-					label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
-				}
-			],
-			labels: labelsGrafico
-		};
-		
-		var opcoesGrafico = 
-		{
-			title:
-			{
-				display: true,
-				text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
-			},
-			legend:
-			{
-				position: POSICAO_LEGENDA_GRAFICO_ESQUERDA,
-			},
-			responsive: true
-		};
-		
-		var configsGrafico =
-		{
-			type: TIPO_GRAFICO_DOUGHNUT,
-			data: dadosGrafico,
-			options: opcoesGrafico
-		};
-
-		var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( TIPO_CONTEXT_2D );
-		
-		graficoPercentualCartoesPorFase = new Chart( contextGrafico, configsGrafico );
+		corpoTabPercentualPorFase.html( textoCorpoTabPercentualPorFase );
 	}
 	else
 	{
-		graficoPercentualCartoesPorFase.config.data.datasets[0].data = dadosDataSetGrafico;
+		var dadosDataSetGrafico =
+		[
+			roundNumber( percentualCardsListaBacklogDemandas, 2 ),
+			roundNumber( percentualCardsListaBacklogSIR, 2 ),
+			roundNumber( percentualCardsListaEmAtendimento, 2 ),
+			roundNumber( percentualCardsListaPendenciasReprovados, 2 ),
+			roundNumber( percentualCardsListaEmRevisao, 2 ),
+			roundNumber( percentualCardsListaEntregue, 2 )
+		];
 		
-		graficoPercentualCartoesPorFase.update();
+		if( graficoPercentualCartoesPorFase == undefined )
+		{
+			var labelsGrafico = 
+			[
+				NOME_LISTA_BACKLOG_DEMANDAS,
+				NOME_LISTA_BACKLOG_SIR,
+				NOME_LISTA_EM_ATENDIMENTO,
+				NOME_LISTA_PENDENCIAS_REPROVADOS,
+				NOME_LISTA_EM_REVISAO,
+				NOME_LISTA_ENTREGUE
+			];
+			
+			var dadosGrafico =
+			{
+				datasets: 
+				[
+					{
+						data: dadosDataSetGrafico,
+						backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_FASE,
+						label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
+					}
+				],
+				labels: labelsGrafico
+			};
+			
+			var opcoesGrafico = 
+			{
+				title:
+				{
+					display: true,
+					text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_FASE
+				},
+				legend:
+				{
+					position: POSICAO_LEGENDA_GRAFICO_ESQUERDA,
+				},
+				responsive: true
+			};
+			
+			var configsGrafico =
+			{
+				type: TIPO_GRAFICO_DOUGHNUT,
+				data: dadosGrafico,
+				options: opcoesGrafico
+			};
+
+			var contextGrafico = grafPercentualCartoesPorFase.get(0).getContext( TIPO_CONTEXT_2D );
+			
+			graficoPercentualCartoesPorFase = new Chart( contextGrafico, configsGrafico );
+		}
+		else
+		{
+			graficoPercentualCartoesPorFase.config.data.datasets[0].data = dadosDataSetGrafico;
+			
+			graficoPercentualCartoesPorFase.update();
+		}		
 	}
 }
 
@@ -255,75 +269,91 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
 	
 	var percentualCardsEtiquetaSIRERRO = obterPercentualCardsPorEtiqueta( NOME_LABEL_SIR_ERRO, cards );
 	
-	var dadosDataSetGrafico =
-	[
-		roundNumber( percentualCardsEtiquetaCCM, 2 ),
-		roundNumber( percentualCardsEtiquetaDebug, 2 ),
-		roundNumber( percentualCardsEtiquetaFD, 2 ),
-		roundNumber( percentualCardsEtiquetaSmallEnhancement, 2 ),
-		roundNumber( percentualCardsEtiquetaEstimativa, 2 ),
-		roundNumber( percentualCardsEtiquetaSIRFM, 2 ),
-		roundNumber( percentualCardsEtiquetaFM, 2 ),
-		roundNumber( percentualCardsEtiquetaSIRERRO, 2 )
-	];
-	
-	if( graficoPercentualCartoesPorEtiqueta == undefined )
+	if( soMobile )
 	{
-		var labelsGrafico = 
-		[
-			NOME_LABEL_CCM,
-			NOME_LABEL_DEBUG,
-			NOME_LABEL_FD,
-			NOME_LABEL_SMALL_ENHANCEMENT.substr( 0, 12 ) + '.',
-			NOME_LABEL_ESTIMATIVA,
-			NOME_LABEL_SIR_FM,
-			NOME_LABEL_FM,
-			NOME_LABEL_SIR_ERRO
-		];
+		var textoCorpoTabPercentualPorEtiqueta = '<tr><td>' + NOME_LABEL_CCM 	   		   + '</td><td>' + roundNumber( percentualCardsEtiquetaCCM, 2 ).toString().replace( '.', ',' ) 	  		 	 + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_DEBUG 	  	   	   + '</td><td>' + roundNumber( percentualCardsEtiquetaDebug, 2 ).toString().replace( '.', ',' ) 		  	 + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_FD 	   		   + '</td><td>' + roundNumber( percentualCardsEtiquetaFD, 2 ).toString().replace( '.', ',' ) 		  		 + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_SMALL_ENHANCEMENT + '</td><td>' + roundNumber( percentualCardsEtiquetaSmallEnhancement, 2 ).toString().replace( '.', ',' )  + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_ESTIMATIVA 	   + '</td><td>' + roundNumber( percentualCardsEtiquetaEstimativa, 2 ).toString().replace( '.', ',' ) 	     + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_SIR_FM 		   + '</td><td>' + roundNumber( percentualCardsEtiquetaSIRFM, 2 ).toString().replace( '.', ',' ) 			 + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_FM 			   + '</td><td>' + roundNumber( percentualCardsEtiquetaFM, 2 ).toString().replace( '.', ',' ) 			  	 + '</td></tr>' +
+												 '<tr><td>' + NOME_LABEL_SIR_ERRO 		   + '</td><td>' + roundNumber( percentualCardsEtiquetaSIRERRO, 2 ).toString().replace( '.', ',' ) 		 	 + '</td></tr>';
 		
-		var dadosGrafico =
-		{
-			datasets: 
-			[
-				{
-					data: dadosDataSetGrafico,
-					backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA,
-					label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
-				}
-			],
-			labels: labelsGrafico
-		};
-		
-		var opcoesGrafico = 
-		{
-			title:
-			{
-				display: true,
-				text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
-			},
-			legend:
-			{
-				position: POSICAO_LEGENDA_GRAFICO_TOPO,
-			},
-			responsive: true
-		};
-		
-		var configsGrafico =
-		{
-			type: TIPO_GRAFICO_BAR,
-			data: dadosGrafico,
-			options: opcoesGrafico
-		};
-
-		var contextGrafico = grafPercentualCartoesPorEtiqueta.get(0).getContext( TIPO_CONTEXT_2D );
-		
-		graficoPercentualCartoesPorEtiqueta = new Chart( contextGrafico, configsGrafico );
+		corpoTabPercentualPorEtiqueta.html( textoCorpoTabPercentualPorEtiqueta );		
 	}
 	else
 	{
-		graficoPercentualCartoesPorEtiqueta.config.data.datasets[0].data = dadosDataSetGrafico;
+		var dadosDataSetGrafico =
+		[
+			roundNumber( percentualCardsEtiquetaCCM, 2 ),
+			roundNumber( percentualCardsEtiquetaDebug, 2 ),
+			roundNumber( percentualCardsEtiquetaFD, 2 ),
+			roundNumber( percentualCardsEtiquetaSmallEnhancement, 2 ),
+			roundNumber( percentualCardsEtiquetaEstimativa, 2 ),
+			roundNumber( percentualCardsEtiquetaSIRFM, 2 ),
+			roundNumber( percentualCardsEtiquetaFM, 2 ),
+			roundNumber( percentualCardsEtiquetaSIRERRO, 2 )
+		];
 		
-		graficoPercentualCartoesPorEtiqueta.update();
+		if( graficoPercentualCartoesPorEtiqueta == undefined )
+		{
+			var labelsGrafico = 
+			[
+				NOME_LABEL_CCM,
+				NOME_LABEL_DEBUG,
+				NOME_LABEL_FD,
+				NOME_LABEL_SMALL_ENHANCEMENT.substr( 0, 12 ) + '.',
+				NOME_LABEL_ESTIMATIVA,
+				NOME_LABEL_SIR_FM,
+				NOME_LABEL_FM,
+				NOME_LABEL_SIR_ERRO
+			];
+			
+			var dadosGrafico =
+			{
+				datasets: 
+				[
+					{
+						data: dadosDataSetGrafico,
+						backgroundColor: CORES_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA,
+						label: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
+					}
+				],
+				labels: labelsGrafico
+			};
+			
+			var opcoesGrafico = 
+			{
+				title:
+				{
+					display: true,
+					text: TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA
+				},
+				legend:
+				{
+					position: POSICAO_LEGENDA_GRAFICO_TOPO,
+				},
+				responsive: true
+			};
+			
+			var configsGrafico =
+			{
+				type: TIPO_GRAFICO_BAR,
+				data: dadosGrafico,
+				options: opcoesGrafico
+			};
+
+			var contextGrafico = grafPercentualCartoesPorEtiqueta.get(0).getContext( TIPO_CONTEXT_2D );
+			
+			graficoPercentualCartoesPorEtiqueta = new Chart( contextGrafico, configsGrafico );
+		}
+		else
+		{
+			graficoPercentualCartoesPorEtiqueta.config.data.datasets[0].data = dadosDataSetGrafico;
+			
+			graficoPercentualCartoesPorEtiqueta.update();
+		}
 	}
 }
 

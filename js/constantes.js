@@ -92,3 +92,13 @@ const POSICAO_LEGENDA_GRAFICO_TOPO = 'top';
 const POSICAO_LEGENDA_GRAFICO_ESQUERDA = 'left';
 
 const OPCAO_FILTRO_TODOS = 'Todos';
+
+const SO_ANDROID = 'Android';
+const SO_IOS 	 = 'iOS';
+
+const TAG_CANVAS_PERC_FASE     = '<canvas id="grafPercentualCartoesPorFase"></canvas>';
+const TAG_CANVAS_PERC_ETIQUETA = '<canvas id="grafPercentualCartoesPorEtiqueta"></canvas>';
+
+const TAG_TABELA_PERC_FASE     = '<table><thead><tr><th>Fase</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorFase"></tbody></table>';
+const TAG_TABELA_PERC_ETIQUETA = '<table><thead><tr><th>Etiqueta</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorEtiqueta"></tbody></table>';
+

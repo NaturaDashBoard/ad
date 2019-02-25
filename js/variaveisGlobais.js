@@ -44,3 +44,5 @@ var graficoPercentualCartoesPorEtiqueta = undefined;
 var camposPersonalizadosCard = undefined;
 
 var anexosCard = undefined;
+
+var soMobile = false;

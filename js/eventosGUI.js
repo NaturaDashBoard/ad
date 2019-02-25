@@ -14,6 +14,26 @@ function inicializarBotoes()
 }
 */
 
+function inicializarTagsPercentuais()
+{
+	if( soMobile )
+	{
+		percentualCartoesPorFase.html( TAG_TABELA_PERC_FASE );
+		percentualCartoesPorEtiqueta.html( TAG_TABELA_PERC_ETIQUETA );
+		
+		corpoTabPercentualPorFase = $( '#corpoTabPercentualPorFase' );
+		corpoTabPercentualPorEtiqueta = $( '#corpoTabPercentualPorEtiqueta' );		
+	}
+	else
+	{
+		percentualCartoesPorFase.html( TAG_CANVAS_PERC_FASE );
+		percentualCartoesPorEtiqueta.html( TAG_CANVAS_PERC_ETIQUETA );
+		
+		grafPercentualCartoesPorFase = $( '#grafPercentualCartoesPorFase' );
+		grafPercentualCartoesPorEtiqueta = $( '#grafPercentualCartoesPorEtiqueta' );
+	}
+}
+
 function inicializarSelectOptions()
 {
 	selectProjeto.change( atualizarElementosTela );
@@ -56,6 +76,10 @@ function carregarAssincDadosTrello()
 
 function documentReady()
 {
+	soMobile = validarSistemaOperacionalMobile();
+	
+	inicializarTagsPercentuais();
+	
 	inicializarInputs();
 	
 	inicializarCarrosselListaPendencias();
