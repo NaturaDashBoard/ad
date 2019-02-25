@@ -5,11 +5,8 @@ html
 
 .custom-container
 {
-	/*margin: 0;*/
 	padding-top: 1%;
-	padding-left: 2%;
-	padding-right: 3%;
-	height: 100%;
+	padding-left: 30px;
 }
 
 .logo
@@ -76,4 +73,12 @@ html
 .carousel-item table tbody td
 {
 	font-size: 0.60em;
+}
+
+@media (min-width: 1081px)
+{
+	.col .row-col
+	{
+		margin-bottom: 10px;
+	}
 }
