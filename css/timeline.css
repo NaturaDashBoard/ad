@@ -157,11 +157,17 @@
 }
 
 /*
-@media (max-width: 1280px)
+@media (max-width: 1080px)
 {
-	.col-timeline
+	.col-timeline .timeline-container .timeline-content h3
 	{
-		width: 100%;
+		font-weight: bold;
+		font-size: 0.10em;
+	}
+
+	.col-timeline .timeline-container .timeline-content p
+	{
+		font-size: 0.05em;
 	}
 }
 */
