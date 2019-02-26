@@ -45,7 +45,7 @@
   padding: 10px 50px;
   position: relative;
   background-color: inherit;
-  width: 60%;
+  width: 61%;
 }
 
 /* The circles on the timeline */
@@ -54,7 +54,7 @@
   position: absolute;
   width: 25px;
   height: 25px;
-  right: -5.2%; /* Mais Negativo = Mais para a Direita*/
+  right: -3.1%; /* Mais Negativo = Mais para a Direita*/
   background-color: white;
   border: 4px solid #FF9F55;
   top: 15px;

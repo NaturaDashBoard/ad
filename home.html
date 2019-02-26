@@ -17,6 +17,7 @@
 		<link type="text/css" rel="stylesheet" href="css/dimensoes.css" />
 		<link type="text/css" rel="stylesheet" href="css/timeline.css" />
 		<link type="text/css" rel="stylesheet" href="css/fontes.css" />
+		<link type="text/css" rel="stylesheet" href="css/animacao_carregando.css" />
 	</head>
 
 	<body class="container-fluid custom-container">
@@ -70,12 +71,16 @@
 									<tbody>
 										<tr>
 											<th scope="row">ERRO:</th>
-											<td id="sirErro"></td>
+											<td id="sirErro">
+												<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+											</td>
 										</tr>
 										
 										<tr>
 											<th scope="row">FM:</th>
-											<td id="sirFM"></td>
+											<td id="sirFM">
+												<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+											</td>
 										</tr>
 									</tbody>
 								</table>
@@ -83,12 +88,16 @@
 						
 							<div class="col total-horas-abap">
 								<h1>Total de Horas ABAP Backlog</h1>
-								<h2 id="totalHorasABAPBacklog"></h2>
+								<h2 id="totalHorasABAPBacklog">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 							
 							<div class="col total-horas-abap">
 								<h1>Total de Horas ABAP Entregue</h1>
-								<h2 id="totalHorasABAPEntregue"></h2>
+								<h2 id="totalHorasABAPEntregue">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 						</div>
 					</div>
@@ -99,24 +108,32 @@
 						<div class="row">
 							<div class="col row-col">
 								<h1>FTR ABAP</h1>
-								<h2 id="ftrABAP"></h2>
+								<h2 id="ftrABAP">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 							
 							<div class="col">
 								<h1>OTD ABAP</h1>
-								<h2 id="otdABAP"></h2>
+								<h2 id="otdABAP">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col row-col">
 								<h1>FTR FUNC</h1>
-								<h2 id="ftrFUNC"></h2>
+								<h2 id="ftrFUNC">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 							
 							<div class="col">
 								<h1>OTD FUNC</h1>
-								<h2 id="otdFUNC"></h2>
+								<h2 id="otdFUNC">
+									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+								</h2>
 							</div>
 						</div>
 					</div>
@@ -125,11 +142,15 @@
 						<div class="row">
 							<div class="col col-xl-7 bg-color-transparent">
 								<div class="row">
-									<div id="percentualCartoesPorFase" class="col inner-col"></div>
+									<div id="percentualCartoesPorFase" class="col inner-col">
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</div>
 								</div>
 								
 								<div class="row">
-									<div id="percentualCartoesPorEtiqueta" class="col inner-col"></div>
+									<div id="percentualCartoesPorEtiqueta" class="col inner-col">
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</div>
 								</div>
 							</div>
 							
@@ -137,7 +158,9 @@
 								<div class="titulo-pendencias">Pendências</div>
 								
 								<div id="carrosselPendencias" class="carousel slide" data-ride="carousel">
-									<div id="itensCarrosselPendencias" class="carousel-inner"></div>
+									<div id="itensCarrosselPendencias" class="carousel-inner">
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -148,7 +171,9 @@
 			<div class="col col-xl-3 col-timeline h-50">
 				<div class="titulo-disponibilidade">Disponibilidade Recursos ABAP</div>
 				
-				<div id="disponibilidadeTimeABAP" class="timeline"></div>
+				<div id="disponibilidadeTimeABAP" class="timeline">
+					<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+				</div>
 			</div>
 		</div>
 		
