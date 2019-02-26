@@ -1491,19 +1491,3 @@ function obterDataReleaseSelecionada()
 	
 	return dataRelease;
 }
-
-function validarSistemaOperacionalMobile()
-{
-	var osMobile = false;
-	
-	if
-	(
-		navigator.appVersion.toString().includes( SO_ANDROID )
-		|| navigator.appVersion.toString().includes( SO_IOS_IPHONE )
-	)
-	{
-		osMobile = true;
-	}
-	
-	return osMobile;
-}

@@ -1,37 +1,12 @@
-/*
-function atualizarElementosTelaEDispararReqsAssinc()
-{
-	atualizarElementosTela();
-	
-	carregarAssincDadosTrello();
-}
-*/
-
-/*
-function inicializarBotoes()
-{
-	buttonAtualizarDados.click( atualizarElementosTela );
-}
-*/
-
 function inicializarTagsPercentuais()
 {
-	if( soMobile )
-	{
-		percentualCartoesPorFase.html( TAG_TABELA_PERC_FASE );
-		percentualCartoesPorEtiqueta.html( TAG_TABELA_PERC_ETIQUETA );
-		
-		corpoTabPercentualPorFase = $( '#corpoTabPercentualPorFase' );
-		corpoTabPercentualPorEtiqueta = $( '#corpoTabPercentualPorEtiqueta' );		
-	}
-	else
-	{
-		percentualCartoesPorFase.html( TAG_CANVAS_PERC_FASE );
-		percentualCartoesPorEtiqueta.html( TAG_CANVAS_PERC_ETIQUETA );
-		
-		grafPercentualCartoesPorFase = $( '#grafPercentualCartoesPorFase' );
-		grafPercentualCartoesPorEtiqueta = $( '#grafPercentualCartoesPorEtiqueta' );
-	}
+	soMobile = false;
+
+	percentualCartoesPorFase.html( TAG_CANVAS_PERC_FASE );
+	percentualCartoesPorEtiqueta.html( TAG_CANVAS_PERC_ETIQUETA );
+	
+	grafPercentualCartoesPorFase = $( '#grafPercentualCartoesPorFase' );
+	grafPercentualCartoesPorEtiqueta = $( '#grafPercentualCartoesPorEtiqueta' );
 }
 
 function inicializarSelectOptions()
@@ -43,8 +18,6 @@ function inicializarSelectOptions()
 
 function inicializarInputs()
 {
-	//inicializarBotoes();
-	
 	inicializarSelectOptions();
 }
 
@@ -66,18 +39,10 @@ function inicializarCarrosselListaPendencias()
 function carregarAssincDadosTrello()
 {
 	carregarAssincCamposPersonalizados( idBoardDadosCarregados );
-	
-	//carregarAssincCards( idBoardDadosCarregados );
-	
-	//carregarAssincListas( idBoardDadosCarregados );
-	
-	//setTimeout( atualizarElementosTelaEDispararReqsAssinc, INTERVALO_TEMPO_REQUISICOES_ASSINC );
 }
 
 function documentReady()
 {
-	soMobile = validarSistemaOperacionalMobile();
-	
 	inicializarTagsPercentuais();
 	
 	inicializarInputs();
