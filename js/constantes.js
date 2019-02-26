@@ -96,6 +96,6 @@ const OPCAO_FILTRO_TODOS = 'Todos';
 const TAG_CANVAS_PERC_FASE     = '<canvas id="grafPercentualCartoesPorFase"></canvas>';
 const TAG_CANVAS_PERC_ETIQUETA = '<canvas id="grafPercentualCartoesPorEtiqueta"></canvas>';
 
-const TAG_TABELA_PERC_FASE     = '<table class="table table-striped table-bordered"><thead><tr><th>Fase</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorFase"></tbody></table>';
-const TAG_TABELA_PERC_ETIQUETA = '<table class="table table-striped table-bordered"><thead><tr><th>Etiqueta</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorEtiqueta"></tbody></table>';
+const TAG_TABELA_PERC_FASE     = '<table class="table table-striped"><thead><tr><th>Fase</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorFase"></tbody></table>';
+const TAG_TABELA_PERC_ETIQUETA = '<table class="table table-striped"><thead><tr><th>Etiqueta</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorEtiqueta"></tbody></table>';
 

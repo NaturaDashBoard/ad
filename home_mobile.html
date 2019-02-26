@@ -20,142 +20,130 @@
 	</head>
 
 	<body class="container-fluid custom-container">
-		<div class="row bg-color-transparent">
-			<div class="col bg-color-transparent" style="margin-right: 0px;">
+		<div class="row">
+			<div class="col">
 				<div class="row">
-					<div class="col">
-						<div class="row">
-							<div class="col inner-col col-xl-3" style="padding-left: 10px;">
-								<img class="logo" src="imgs/natura-logo-png-transparent.png" />
-							</div>
+					<div class="col inner-col col-xl-3" style="padding-left: 10px;">
+						<img class="logo" src="imgs/natura-logo-png-transparent.png" />
+					</div>
 
-							<div class="col inner-col">
-								<div class="row inner-row" style="margin-top: 9px;">
-									<div class="col col-xl-1">
-										<p style="font-size: 0.85em;">Projeto:</p>
-									</div>
-									
-									<div class="col bg-color-transparent" style="margin-left: 15px;">
-										<select id="selectProjeto" style="font-size: 0.80em;">
-											<option value="Todos">Todos</option>
-										</select>
-									</div>
-								</div>
-								
-								<div class="row inner-row" style="margin-top: 10px;">
-									<div class="col col-xl-1">
-										<p style="font-size: 0.85em;">Release:</p>
-									</div>
-									
-									<div class="col bg-color-transparent" style="margin-left: 15px;">
-										<select id="selectRelease" style="font-size: 0.80em;">
-											<option value="Todos">Todos</option>
-										</select>
-									</div>
-								</div>						
-							</div>
-						</div>
-					</div>
-					
-					<div class="col inner-col bg-color-transparent">
-						<div class="row inner-row">
-							<div class="col">
-								<table class="table">
-									<thead>
-										<tr>
-											<th scope="col">Quant. de SIRs</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-										<tr>
-											<th scope="row">ERRO:</th>
-											<td id="sirErro"></td>
-										</tr>
-										
-										<tr>
-											<th scope="row">FM:</th>
-											<td id="sirFM"></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						
-							<div class="col total-horas-abap">
-								<h1>Total de Horas ABAP Backlog</h1>
-								<h2 id="totalHorasABAPBacklog"></h2>
+					<div class="col inner-col">
+						<div class="row inner-row" style="margin-top: 9px;">
+							<div class="col col-xl-1">
+								<p style="font-size: 0.85em;">Projeto:</p>
 							</div>
 							
-							<div class="col total-horas-abap">
-								<h1>Total de Horas ABAP Entregue</h1>
-								<h2 id="totalHorasABAPEntregue"></h2>
+							<div class="col bg-color-transparent" style="margin-left: 15px;">
+								<select id="selectProjeto" style="font-size: 0.80em;">
+									<option value="Todos">Todos</option>
+								</select>
 							</div>
-						</div>
-					</div>
-				</div>
-			
-				<div class="row">
-					<div class="col inner-col col-xl-2 h-50 bg-color-transparent">
-						<div class="row">
-							<div class="col row-col">
-								<h1>FTR ABAP</h1>
-								<h2 id="ftrABAP"></h2>
-							</div>
-							
-							<div class="col">
-								<h1>OTD ABAP</h1>
-								<h2 id="otdABAP"></h2>
-							</div>							
 						</div>
 						
-						<div class="row">
-							<div class="col row-col">
-								<h1>FTR FUNC</h1>
-								<h2 id="ftrFUNC"></h2>
+						<div class="row inner-row" style="margin-top: 10px;">
+							<div class="col col-xl-1">
+								<p style="font-size: 0.85em;">Release:</p>
 							</div>
 							
-							<div class="col">
-								<h1>OTD FUNC</h1>
-								<h2 id="otdFUNC"></h2>
+							<div class="col bg-color-transparent" style="margin-left: 15px;">
+								<select id="selectRelease" style="font-size: 0.80em;">
+									<option value="Todos">Todos</option>
+								</select>
 							</div>
-						</div>
+						</div>						
 					</div>
+				</div>				
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Quant. de SIRs</th>
+						</tr>
+					</thead>
 					
-					<div class="col inner-col bg-color-transparent" style="margin-right: 0px;">
-						<div class="row">
-							<div class="col col-xl-7 bg-color-transparent">
-								<div class="row">
-									<div id="percentualCartoesPorFase" class="col inner-col"></div>
-								</div>
-								
-								<div class="row">
-									<div id="percentualCartoesPorEtiqueta" class="col inner-col"></div>
-								</div>
-							</div>
-							
-							<div class="col">
-								<div class="titulo-pendencias">Pendências</div>
-								
-								<div id="carrosselPendencias" class="carousel slide" data-ride="carousel">
-									<div id="itensCarrosselPendencias" class="carousel-inner"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+					<tbody>
+						<tr>
+							<th scope="row">ERRO:</th>
+							<td id="sirErro"></td>
+						</tr>
+						
+						<tr>
+							<th scope="row">FM:</th>
+							<td id="sirFM"></td>
+						</tr>
+					</tbody>
+				</table>				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col total-horas-abap">
+				<h1>Total de Horas ABAP Backlog</h1>
+				<h2 id="totalHorasABAPBacklog"></h2>
 			</div>
 			
-			<div class="col col-xl-3 col-timeline h-50">
+			<div class="col total-horas-abap">
+				<h1>Total de Horas ABAP Entregue</h1>
+				<h2 id="totalHorasABAPEntregue"></h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<h1>FTR ABAP</h1>
+				<h2 id="ftrABAP"></h2>				
+			</div>
+			
+			<div class="col">
+				<h1>OTD ABAP</h1>
+				<h2 id="otdABAP"></h2>
+			</div>			
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<h1>FTR FUNC</h1>
+				<h2 id="ftrFUNC"></h2>				
+			</div>
+			
+			<div class="col">
+				<h1>OTD FUNC</h1>
+				<h2 id="otdFUNC"></h2>				
+			</div>			
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<div id="percentualCartoesPorFase" class="col inner-col"></div>				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<div id="percentualCartoesPorEtiqueta" class="col inner-col"></div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<div class="titulo-pendencias">Pendências</div>
+				
+				<div id="carrosselPendencias" class="carousel slide" data-ride="carousel">
+					<div id="itensCarrosselPendencias" class="carousel-inner"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
 				<div class="titulo-disponibilidade">Disponibilidade Recursos ABAP</div>
 				
-				<div id="disponibilidadeTimeABAP" class="timeline"></div>
+				<div id="disponibilidadeTimeABAP" class="timeline"></div>				
 			</div>
-
-			<!--
-			<div class="row">
-				<button id="buttonAtualizarDados" class="btn btn-primary" style="margin-top: 10px;">Atualizar Dados</button>
-			</div>
-			-->
 		</div>
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
