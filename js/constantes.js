@@ -13,6 +13,8 @@ const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?ca
 const TEMPLATE_URL_CAMPOS_PERSONALIZADOS_CARD = 'https://api.trello.com/1/card/[CARD_ID]/?fields=name&customFieldItems=true&key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_ANEXOS_CARD = 'https://api.trello.com/1/cards/[CARD_ID]/attachments?key=' + API_KEY + '&token=' + TOKEN;
 
+const URL_RELATORIO_CARDS_TRELLO = 'https://naturadashboard.github.io/relatorio_cards_trello/';
+
 const TIPO_REQ_AJAX_GET = 'get';
 
 const TIPO_DADO_AJAX_JSON = 'json';
@@ -98,4 +100,3 @@ const TAG_CANVAS_PERC_ETIQUETA = '<canvas id="grafPercentualCartoesPorEtiqueta">
 
 const TAG_TABELA_PERC_FASE     = '<table class="table table-striped"><thead class="thead-tabela-percentual"><tr><th>Fase</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorFase"></tbody></table>';
 const TAG_TABELA_PERC_ETIQUETA = '<table class="table table-striped"><thead class="thead-tabela-percentual"><tr><th>Etiqueta</th><th>%</th></tr></thead><tbody id="corpoTabPercentualPorEtiqueta"></tbody></table>';
-

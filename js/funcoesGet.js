@@ -1457,8 +1457,6 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 			
 			itensCarrosselPendencias += '</tbody></table></div>';
 		}
-		
-		
 	}
 	
 	return itensCarrosselPendencias;

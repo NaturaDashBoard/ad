@@ -9,6 +9,17 @@ function inicializarTagsPercentuais()
 	grafPercentualCartoesPorEtiqueta = $( '#grafPercentualCartoesPorEtiqueta' );
 }
 
+function inicializarBotoes()
+{
+	botaoIrParaRelatorio.click
+	(
+		function ()
+		{
+			window.location.replace( URL_RELATORIO_CARDS_TRELLO );
+		}
+	);
+}
+
 function inicializarSelectOptions()
 {
 	selectProjeto.change( atualizarElementosTela );
@@ -18,6 +29,8 @@ function inicializarSelectOptions()
 
 function inicializarInputs()
 {
+	inicializarBotoes();
+	
 	inicializarSelectOptions();
 }
 
