@@ -3,6 +3,12 @@ html
 	height: 100%;
 }
 
+textarea
+{
+	resize: none;
+	font-size: 0.85em;
+}
+
 .custom-container
 {
 	padding-top: 1%;
@@ -18,7 +24,7 @@ html
 
 .total-horas-abap
 {
-	padding-top: 3%;	
+	padding-top: 1%;	
 }
 
 .row
@@ -74,13 +80,3 @@ html
 {
 	font-size: 0.60em;
 }
-
-/*
-@media (min-width: 1081px)
-{
-	.col .row-col
-	{
-		margin-bottom: 10px;
-	}
-}
-*/

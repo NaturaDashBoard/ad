@@ -1489,3 +1489,30 @@ function obterDataReleaseSelecionada()
 	
 	return dataRelease;
 }
+
+function validarStringNumero( stringNumero )
+{
+	return Number( stringNumero ) != NaN;
+}
+
+function obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados  )
+{
+	var cardsMesAno = [];
+	
+	if
+	(
+		mes != NaN
+		&& ano != NaN
+		&& mes > 0
+		&& ano > 0
+	)
+	{
+		
+	}
+	else
+	{
+		cardsMesAno = cards;
+	}
+	
+	return cardsMesAno;
+}

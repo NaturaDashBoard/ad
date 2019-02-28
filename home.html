@@ -22,16 +22,8 @@
 
 	<body class="container-fluid custom-container">
 		<div class="row bg-color-transparent">
-			<div class="col bg-color-transparent" style="margin-right: 0px;">
+			<div class="col col-8 bg-color-transparent" style="margin-right: 0px;">
 				<div class="row">
-					<!--
-					<div class="col bg-color-transparent">
-						<div class="row bg-color-transparent">
-							
-						</div>
-					</div>
-					-->
-					
 					<div class="col col-4 inner-col">
 						<div class="row">
 							<div class="col inner-col" style="padding-left: 10px;">
@@ -61,12 +53,30 @@
 											<option value="Todos">Todos</option>
 										</select>
 									</div>
-								</div>						
+								</div>
+								
+								<div class="row inner-row" style="margin-top: 10px;">
+									<div class="col col-1">
+										<p style="font-size: 0.85em;">Mês:</p>
+									</div>
+									
+									<div class="col col-2 bg-color-transparent" style="margin-left: 15px;">
+										<textarea id="campoTextoMes" rows=1 cols=3 maxlength="2" placeholder="DD"></textarea>
+									</div>
+									
+									<div class="col col-1">
+										<p style="font-size: 0.85em;">Ano:</p>
+									</div>
+									
+									<div class="col col-2 bg-color-transparent" >
+										<textarea id="campoTextoAno" rows=1 cols=5 maxlength="4" placeholder="AAAA"></textarea>
+									</div>									
+								</div>
 							</div>
 						</div>
 					</div>
 					
-					<div class="col col-2 inner-col bg-color-transparent">
+					<div class="col col-2 bg-color-transparent">
 						<div class="row inner-row">
 							<div class="col bg-color-transparent btn">
 								<button id="botaoIrParaRelatorio" class="btn">Ir para Relatório</button>
@@ -80,48 +90,44 @@
 						</div>
 					</div>
 					
-					<div class="col inner-col bg-color-transparent">
-						<div class="row inner-row">
-							<div class="col">
-								<table class="table">
-									<thead>
-										<tr>
-											<th scope="col">Quant. de SIRs</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-										<tr>
-											<th scope="row">ERRO:</th>
-											<td id="sirErro">
-												<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-											</td>
-										</tr>
-										
-										<tr>
-											<th scope="row">FM:</th>
-											<td id="sirFM">
-												<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						
-							<div class="col total-horas-abap">
-								<h1>Total de Horas ABAP Backlog</h1>
-								<h2 id="totalHorasABAPBacklog">
-									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-								</h2>
-							</div>
+					<div class="col col-2">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Quant. de SIRs</th>
+								</tr>
+							</thead>
 							
-							<div class="col total-horas-abap">
-								<h1>Total de Horas ABAP Entregue</h1>
-								<h2 id="totalHorasABAPEntregue">
-									<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-								</h2>
-							</div>
-						</div>
+							<tbody>
+								<tr>
+									<th scope="row">ERRO:</th>
+									<td id="sirErro">
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</td>
+								</tr>
+								
+								<tr>
+									<th scope="row">FM:</th>
+									<td id="sirFM">
+										<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				
+					<div class="col total-horas-abap">
+						<h1>Total de Horas ABAP Backlog</h1>
+						<h2 id="totalHorasABAPBacklog">
+							<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+						</h2>
+					</div>
+					
+					<div class="col total-horas-abap">
+						<h1>Total de Horas ABAP Entregue</h1>
+						<h2 id="totalHorasABAPEntregue">
+							<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+						</h2>
 					</div>
 				</div>
 			
@@ -194,7 +200,7 @@
 				</div>
 			</div>
 			
-			<div class="col col-xl-3 col-timeline h-50">
+			<div class="col col-3 col-timeline h-50">
 				<div class="titulo-disponibilidade">Disponibilidade Recursos ABAP</div>
 				
 				<div id="disponibilidadeTimeABAP" class="timeline">

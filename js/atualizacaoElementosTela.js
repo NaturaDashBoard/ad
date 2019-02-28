@@ -1,10 +1,12 @@
 /* ATUALIZAÇÃO DE ELEMENTOS DE TELA */
 
-function atualizarFTRABAP( nomeProjeto, dataRelease )
+function atualizarFTRABAP( nomeProjeto, dataRelease, mes, ano )
 {	
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -19,11 +21,13 @@ function atualizarFTRABAP( nomeProjeto, dataRelease )
 	ftrABAP.html( percentualTicketsFTRABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarOTDABAP( nomeProjeto, dataRelease )
+function atualizarOTDABAP( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -38,11 +42,13 @@ function atualizarOTDABAP( nomeProjeto, dataRelease )
 	otdABAP.html( percentualTicketsOTDABAPListaEntregueArredondado.toString() + '%' );
 }
 
-function atualizarFTRFUNC( nomeProjeto, dataRelease )
+function atualizarFTRFUNC( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -57,11 +63,13 @@ function atualizarFTRFUNC( nomeProjeto, dataRelease )
 	ftrFUNC.html( percentualTicketsFTRFUNCListaEntregueArredondado.toString() + '%' );		
 }
 
-function atualizarOTDFUNC( nomeProjeto, dataRelease )
+function atualizarOTDFUNC( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -90,11 +98,13 @@ function atualizarQuantidadeSIRsFM( cards )
 	sirFM.html( quantidadeSIRsFM );	
 }
 
-function atualizarQuantidadeSIRs( nomeProjeto, dataRelease )
+function atualizarQuantidadeSIRs( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	atualizarQuantidadeSIRsErro( cards );
 	atualizarQuantidadeSIRsFM( cards );
@@ -113,11 +123,13 @@ function atualizarDisponibilidadeTimeABAP()
 	);
 }
 
-function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
+function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( NOME_LISTA_BACKLOG_DEMANDAS, listasCarregadas, cards );
 	
@@ -213,11 +225,13 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease )
 	}
 }
 
-function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease )
+function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	totalHorasABAPEntregue.html
 	(
@@ -230,11 +244,13 @@ function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease )
 	);
 }
 
-function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease )
+function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	totalHorasABAPBacklog.html
 	(
@@ -247,11 +263,13 @@ function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease )
 	);
 }
 
-function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease )
+function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease, mes, ano )
 {
 	var cards = obterCardsPorProjeto( nomeProjeto, cardsCarregados, camposPersonalizadosCarregados );
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
+	
+	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
 	
 	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( NOME_LABEL_CCM, cards );
 	
@@ -384,21 +402,7 @@ function atualizarFiltroRelease()
 
 function atualizarItensCarrosselPendencias()
 {
-	//console.log( 'atualizarItensCarrosselPendencias' );
-	
-	/*
-	var nomeProjeto = obterNomeProjetoSelecionado();
-	
-	var dataRelease = obterDataReleaseSelecionada();
-	*/
-	
 	var cards = cardsCarregados;
-	
-	/*
-	cards = obterCardsPorProjeto( nomeProjeto, cards, camposPersonalizadosCarregados );
-	
-	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
-	*/
 	
 	var textoItensCarrosselPendencias = obterItensCarrosselPendencias( cards, listasCarregadas, camposPersonalizadosCarregados );
 	
@@ -418,25 +422,29 @@ function atualizarElementosTela()
 	
 	var dataRelease = obterDataReleaseSelecionada();
 	
-	atualizarFTRABAP( nomeProjeto, dataRelease );
+	var mes = Number( campoTextoMes.val() );
 	
-	atualizarOTDABAP( nomeProjeto, dataRelease );
+	var ano = Number( campoTextoAno.val() );
 	
-	atualizarFTRFUNC( nomeProjeto, dataRelease );
+	atualizarFTRABAP( nomeProjeto, dataRelease, mes, ano );
 	
-	atualizarOTDFUNC( nomeProjeto, dataRelease );
+	atualizarOTDABAP( nomeProjeto, dataRelease, mes, ano );
 	
-	atualizarQuantidadeSIRs( nomeProjeto, dataRelease );
+	atualizarFTRFUNC( nomeProjeto, dataRelease, mes, ano );
+	
+	atualizarOTDFUNC( nomeProjeto, dataRelease, mes, ano );
+	
+	atualizarQuantidadeSIRs( nomeProjeto, dataRelease, mes, ano );
 	
 	atualizarDisponibilidadeTimeABAP();
 	
-	atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease );
+	atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease, mes, ano );
 	
-	atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease );
+	atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease, mes, ano );
 	
-	atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease );
+	atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease, mes, ano );
 	
-	atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease );
+	atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease, mes, ano );
 	
 	atualizarFiltroProjeto();
 	

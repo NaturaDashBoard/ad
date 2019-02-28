@@ -20,6 +20,12 @@ function inicializarBotoes()
 	);
 }
 
+function inicializarTextAreas()
+{
+	campoTextoMes[0].oninput = atualizarElementosTela;
+	campoTextoAno[0].oninput = atualizarElementosTela;
+}
+
 function inicializarSelectOptions()
 {
 	selectProjeto.change( atualizarElementosTela );
@@ -30,6 +36,8 @@ function inicializarSelectOptions()
 function inicializarInputs()
 {
 	inicializarBotoes();
+	
+	inicializarTextAreas();
 	
 	inicializarSelectOptions();
 }

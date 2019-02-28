@@ -3,6 +3,16 @@
 var botaoIrParaRelatorio 		= $( '#botaoIrParaRelatorio' );
 var botaoExtrairDadosGerenciais = $( '#botaoExtrairDadosGerenciais' );
 
+/* Text Areas */
+
+var campoTextoMes = $( '#campoTextoMes' );
+var campoTextoAno = $( '#campoTextoAno' );
+
+/* Select Options */
+
+var selectProjeto = $( '#selectProjeto' );
+var selectRelease = $( '#selectRelease' );
+
 /* Elementos de Saída */
 
 var ftrABAP 					 = $( '#ftrABAP' );
@@ -16,8 +26,6 @@ var percentualCartoesPorEtiqueta = $( '#percentualCartoesPorEtiqueta' );
 var percentualCartoesPorFase 	 = $( '#percentualCartoesPorFase' );
 var totalHorasABAPEntregue 	 	 = $( '#totalHorasABAPEntregue' );
 var totalHorasABAPBacklog 		 = $( '#totalHorasABAPBacklog' );
-var selectProjeto 				 = $( '#selectProjeto' );
-var selectRelease 				 = $( '#selectRelease' );
 var carrosselPendencias 		 = $( '#carrosselPendencias' );
 var itensCarrosselPendencias 	 = $( '#itensCarrosselPendencias' );
 
