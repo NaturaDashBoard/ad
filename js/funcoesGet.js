@@ -611,7 +611,7 @@ function validarTicketSemOTDABAP( card, cards, camposPersonalizadosBoard )
 				
 				var dataFimConstrucaoSemTempo = obterDataSemTempo( dataFimConstrucao );
 				
-				var dataCriacaoCardAction = new Date( cardAction['date'] )
+				var dataCriacaoCardAction = new Date( cardAction['date'] );
 				
 				var dataCriacaoCardActionSemTempo = obterDataSemTempo( dataCriacaoCardAction );
 				
@@ -1495,9 +1495,51 @@ function validarStringNumero( stringNumero )
 	return Number( stringNumero ) != NaN;
 }
 
+function obterDataHoraCardMovidoParaLista( card, nomeLista )
+{
+	var dataHoraMovidoParaLista = undefined;
+	
+	var actionsCard = card['actions'];
+
+	for( indiceCardAction = 0; indiceCardAction < actionsCard.length; ++indiceCardAction )
+	{
+		var cardAction = actionsCard[indiceCardAction];
+		
+		var dadosCardAction = cardAction['data'];
+		
+		var nomeListaDestino = undefined;
+		
+		var listaDestino = dadosCardAction['list'];
+		if( listaDestino == undefined )
+		{
+			listaDestino = dadosCardAction['listAfter'];
+		}
+		
+		if( listaDestino != undefined )
+		{
+			nomeListaDestino = listaDestino['name'];	
+		}
+		
+		if
+		(
+			cardAction['type'] == TIPO_ACTION_UPDATE_CARD
+			&& nomeListaDestino == nomeLista
+		)
+		{
+			dataHoraMovidoParaLista = new Date( cardAction['date'] );
+			
+			break;
+		}
+	}
+	
+	return dataHoraMovidoParaLista;
+}
+
 function obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados  )
 {
 	var cardsMesAno = [];
+	
+	var dataMesAno = new Date( ano, ( mes - 1 ) );
 	
 	if
 	(
@@ -1507,7 +1549,21 @@ function obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados  )
 		&& ano > 0
 	)
 	{
-		
+		for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+		{
+			var card = cards[indiceCard];
+			
+			var dataHoraMovidoParaEmAtendimento = obterDataHoraCardMovidoParaLista( card, NOME_LISTA_EM_ATENDIMENTO );
+			
+			if
+			(
+				dataHoraMovidoParaEmAtendimento != undefined
+				&& dataHoraMovidoParaEmAtendimento.getTime() >= dataMesAno.getTime()
+			)
+			{
+				cardsMesAno.push( card );
+			}
+		}
 	}
 	else
 	{
