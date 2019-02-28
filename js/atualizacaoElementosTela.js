@@ -6,7 +6,7 @@ function atualizarFTRABAP( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -27,7 +27,7 @@ function atualizarOTDABAP( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -48,7 +48,7 @@ function atualizarFTRFUNC( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -69,7 +69,7 @@ function atualizarOTDFUNC( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listasCarregadas );
 	
@@ -104,7 +104,7 @@ function atualizarQuantidadeSIRs( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	atualizarQuantidadeSIRsErro( cards );
 	atualizarQuantidadeSIRsFM( cards );
@@ -129,7 +129,7 @@ function atualizarPercentualCartoesPorFase( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	var percentualCardsListaBacklogDemandas = obterPercentualCardsLista( NOME_LISTA_BACKLOG_DEMANDAS, listasCarregadas, cards );
 	
@@ -231,7 +231,7 @@ function atualizarTotalHorasABAPEntregue( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	totalHorasABAPEntregue.html
 	(
@@ -250,7 +250,7 @@ function atualizarTotalHorasABAPBacklog( nomeProjeto, dataRelease, mes, ano )
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	totalHorasABAPBacklog.html
 	(
@@ -269,7 +269,7 @@ function atualizarPercentualCartoesPorEtiqueta( nomeProjeto, dataRelease, mes, a
 	
 	cards = obterCardsPorRelease( dataRelease, cards, camposPersonalizadosCarregados );
 	
-	cards = obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados );
+	cards = obterCardsPorMesAno( mes, ano, cards, listasCarregadas );
 	
 	var percentualCardsEtiquetaCCM = obterPercentualCardsPorEtiqueta( NOME_LABEL_CCM, cards );
 	

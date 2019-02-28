@@ -1535,9 +1535,36 @@ function obterDataHoraCardMovidoParaLista( card, nomeLista )
 	return dataHoraMovidoParaLista;
 }
 
-function obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados  )
+function obterCardsSemExemplos( cards )
+{
+	var cardsSemExemplos = [];
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var nomeCard = card['name'];
+		
+		if
+		(
+			nomeCard != NOME_CARD_TICKET_EXEMPLO
+			&& nomeCard != NOME_CARD_SIR_EXEMPLO
+		)
+		{
+			cardsSemExemplos.push( card );
+		}
+	}	
+	
+	return cardsSemExemplos;
+}
+
+function obterCardsPorMesAno( mes, ano, cards, listas )
 {
 	var cardsMesAno = [];
+	
+	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listas );
+	
+	var cardsSemExemplos = obterCardsSemExemplos( cards );
 	
 	var dataMesAno = new Date( ano, ( mes - 1 ) );
 	
@@ -1549,25 +1576,33 @@ function obterCardsPorMesAno( mes, ano, cards, camposPersonalizadosCarregados  )
 		&& ano > 0
 	)
 	{
-		for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+		for( indiceCard = 0; indiceCard < cardsSemExemplos.length; ++indiceCard )
 		{
-			var card = cards[indiceCard];
+			var card = cardsSemExemplos[indiceCard];
+
+			var idListCard = card['idList'];
 			
-			var dataHoraMovidoParaEmAtendimento = obterDataHoraCardMovidoParaLista( card, NOME_LISTA_EM_ATENDIMENTO );
-			
-			if
-			(
-				dataHoraMovidoParaEmAtendimento != undefined
-				&& dataHoraMovidoParaEmAtendimento.getTime() >= dataMesAno.getTime()
-			)
+			if( idListCard != idListaEntregue )
 			{
-				cardsMesAno.push( card );
+				var dataHoraMovidoParaEmAtendimento = obterDataHoraCardMovidoParaLista( card, NOME_LISTA_EM_ATENDIMENTO );
+					
+				if
+				(
+					dataHoraMovidoParaEmAtendimento != undefined && 
+					(
+						dataHoraMovidoParaEmAtendimento.getMonth() <= dataMesAno.getMonth()
+						|| dataHoraMovidoParaEmAtendimento.getFullYear() < dataMesAno.getFullYear()
+					)
+				)
+				{
+					cardsMesAno.push( card );
+				}
 			}
 		}
 	}
 	else
 	{
-		cardsMesAno = cards;
+		cardsMesAno = cardsSemExemplos;
 	}
 	
 	return cardsMesAno;
