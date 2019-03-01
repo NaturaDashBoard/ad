@@ -1607,3 +1607,16 @@ function obterCardsPorMesAno( mes, ano, cards, listas )
 	
 	return cardsMesAno;
 }
+
+function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProjeto, dataRelease, mes, ano )
+{
+	var cardsFiltrados = cards;
+	
+	cardsFiltrados = obterCardsPorProjeto( nomeProjeto, cardsFiltrados, camposPersonalizadosBoard );
+	
+	cardsFiltrados = obterCardsPorRelease( dataRelease, cardsFiltrados, camposPersonalizadosBoard );
+	
+	cardsFiltrados = obterCardsPorMesAno( mes, ano, cardsFiltrados, listas );
+	
+	return cardsFiltrados;
+}
