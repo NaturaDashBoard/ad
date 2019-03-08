@@ -15,7 +15,7 @@ function inicializarBotoes()
 	(
 		function ()
 		{
-			window.location.replace( URL_RELATORIO_CARDS_TRELLO );
+			window.location.href = URL_RELATORIO_CARDS_TRELLO;
 		}
 	);
 }
