@@ -13,7 +13,8 @@ const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?ca
 const TEMPLATE_URL_CAMPOS_PERSONALIZADOS_CARD = 'https://api.trello.com/1/card/[CARD_ID]/?fields=name&customFieldItems=true&key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_ANEXOS_CARD = 'https://api.trello.com/1/cards/[CARD_ID]/attachments?key=' + API_KEY + '&token=' + TOKEN;
 
-const URL_RELATORIO_CARDS_TRELLO = 'https://naturadashboard.github.io/relatorio_cards_trello/';
+const URL_RELATORIO_CARDS_TRELLO 	 = 'https://naturadashboard.github.io/relatorio_cards_trello/';
+const URL_RELATORIO_DADOS_GERENCIAIS = 'https://naturadashboard.github.io/dados_gerenciais/';
 
 const TIPO_REQ_AJAX_GET = 'get';
 

@@ -18,6 +18,14 @@ function inicializarBotoes()
 			window.location.href = URL_RELATORIO_CARDS_TRELLO;
 		}
 	);
+	
+	botaoExtrairDadosGerenciais.click
+	(
+		function ()
+		{
+			window.location.href = URL_RELATORIO_DADOS_GERENCIAIS;
+		}
+	);
 }
 
 function inicializarTextAreas()
