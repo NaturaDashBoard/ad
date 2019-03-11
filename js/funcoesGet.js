@@ -1608,7 +1608,7 @@ function obterCardsPorMesAno( mes, ano, cards, listas )
 	return cardsMesAno;
 }
 
-function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProjeto, dataRelease, mes, ano )
+function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProjeto, dataRelease/*, mes, ano*/ )
 {
 	var cardsFiltrados = cards;
 	
@@ -1616,7 +1616,7 @@ function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProj
 	
 	cardsFiltrados = obterCardsPorRelease( dataRelease, cardsFiltrados, camposPersonalizadosBoard );
 	
-	cardsFiltrados = obterCardsPorMesAno( mes, ano, cardsFiltrados, listas );
+	// cardsFiltrados = obterCardsPorMesAno( mes, ano, cardsFiltrados, listas );
 	
 	return cardsFiltrados;
 }

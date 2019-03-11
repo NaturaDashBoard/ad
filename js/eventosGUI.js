@@ -30,8 +30,10 @@ function inicializarBotoes()
 
 function inicializarTextAreas()
 {
+	/*
 	campoTextoMes[0].oninput = atualizarElementosTela;
 	campoTextoAno[0].oninput = atualizarElementosTela;
+	*/
 }
 
 function inicializarSelectOptions()
