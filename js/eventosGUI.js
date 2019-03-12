@@ -19,7 +19,7 @@ function inicializarBotoes()
 		}
 	);
 	
-	botaoExtrairDadosGerenciais.click
+	botaoIrParaDadosGerenciais.click
 	(
 		function ()
 		{

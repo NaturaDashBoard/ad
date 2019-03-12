@@ -1,7 +1,7 @@
 /* Botões */
 
-var botaoIrParaRelatorio 		= $( '#botaoIrParaRelatorio' );
-var botaoExtrairDadosGerenciais = $( '#botaoExtrairDadosGerenciais' );
+var botaoIrParaRelatorio 	   = $( '#botaoIrParaRelatorio' );
+var botaoIrParaDadosGerenciais = $( '#botaoIrParaDadosGerenciais' );
 
 /* Text Areas */
 
