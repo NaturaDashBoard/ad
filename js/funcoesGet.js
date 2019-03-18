@@ -378,7 +378,17 @@ function obterNumeroTicketDaSIR( cardSIR )
 	if( nomeCardSIR != null )
 	{
 		var indicePrimeiroDigitoNumeroSIR = nomeCardSIR.indexOf( '-N' ) + 2;
-		var indiceAposUltimoDigitoNumeroSIR = nomeCardSIR.indexOf( '-' );
+		var indiceAposUltimoDigitoNumeroSIR = -1;
+		
+		for( indiceCaractere = indicePrimeiroDigitoNumeroSIR; indiceCaractere < nomeCardSIR.length; ++indiceCaractere )
+		{
+			if( nomeCardSIR[indiceCaractere] == '-' )
+			{
+				indiceAposUltimoDigitoNumeroSIR = indiceCaractere;
+				
+				break;
+			}
+		}
 		
 		if( indicePrimeiroDigitoNumeroSIR < indiceAposUltimoDigitoNumeroSIR )
 		{
