@@ -377,8 +377,8 @@ function obterNumeroTicketDaSIR( cardSIR )
 	
 	if( nomeCardSIR != null )
 	{
-		var indicePrimeiroDigitoNumeroSIR = nomeCardSIR.indexOf( '[N' ) + 2;
-		var indiceAposUltimoDigitoNumeroSIR = nomeCardSIR.indexOf( ']' );
+		var indicePrimeiroDigitoNumeroSIR = nomeCardSIR.indexOf( '-N' ) + 2;
+		var indiceAposUltimoDigitoNumeroSIR = nomeCardSIR.indexOf( '-' );
 		
 		if( indicePrimeiroDigitoNumeroSIR < indiceAposUltimoDigitoNumeroSIR )
 		{

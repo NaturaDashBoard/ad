@@ -35,7 +35,7 @@ const NOME_LABEL_FM = 'FM';
 const NOME_LABEL_SIR_ERRO = 'SIR ERRO';
 
 const NOME_CARD_TICKET_EXEMPLO = 'Ticket Exemplo';
-const NOME_CARD_SIR_EXEMPLO = 'SIR-[NXX] - WPYY';
+const NOME_CARD_SIR_EXEMPLO = 'SIR-NXX- WPYY';
 
 const INICIO_NOME_ANEXO_EF = 'EF_';
 
