@@ -1066,7 +1066,10 @@ function obterQuantidadeHorasABAPCards( cards, camposPersonalizadosBoard )
 			
 			var valorCampoPersonalizadoHorasABAP = obterValorCampoPersonalizadoCard( idCampoPersonalizadoHorasABAP, itemsCamposPersonalizadosCard, camposPersonalizadosBoard );
 			
-			quantidadeHorasABAP += Number( valorCampoPersonalizadoHorasABAP['number'] );	
+			if( valorCampoPersonalizadoHorasABAP != undefined )
+			{
+				quantidadeHorasABAP += Number( valorCampoPersonalizadoHorasABAP['number'] );
+			}
 		}
 	}
 	
