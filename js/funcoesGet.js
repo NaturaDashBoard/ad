@@ -452,45 +452,75 @@ function obterQuantidadeTicketsFTRABAPLista( idLista, cards )
 	return quantidadeTicketsFTRABAPLista;
 }
 
-function validarTicketSemFTRFUNC( card )
+function obterValorCampoPersonalizadoActionCard( idCampoPersonalizado, itemCampoPersonalizadoActionCard, camposPersonalizadosBoard )
+{
+	var valorCampoPersonalizado = undefined;
+	
+	if( itemCampoPersonalizadoActionCard['idCustomField'] == idCampoPersonalizado )
+	{
+		valorCampoPersonalizado = itemCampoPersonalizadoActionCard['value'];
+		
+		if( valorCampoPersonalizado == undefined )
+		{
+			var idValorCampoPersonalizado = itemCampoPersonalizadoActionCard['idValue'];
+			
+			var opcoesCampoPersonalizadoBoard = obterCampoPersonalizadoPeloID( idCampoPersonalizado, camposPersonalizadosBoard )['options'];
+			
+			for( indiceOpcaoCampoPersonalizadoBoard = 0; indiceOpcaoCampoPersonalizadoBoard < opcoesCampoPersonalizadoBoard.length; ++indiceOpcaoCampoPersonalizadoBoard )
+			{
+				var opcaoCampoPersonalizadoBoard = opcoesCampoPersonalizadoBoard[indiceOpcaoCampoPersonalizadoBoard];
+				
+				if( opcaoCampoPersonalizadoBoard['id'] == idValorCampoPersonalizado )
+				{
+					valorCampoPersonalizado = opcaoCampoPersonalizadoBoard['value'];
+					
+					break;
+				}
+			}
+		}
+	}
+	
+	return valorCampoPersonalizado;
+}
+
+function validarTicketSemFTRFUNC( card, camposPersonalizadosBoard )
 {
 	var idCard = card['id'];
 	
 	var actionsCard = card['actions'];
 	
+	var idCampoPersonalizadoPendenciaReprovacao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PENDENCIA_REPROVACAO, camposPersonalizadosBoard );
+	
 	for( indiceCardAction = 0; indiceCardAction < actionsCard.length; ++indiceCardAction )
 	{
 		var cardAction = actionsCard[indiceCardAction];
 		
-		var dadosCardAction = cardAction['data'];
-		
-		var nomeListaDestino = undefined;
-		
-		var listaDestino = dadosCardAction['list'];
-		if( listaDestino == undefined )
+		if( cardAction['type'] == TIPO_ACTION_UPDATE_CUSTOM_FIELD_ITEM )
 		{
-			listaDestino = dadosCardAction['listAfter'];
-		}
+			var dadosCardAction = cardAction['data'];
 		
-		
-		if( listaDestino != undefined )
-		{
-			nomeListaDestino = listaDestino['name'];	
-		}
-		
-		if
-		(
-			cardAction['type'] == TIPO_ACTION_UPDATE_CARD
-			&& nomeListaDestino == NOME_LISTA_PENDENCIAS_REPROVADOS
-		)
-		{
-			return true;
+			var itemCampoPersonalizadoActionCard = dadosCardAction['customFieldItem'];
+			
+			if( itemCampoPersonalizadoActionCard != undefined )
+			{
+				var valorItemCampoPersonalizadoActionCard = obterValorCampoPersonalizadoActionCard( idCampoPersonalizadoPendenciaReprovacao, itemCampoPersonalizadoActionCard, camposPersonalizadosBoard );
+				
+				if
+				(
+					valorItemCampoPersonalizadoActionCard != undefined
+					&& valorItemCampoPersonalizadoActionCard.text == PENDENCIA_REPROVACAO_FUNCIONAL
+				)
+				{
+					return true;
+				}
+			}
 		}
 	}
+	
 	return false;
 }
 
-function obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards )
+function obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards, camposPersonalizadosBoard )
 {
 	var quantidadeTicketsSemFTRFUNC = 0;
 	
@@ -500,7 +530,7 @@ function obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards )
 	{
 		var card = cardsTicketFDFM[indiceCardTicket];
 		
-		if( validarTicketSemFTRFUNC( card ) )
+		if( validarTicketSemFTRFUNC( card, camposPersonalizadosBoard ) )
 		{
 			++quantidadeTicketsSemFTRFUNC;
 		}
@@ -509,11 +539,11 @@ function obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards )
 	return quantidadeTicketsSemFTRFUNC;
 }
 
-function obterQuantidadeTicketsFTRFUNCLista( idLista, cards )
+function obterQuantidadeTicketsFTRFUNCLista( idLista, cards, camposPersonalizadosBoard )
 {
 	var quantidadeTicketsFDFMLista = obterQuantidadeTicketsFDFMLista( idLista, cards );
 	
-	var quantidadeTicketsSemFTRFUNCLista = obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards );
+	var quantidadeTicketsSemFTRFUNCLista = obterQuantidadeTicketsSemFTRFUNCLista( idLista, cards, camposPersonalizadosBoard );
 	
 	var quantidadeTicketsFTRFUNCLista = quantidadeTicketsFDFMLista - quantidadeTicketsSemFTRFUNCLista;
 	

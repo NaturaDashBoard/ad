@@ -20,7 +20,6 @@ const TIPO_REQ_AJAX_GET = 'get';
 
 const TIPO_DADO_AJAX_JSON = 'json';
 
-//const INTERVALO_TEMPO_REQUISICOES_ASSINC = 60000;  // Milissegundos;
 const TEMPO_PRIMEIRA_ATUALIZACAO_CARROSSEL_PENDENCIAS = 15000;  // Milissegundos;
 
 const TEXTO_CARROSSEL_PENDENCIAS_VAZIO = '<div class="carousel-item active">Não há Pendências.</div>';
@@ -53,9 +52,15 @@ const NOME_CAMPO_PERSONALIZADO_HORAS_ABAP = 'Horas ABAP';
 const NOME_CAMPO_PERSONALIZADO_TICKET_NUMBER = 'Ticket Number';
 const NOME_CAMPO_PERSONALIZADO_PROJETO = 'Projeto';
 const NOME_CAMPO_PERSONALIZADO_DATA_RELEASE = 'Data Release';
+const NOME_CAMPO_PERSONALIZADO_PENDENCIA_REPROVACAO = 'Pendência / Reprovação';
+
+const PENDENCIA_REPROVACAO_ABAP = 'Abap';
+const PENDENCIA_REPROVACAO_BASIS = 'Basis';
+const PENDENCIA_REPROVACAO_FUNCIONAL = 'Funcional';
 
 const TIPO_ACTION_COMMENT_CARD = 'commentCard';
 const TIPO_ACTION_UPDATE_CARD = 'updateCard';
+const TIPO_ACTION_UPDATE_CUSTOM_FIELD_ITEM = 'updateCustomFieldItem';
 
 const QUANTIDADE_PENDENCIAS_POR_SLIDE = 16;
 
