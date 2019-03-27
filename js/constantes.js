@@ -77,23 +77,23 @@ const TITULO_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA = 'Percentual de Cartões d
 
 const CORES_GRAFICO_PERCENTUAL_CARTOES_POR_FASE =
 [
-	'rgb(255,   0,   0)', // Vermelho
-	'rgb(  0, 255,   0)', // Verde
-	'rgb(  0,   0, 255)', // Azul
-	'rgb(255, 255,   0)', // Amarelo
-	'rgb(  0, 255, 255)', // 
-	'rgb(255,   0, 255)'  // 
+	'rgb(255,   0,   0)',
+	'rgb(  0, 255,   0)',
+	'rgb(  0,   0, 255)',
+	'rgb(255, 255,   0)',
+	'rgb(  0, 255, 255)',
+	'rgb(255,   0, 255)'
 ];
 const CORES_GRAFICO_PERCENTUAL_CARTOES_POR_ETIQUETA =
 [
-	'rgb(97,  189,  79)', // 
-	'rgb(242, 214,   0)', // 
-	'rgb(255, 159,  26)', // 
-	'rgb(235,  90,  70)', // 
-	'rgb(195, 119, 224)', // 
-	'rgb(  0, 121, 191)', // 
-	'rgb(  0, 194, 224)', // 
-	'rgb( 53,  82,  99)'  // 
+	'rgb(97,  189,  79)',
+	'rgb(242, 214,   0)', 
+	'rgb(255, 159,  26)',
+	'rgb(235,  90,  70)', 
+	'rgb(195, 119, 224)', 
+	'rgb(  0, 121, 191)',
+	'rgb(  0, 194, 224)',
+	'rgb( 53,  82,  99)'
 ];
 
 const POSICAO_LEGENDA_GRAFICO_TOPO = 'top';

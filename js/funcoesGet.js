@@ -1397,8 +1397,8 @@ function obterPendencias( cards, listas, camposPersonalizadosBoard )
 	var pendencias = [];
 	
 	var idCampoPersonalizadoDataProjeto = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
-	
 	var idCampoPersonalizadoTicketNumber = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_TICKET_NUMBER, camposPersonalizadosBoard );
+	var idCampoPersonalizadoPendenciaReprovacao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PENDENCIA_REPROVACAO, camposPersonalizadosBoard );
 	
 	var cardsPendencias = obterCardsLista( NOME_LISTA_PENDENCIAS_REPROVADOS, cards, listas );
 	
@@ -1434,12 +1434,38 @@ function obterPendencias( cards, listas, camposPersonalizadosBoard )
 					ticketNumber = valorCampoPersonalizadoTicketNumber['text'];
 				}
 				
+				var valorCampoPersonalizadoPendenciaReprovacao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoPendenciaReprovacao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+				
+				var responsavelPendencia = '';
+				
+				if( valorCampoPersonalizadoPendenciaReprovacao != undefined )
+				{
+					responsavelPendencia = valorCampoPersonalizadoPendenciaReprovacao['text'];
+				}
+				
+				if
+				(
+					responsavelPendencia == undefined
+					|| responsavelPendencia == ''
+				)
+				{
+					responsavelPendencia = 'N/D';
+				}
+				
+				var textoComentarioPendencia = actionCardPendencia['data']['text'];
+				
+				if( textoComentarioPendencia.length > TAMANHO_MAXIMO_COMENTARIO_PENDENCIA )
+				{
+					textoComentarioPendencia = textoComentarioPendencia.substr( 0, TAMANHO_MAXIMO_COMENTARIO_PENDENCIA ) + '...';
+				}
+				
 				var pendencia = 
 				{
 					idCartao: cardPendencia['idShort'],
 					projeto: nomeProjeto,
 					wp: ticketNumber,
-					textoComentario: actionCardPendencia['data']['text']
+					responsavel: responsavelPendencia,
+					textoComentario: textoComentarioPendencia
 				};
 				
 				pendencias.push( pendencia );
@@ -1462,7 +1488,7 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 	{
 		var indicePendencia = 0;
 		
-		itensCarrosselPendencias += '<div class="carousel-item active"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Comentário</th></tr></thead><tbody>';	
+		itensCarrosselPendencias += '<div class="carousel-item active"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Responsável</th><th>Comentário</th></tr></thead><tbody>';	
 		
 		for
 		(
@@ -1472,17 +1498,18 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 		{
 			var pendencia = pendencias[indicePendencia];
 			
-			itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>' 
-										+ pendencia.projeto + '</td><td>' 
-										+ pendencia.wp + '</td><td>' 
-										+ pendencia.textoComentario.substr( 0, TAMANHO_MAXIMO_COMENTARIO_PENDENCIA ) + '</td></tr>';	
+			itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>'
+										+ pendencia.projeto + '</td><td>'
+										+ pendencia.wp + '</td><td>'
+										+ pendencia.responsavel + '</td><td>'
+										+ pendencia.textoComentario + '</td></tr>';
 		}
 		
 		itensCarrosselPendencias += '</tbody></table></div>';
 		
 		for( ; indicePendencia < pendencias.length; )
 		{
-			itensCarrosselPendencias += '<div class="carousel-item"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Comentário</th></tr></thead><tbody>';
+			itensCarrosselPendencias += '<div class="carousel-item"><table class="table"><thead><tr><th>ID</th><th>Projeto</th><th>WP</th><th>Responsável</th><th>Comentário</th></tr></thead><tbody>';
 			
 			for
 			(
@@ -1492,10 +1519,11 @@ function obterItensCarrosselPendencias( cards, listas, camposPersonalizadosBoard
 			{
 				var pendencia = pendencias[indicePendencia];
 				
-				itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>' 
-											+ pendencia.projeto + '</td><td>' 
-											+ pendencia.wp + '</td><td>' 
-											+ pendencia.textoComentario.substr( 0, TAMANHO_MAXIMO_COMENTARIO_PENDENCIA ) + '</td></tr>';	
+				itensCarrosselPendencias += '<tr><td>' + pendencia.idCartao + '</td><td>'
+											+ pendencia.projeto + '</td><td>'
+											+ pendencia.wp + '</td><td>'
+											+ pendencia.responsavel + '</td><td>'
+											+ pendencia.textoComentario + '</td></tr>';
 			}
 			
 			itensCarrosselPendencias += '</tbody></table></div>';
@@ -1651,15 +1679,13 @@ function obterCardsPorMesAno( mes, ano, cards, listas )
 	return cardsMesAno;
 }
 
-function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProjeto, dataRelease/*, mes, ano*/ )
+function obterCardsFiltrados( cards, listas, camposPersonalizadosBoard, nomeProjeto, dataRelease )
 {
 	var cardsFiltrados = cards;
 	
 	cardsFiltrados = obterCardsPorProjeto( nomeProjeto, cardsFiltrados, camposPersonalizadosBoard );
 	
 	cardsFiltrados = obterCardsPorRelease( dataRelease, cardsFiltrados, camposPersonalizadosBoard );
-	
-	// cardsFiltrados = obterCardsPorMesAno( mes, ano, cardsFiltrados, listas );
 	
 	return cardsFiltrados;
 }

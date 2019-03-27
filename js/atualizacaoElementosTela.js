@@ -368,23 +368,13 @@ function atualizarElementosTela()
 	
 	var dataRelease = obterDataReleaseSelecionada();
 	
-	/*
-	var mes = Number( campoTextoMes.val() );
-	
-	var ano = Number( campoTextoAno.val() );
-	*/
-	
 	var cardsFiltrados = obterCardsFiltrados
 	(
 		cardsCarregados,
 		listasCarregadas,
 		camposPersonalizadosCarregados,
 		nomeProjeto,
-		dataRelease,
-		/*
-		mes,
-		ano
-		*/
+		dataRelease
 	);
 	
 	atualizarFTRABAP( cardsFiltrados );
