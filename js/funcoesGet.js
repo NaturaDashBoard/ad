@@ -378,33 +378,19 @@ function obterNumeroTicketDaSIR( cardSIR )
 	if( nomeCardSIR != null )
 	{
 		var indicePrimeiroDigitoNumeroSIR = nomeCardSIR.indexOf( '-N' ) + 2;
-		var indiceAposUltimoDigitoNumeroSIR = -1;
 		
+		var numeroTicketDaSIRString = '';
+	
 		for( indiceCaractere = indicePrimeiroDigitoNumeroSIR; indiceCaractere < nomeCardSIR.length; ++indiceCaractere )
 		{
-			if( nomeCardSIR[indiceCaractere] == '-' )
-			{
-				indiceAposUltimoDigitoNumeroSIR = indiceCaractere;
-				
-				break;
-			}
+			numeroTicketDaSIRString += nomeCardSIR[indiceCaractere];
 		}
 		
-		if( indicePrimeiroDigitoNumeroSIR < indiceAposUltimoDigitoNumeroSIR )
-		{
-			var numeroTicketDaSIRString = '';
+		var numeroTicketDaSIR = Number( numeroTicketDaSIRString );
 		
-			for( indiceCaractere = indicePrimeiroDigitoNumeroSIR; indiceCaractere < indiceAposUltimoDigitoNumeroSIR; ++indiceCaractere )
-			{
-				numeroTicketDaSIRString += nomeCardSIR[indiceCaractere];
-			}
-			
-			var numeroTicketDaSIR = Number( numeroTicketDaSIRString );
-			
-			if( !isNaN( numeroTicketDaSIR ) )
-			{
-				return numeroTicketDaSIR;
-			}
+		if( !isNaN( numeroTicketDaSIR ) )
+		{
+			return numeroTicketDaSIR;
 		}
 	}
 	
