@@ -807,6 +807,7 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 	var proximaDataDisponibilidadeABAP = { ABAP: nomeABAP, proximaDataDisponibilidade: '' };
 	
 	var idCampoPersonalizadoFimConstrucao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_FIM_CONSTRUCAO, camposPersonalizadosBoard );
+	var idCampoPersonalizadoLimiteConstrucao = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_LIMITE_CONSTRUCAO, camposPersonalizadosBoard );
 	var idCampoPersonalizadoABAP = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_ABAP, camposPersonalizadosBoard );
 	
 	var idListaEntregue = obterIDLista( NOME_LISTA_ENTREGUE, listas );
@@ -839,7 +840,29 @@ function obterProximaDataDisponibilidadeABAP( nomeABAP, cards, camposPersonaliza
 				{
 					var valorCampoPersonalizadoFimConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFimConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
 					
-					if( valorCampoPersonalizadoFimConstrucao != undefined )
+					if( valorCampoPersonalizadoFimConstrucao == undefined )
+					{
+						var valorCampoPersonalizadoLimiteConstrucao = obterValorCampoPersonalizadoCard( idCampoPersonalizadoLimiteConstrucao, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+						
+						if( valorCampoPersonalizadoLimiteConstrucao != undefined )
+						{
+							var umDiaAposDataLimiteConstrucao = undefined;
+								
+							var dataLimiteConstrucao = new Date( valorCampoPersonalizadoLimiteConstrucao['date'] );
+					
+							umDiaAposDataLimiteConstrucao = addDays( dataLimiteConstrucao, 1 );
+							
+							if
+							(
+								proximaDataDisponibilidadeABAP.proximaDataDisponibilidade == ''
+								|| proximaDataDisponibilidadeABAP.proximaDataDisponibilidade < umDiaAposDataLimiteConstrucao
+							)
+							{
+								proximaDataDisponibilidadeABAP.proximaDataDisponibilidade = umDiaAposDataLimiteConstrucao;
+							}
+						}
+					}
+					else 
 					{
 						var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
 					
